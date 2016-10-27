@@ -18,11 +18,11 @@ html, body  {
 
 #container {
 	padding-bottom: 30px;
+	margin-top: 10px;
 }
 
 #header {
 	background: #323F4F;
-	height: 80px;
 	margin: auto;
 	top: 0;
 	width: 90%;
@@ -43,26 +43,40 @@ html, body  {
 	position: relative;
 }
 
+.btn-princ {
+	background: #5B9BD5;
+	border: 2px solid #5B9BD5;
+	color: black;
+}
+
+.btn-princ:hover {
+	background: white;
+	border: 2px solid white;
+	color: #323F4F;
+}
+
 .centered {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
 }
 
-.membro-equipa {
-	border-radius: 50%;
-	height: 150px;
-	width: 150px;
-}
 
 .img-produto {
-	width: 150px;
-	height: 150px;
+	border: 1px solid black;
+	height: 200px;
+	width: 200px;
 }
 
 .logo {
 	height: 60px;
 	margin: 10px auto 10px 10px;
+}
+
+.membro-equipa {
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
 }
 
 .menu a {
@@ -80,6 +94,44 @@ html, body  {
 
 .menu li {
 	display: inline;
+}
+
+.navbar {
+	background: #4991C8;
+	display: block;
+	height: 30px;
+}
+
+.nav-active {
+	background: #323F4F;
+}
+
+.nav-inactive {
+	background: #4991C8;
+	color: black !important;
+}
+
+.navbar li {
+	display: table-cell;
+	height: 30px;
+	vertical-align: middle;
+	padding: 0 15px;
+}
+
+.navbar a {
+	text-decoration: none;
+}
+
+.navbar:hover { /* TODO - fazer isto*/
+	color: pink;
+}
+
+.nav-active a {
+	color: white;
+}
+
+.nav-inactive a {
+	color: black;
 }
 
 .tab-centrada {
@@ -105,6 +157,17 @@ html, body  {
 
 .tab-centrada-peq td {
 	padding: 0 10px;
+}
+
+.tab-login {
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+	width: auto;
+}
+
+.texto-produtos {
+	width: 200px;
 }
 
 .titulo-centrado {
