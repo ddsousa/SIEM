@@ -1,0 +1,60 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body  {
+	height: 100%;
+}
+
+#header {
+	background: #323F4F;
+	height: 80px;
+	margin: auto;
+	top: 0;
+	width: 90%;
+}
+
+#footer {
+	background: #323F4F;
+	bottom: 0;
+	display: table;
+	height: 30px;
+	margin-left: 5%;
+	position: absolute;
+	width: 90%;
+}
+
+.centered {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.logo {
+	height: 60px;
+	margin: 10px auto 10px 10px;
+}
+
+.menu a {
+	color: white;
+	text-decoration: none;
+}
+
+.menu a:hover {
+	color: #4991C8;
+}
+
+.menu ul {
+	list-style-type: none;
+}
+
+.menu li {
+	display: inline;
+}
+
+.with-separator {
+	border-right: 1px solid white;
+	padding-right: 5px;
+}
