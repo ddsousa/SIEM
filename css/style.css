@@ -4,8 +4,20 @@
 	padding: 0;
 }
 
+hr {
+	border-top: 1px solid #5B9BD5;
+	height: 0px;
+	margin: 3% auto 0 auto;
+	width: 80%;
+}
+
 html, body  {
 	height: 100%;
+	font-family: 'Ubuntu', Arial;
+}
+
+#container {
+	padding-bottom: 30px;
 }
 
 #header {
@@ -26,10 +38,26 @@ html, body  {
 	width: 90%;
 }
 
+#wrapper {
+	min-height: 100%;
+	position: relative;
+}
+
 .centered {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
+}
+
+.membro-equipa {
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+}
+
+.img-produto {
+	width: 150px;
+	height: 150px;
 }
 
 .logo {
@@ -42,7 +70,7 @@ html, body  {
 	text-decoration: none;
 }
 
-.menu a:hover {
+.menu a:hover, .tab-centrada a:hover {
 	color: #4991C8;
 }
 
@@ -52,6 +80,36 @@ html, body  {
 
 .menu li {
 	display: inline;
+}
+
+.tab-centrada {
+	margin: auto;
+	text-align: center;
+	width: 100%;
+}
+
+.tab-centrada a {
+	color: black;
+	text-decoration: none;
+}
+
+.tab-centrada img {
+	margin-bottom: 2%;
+}
+
+.tab-centrada-peq {
+	margin: auto;
+	margin-bottom: 2%;
+	text-align: left;
+}
+
+.tab-centrada-peq td {
+	padding: 0 10px;
+}
+
+.titulo-centrado {
+	padding: 2% 0;
+	text-align: center;
 }
 
 .with-separator {
