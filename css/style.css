@@ -50,8 +50,8 @@ html, body  {
 }
 
 .btn-princ:hover {
-	background: white;
-	border: 2px solid white;
+	background: #bbb;
+	border: 2px solid #bbb;
 	color: #323F4F;
 }
 
@@ -61,6 +61,22 @@ html, body  {
 	text-align: center;
 }
 
+.display-prod {
+	margin: auto;
+	margin-top: 10%;
+	width: 90%;
+}
+
+.display-prod-left {
+	float: left;
+	width: 30%;
+}
+
+.display-prod-right {
+	float: right;
+	height: 200px;
+	width: 69%;
+}
 
 .img-produto {
 	border: 1px solid black;
@@ -136,6 +152,22 @@ html, body  {
 
 .nav-inactive a:hover {
 	color: white !important;
+}
+
+.order {
+	bottom: 30px;
+	float: right;
+	margin: auto;
+	position: relative;
+	text-align: center;
+	width: 69%;
+}
+
+.order-item {
+	font-size: 1.1em;
+	height: 30px;
+	margin: auto 10px;
+	text-align: center;
 }
 
 .tab-centrada {

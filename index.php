@@ -1,7 +1,7 @@
-		<?php
-			include_once("common/header.php");
-			include_once("common/connect_db.php");
-		 ?>
+<?php
+	include_once("common/init.php");
+	include_once("common/header.php");
+?>
 		 <div class="navbar menu">
 			 <ul>
 				 <li class="nav-element nav-active"><a href="#">Início</a></li>
@@ -24,7 +24,7 @@
 							for($i=0; $i<4; $i++) { // imagens produto
 								$row = pg_fetch_row($result, $i);
 								echo '<td>';
-								echo 	'<img class="img-produto" src="media/img/produtos/'.$row[0].'.jpg" alt="fotografia de '.$row[1].'">';
+								echo 	'<img class="img-produto" src="media/img/products/'.$row[0].'.jpg" alt="fotografia de '.$row[1].'">';
 								echo '</td>';
 							}
 
@@ -37,7 +37,7 @@
 								echo 	'<table class="tab-centrada texto-produtos">';
 								//echo 		'<td style="text-align: left;">1</td>';
 								//echo 		'<td style="text-align: right;">2</td>';
-								echo 		'<td style="text-align: left;"><a href="#">'.$row[1].'</a></td>';
+								echo 		'<td style="text-align: left;"><a href="pages/displayProduto.php?id='.$row[0].'">'.$row[1].'</a></td>';
 								echo 		'<td style="text-align: right;">'.$row[2].'€</td>';
 								echo 	'</table>';
 								echo '</td>';
