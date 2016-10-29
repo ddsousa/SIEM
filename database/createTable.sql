@@ -1,10 +1,10 @@
 create table produto (
 	id serial primary key,
 	codigo integer,
-	imagem varchar,
+	nome varchar,
 	tipo varchar,
 	descricao varchar,
-	preco integer not null,
+	preco real not null,
 	preco_por varchar,
 	n_vendas integer
 );
@@ -14,7 +14,8 @@ create table cliente (
 	codigo integer not null,
 	nome varchar not null,
 	morada varchar not null,
-	telefone integer not null
+	telefone integer not null,
+	email varchar not null
 );
 
 create table encomenda (
@@ -42,7 +43,7 @@ create table utilizador (
 );
 
 -- preenchimento da tabela de produtos (TODO - meter codigos produtos
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite evaporado',
@@ -53,7 +54,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Magro Sem Lactose',
@@ -64,7 +65,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Meio Gordo',
@@ -75,7 +76,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Meio Gordo Sem Lactose',
@@ -86,7 +87,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Achocolatado Ucal',
@@ -97,7 +98,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Achocolatado Mimosa',
@@ -108,7 +109,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Condensado com Cacau',
@@ -119,7 +120,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Leite Condensado',
@@ -130,7 +131,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Queijo Flamengo Fatiado',
@@ -141,7 +142,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Queijo Mistura de Pimentão',
@@ -152,7 +153,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Queijo Fresco Sem Lactose',
@@ -163,7 +164,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Caldo de Carne',
@@ -174,7 +175,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Carne Picada de Vitelão Biológico',
@@ -185,7 +186,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Carne Picada de Vitela',
@@ -196,7 +197,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Chouriço de Carne Ponte de Lima',
@@ -207,7 +208,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salame Italiano',
@@ -218,7 +219,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salsichas Alemãs Wienerwurst',
@@ -229,7 +230,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Rodelinhas de Salsichas',
@@ -240,7 +241,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salsichas de Peru',
@@ -251,7 +252,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salsichas Frankfurt Aves',
@@ -262,7 +263,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bife do Lombo de Vitela',
@@ -273,7 +274,7 @@ VALUES (
 0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bife da Vazia de Vitela',
@@ -284,7 +285,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bife de Peito de Peru',
@@ -295,7 +296,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bifes de Peru do Campo',
@@ -306,7 +307,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Hambúrger de Perú sem Glúten',
@@ -317,7 +318,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Peito de Peru Natura',
@@ -328,7 +329,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Miúdos de Frango do Campo',
@@ -339,7 +340,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Asas de Frango Campo',
@@ -350,7 +351,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Peito de Frango do Campo',
@@ -361,7 +362,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bifes de Frango do Campo',
@@ -372,7 +373,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Hambúger de Frango sem Glúten',
@@ -383,7 +384,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Frango do Campo Fresco Inteiro sem Miúdos',
@@ -394,7 +395,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Hambúrger de Vaca sem Glúten',
@@ -405,7 +406,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bife Novilho Pá/Acém',
@@ -416,7 +417,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Lombos Pescada Ultracongelados',
@@ -427,7 +428,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Pescada Pequena',
@@ -438,7 +439,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Pescada Grande',
@@ -449,7 +450,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Medalhões de Pescada sem Pele Ultracongelados',
@@ -460,7 +461,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Postas de Pescada Nº5 para Cozer Ultracongeladas',
@@ -471,7 +472,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Mimos de Pescada do Cabo Ultracongelados',
@@ -482,7 +483,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salmão em Posta',
@@ -493,7 +494,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Lombos de Salmão',
@@ -504,7 +505,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Salmão',
@@ -515,7 +516,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Lombos de Salmão Ultracongelados',
@@ -526,7 +527,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Patê de Salmão',
@@ -537,7 +538,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Dourada',
@@ -548,7 +549,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Carapau Médio',
@@ -559,7 +560,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Sardinha em óleo picante',
@@ -570,7 +571,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Sardinha Pequena (Petinga)',
@@ -581,7 +582,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Sardinha Congelada',
@@ -592,7 +593,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Truta Salmonada Fresca',
@@ -603,7 +604,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bebida Soja Baunilha',
@@ -614,7 +615,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Bebida Soja Chocolate',
@@ -625,7 +626,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Coca-Cola',
@@ -636,7 +637,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Coca-Cola Zero',
@@ -647,7 +648,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Coca-Cola Lata',
@@ -658,7 +659,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Fanta Laranja',
@@ -669,7 +670,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Fanta Maracujá',
@@ -680,7 +681,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Fanta Ananás',
@@ -691,7 +692,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Frisumo Ananás',
@@ -702,7 +703,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Frisumo Laranja',
@@ -713,7 +714,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Seven Up Lima',
@@ -724,7 +725,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Seven Up Limão',
@@ -735,7 +736,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Vodka Preta',
@@ -746,7 +747,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Vodka',
@@ -757,7 +758,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Cerveja',
@@ -768,7 +769,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Lambrusco',
@@ -779,7 +780,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Sangria',
@@ -790,7 +791,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Chamapnhe Bruto',
@@ -801,7 +802,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, imagem, tipo, descricao, preco, preco_por, n_vendas)
+INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
 	'Espumante Bruto',
