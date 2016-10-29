@@ -1,16 +1,14 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Oceano Hipermercado</title>
-	<link rel="icon" href="media/img/logos/icon.png">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
-	<div id="wrapper">
 		<?php
-			include_once("includes/include_header.php");
+			include_once("common/header.php");
 		 ?>
+		 <div class="navbar menu">
+			 <ul>
+				 <li class="nav-element nav-active"><a href="#">Início</a></li>
+				 <li class="nav-element nav-inactive"><a href="#">Produtos</a></li>
+			 </ul>
+		 </div>
+	 </div>
+	 </html>
 		<div id="container">
 			<h4 class="titulo-centrado">Produtos mais vendidos</h4>
 			<div>
@@ -111,6 +109,3 @@
 		<?php
 			include_once("includes/include_footer.php");
 		?>
-	</div>
-</body>
-</html>
