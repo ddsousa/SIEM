@@ -37,7 +37,7 @@
 								echo 	'<table class="tab-centrada texto-produtos">';
 								//echo 		'<td style="text-align: left;">1</td>';
 								//echo 		'<td style="text-align: right;">2</td>';
-								echo 		'<td style="text-align: left;"><a href="../../pages/displayProduto.php?id='.$row[0].'">'.$row[1].'</a></td>';
+								echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$row[0].'">'.$row[1].'</a></td>';
 								echo 		'<td style="text-align: right;">'.$row[2].'€</td>';
 								echo 	'</table>';
 								echo '</td>';

@@ -11,7 +11,7 @@
 	<div id="wrapper">
 		<div id="header">
 		<div style="height: 80px">
-			<a href="../"> <img src="../../media/img/logos/logo.png" class="logo"></a>
+			<a href="../common/home.php"> <img src="../../media/img/logos/logo.png" class="logo"></a>
 			<table class="tab-login" style="visibility: visible">
 				<tr>
 					<td>
