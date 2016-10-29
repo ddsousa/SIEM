@@ -21,6 +21,14 @@
    $phone     = strip_tags($_POST['phone']);
 
    // Database access
+   if(userExists($username) > 0) {
+     $_SESSION['ERROR_MESSAGES'][] = 'O username inserido não se encontra disponível, por favor insira outro.';
+     $_SESSION['form_values'] = $_POST;
+
+     header("Location: ../../pages/users/register.php");
+     exit;
+   }
+
    $new_id = createClient($name, $address, $phone, $email);
 
    createUser($new_id, 0, $username, $password);
