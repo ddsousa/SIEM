@@ -1,7 +1,7 @@
 <?php
-	include_once("../common/init.php");
-	include_once("../common/header.php");
-	include_once("../common/navbar.php");
+	include_once("../../common/init.php");
+	include_once("../../common/header.php");
+	include_once("../../common/navbar.php");
 
 	$prod_id = $_GET['id'];
 
@@ -16,7 +16,7 @@
 		<div class="display-prod">
 			<div class="display-prod-left">
 				<?php
-					echo '<img class="img-produto" src="../media/img/products/'.$prod_id.'.jpg" alt="'.$product[2].'">';
+					echo '<img class="img-produto" src="../../media/img/products/'.$prod_id.'.jpg" alt="'.$product[2].'">';
 				?>
 			</div>		
 			<div class="display-prod-right">
@@ -37,5 +37,5 @@
 		</div>
 	</div>
 <?php
-	include_once("../common/footer.php");
+	include_once("../../common/footer.php");
 ?>
