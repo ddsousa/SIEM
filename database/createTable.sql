@@ -11,7 +11,7 @@ create table produto (
 
 create table cliente (
 	id serial primary key,
-	codigo integer not null,
+	codigo serial not null,
 	nome varchar not null,
 	morada varchar not null,
 	telefone integer not null,
@@ -794,7 +794,7 @@ VALUES (
 INSERT INTO produto (id, nome, tipo, descricao, preco, preco_por, n_vendas)
 VALUES (
 	default,
-	'Chamapnhe Bruto',
+	'Champanhe Bruto',
 	'Bebidas',
 	'Champanhe Bruto G. H. MUMM. Garrafa de 750ml',
 	39.95,

@@ -134,6 +134,10 @@ html, body  {
 	color: black;
 }
 
+.nav-inactive a:hover {
+	color: white !important;
+}
+
 .tab-centrada {
 	margin: auto;
 	text-align: center;
