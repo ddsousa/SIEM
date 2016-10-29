@@ -1,91 +1,48 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Oceano Hipermercado</title>
-	<link rel="icon" href="media/icon.png">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-</head>
-<body>
-	<div id="wrapper">
-		<div id="header">
-		<div style="height: 80px">
-			<img src="media/logo.png" class="logo">
-			<table class="tab-login" style="visibility: visible">
-				<tr>
-					<td>
-						<input style="width: 150px;" type="email" placeholder="Email">
-					</td>
-					<td>
-						<input style="width: 100px;" type="password" placeholder="Password">
-					</td>
-					<td>
-						<input type="submit" value="Login" class="btn-princ">
-					</td>
-					<td>
-						<input type="submit" value="Registrar" class="btn-princ">
-					</td>
-				</tr>
-			</table>
-			</div>
-			<div class="navbar" menu">
-				<ul>
-					<li class="nav-element nav-active"><a href="#">Início</a></li>
-					<li class="nav-element nav-inactive"><a href="#">Produtos</a></li>
-				</ul>
-			</div>
-		</div>
+		<?php
+			include_once("common/header.php");
+			include_once("common/connect_db.php");
+		 ?>
+		 <div class="navbar menu">
+			 <ul>
+				 <li class="nav-element nav-active"><a href="#">Início</a></li>
+				 <li class="nav-element nav-inactive"><a href="#">Produtos</a></li>
+			 </ul>
+		 </div>
+	 </div>
+	 </html>
 		<div id="container">
 			<h4 class="titulo-centrado">Produtos mais vendidos</h4>
 			<div>
 				<table class="tab-centrada">
-					<tr> <!-- imagens produto -->
-						<td>
-							<img class="img-produto" src="media/temp.jpg" alt="fotografia produto"> <!-- Isto aqui era fixe que a tabela das imagens tivesse uma descricao do que e' o produto para meter no campo alt ;)-->
-						</td>
-						<td>
-							<img class="img-produto" src="media/temp.jpg" alt="fotografia produto"> <!-- Isto aqui era fixe que a tabela das imagens tivesse uma descricao do que e' o produto para meter no campo alt ;)-->
-						</td>
-						<td>
-							<img class="img-produto" src="media/temp.jpg" alt="fotografia produto"> <!-- Isto aqui era fixe que a tabela das imagens tivesse uma descricao do que e' o produto para meter no campo alt ;)-->
-						</td>
-						<td>
-							<img class="img-produto" src="media/temp.jpg" alt="fotografia produto"> <!-- Isto aqui era fixe que a tabela das imagens tivesse uma descricao do que e' o produto para meter no campo alt ;)-->
-						</td>
-					</tr>
-					<tr> <!-- nome e preco produto -->
-						<td>
-							<table class="tab-centrada texto-produtos">
-								<tr>
-									<td style="text-align: left;">David</td>
-									<td style="text-align: right;">1.00€</td>
-								</tr>
-							</table>
-						</td>
-						<td>
-							<table class="tab-centrada texto-produtos">
-								<tr>
-									<td style="text-align: left;">David</td>
-									<td style="text-align: right;">1.00€</td>
-								</tr>
-							</table>
-						</td>
-						<td>
-							<table class="tab-centrada texto-produtos">
-								<tr>
-									<td style="text-align: left;">David</td>
-									<td style="text-align: right;">1.00€</td>
-								</tr>
-							</table>
-						</td>
-						<td>
-							<table class="tab-centrada texto-produtos">
-								<tr>
-									<td style="text-align: left;">David</td> <!-- TODO - ver se nao ha maneira mais bonita de fazer isto -->
-									<td style="text-align: right;">1.00€</td>
-								</tr>
-							</table>
-						</td>
+					<tr> 
+						<?php
+							$query = "SELECT id, nome, preco
+									  FROM produto
+									  ORDER BY n_vendas DESC, nome";
+							$result = pg_exec($conn, $query);
+
+							for($i=0; $i<4; $i++) { // imagens produto
+								$row = pg_fetch_row($result, $i);
+								echo '<td>';
+								echo 	'<img class="img-produto" src="media/img/produtos/'.$row[0].'.jpg" alt="fotografia de '.$row[1].'">';
+								echo '</td>';
+							}
+
+							echo '</tr>';
+							echo '<tr>';
+
+							for($i=0; $i<4; $i++) { // nome e preco
+								$row = pg_fetch_row($result, $i);
+								echo '<td>';
+								echo 	'<table class="tab-centrada texto-produtos">';
+								//echo 		'<td style="text-align: left;">1</td>';
+								//echo 		'<td style="text-align: right;">2</td>';
+								echo 		'<td style="text-align: left;">'.$row[1].'</td>';
+								echo 		'<td style="text-align: right;">'.$row[2].'€</td>';
+								echo 	'</table>';
+								echo '</td>';
+							}
+						?>
 					</tr>
 				</table>
 			</div>
@@ -94,10 +51,10 @@
 				<table class="tab-centrada">
 					<tr>
 						<td>
-							<img class="membro-equipa" src="media/foto_david.png" alt="Fotografia de David de Sousa">
+							<img class="membro-equipa" src="media/img/foto_david.png" alt="Fotografia de David de Sousa">
 						</td>
 						<td>
-							<img class="membro-equipa" src="media/foto_relvas.jpg" alt="Fotografia de Pedro Relvas">
+							<img class="membro-equipa" src="media/img/foto_relvas.jpg" alt="Fotografia de Pedro Relvas">
 						</td>
 					</tr>
 					<tr>
@@ -132,12 +89,7 @@
 				</table>
 			</div>
 		</div>
-		<div id="footer" class="menu">
-			<ul class="centered">
-				<li class="with-separator"><a href=#>Contactos</a></li>
-				<li><a href=#>Relatório</a></li>
-			</ul>
-		</div>
-	</div>
-</body>
-</html>
+		<?php
+			include_once("common/disconnect_db.php");
+			include_once("common/footer.php");
+		?>
