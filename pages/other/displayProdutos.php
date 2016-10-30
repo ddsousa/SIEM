@@ -7,12 +7,18 @@
 	include_once("../../common/navbar.php");
 	if(!empty($_GET['type'])) {
 		$active_type = $_GET['type'];
+		$query = "SELECT id, nome, preco
+							FROM produto
+							WHERE tipo = '".$active_type."';";
+	} else {
+		$query = "SELECT id, nome, preco
+							FROM produto";
 	}
 	include_once("../../common/sub_navbar.php");
-
-	$query = "SELECT id, nome, preco
-						FROM produto";
+	echo $query;
 	$prod_array = pg_exec($conn, $query);
+
+	
 
 ?>
 

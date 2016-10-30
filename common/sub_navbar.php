@@ -1,11 +1,11 @@
 <div class="navbar menu">
 	<ul>
 		<?php
-			$query = "SELECT DISTINCT tipo
+			$nav_query = "SELECT DISTINCT tipo
 								FROM produto";
-			$prod_types = pg_exec($conn, $query);
-			$n_rows = pg_num_rows($prod_types);
-			for($i=0; $i<$n_rows; $i++) {
+			$prod_types = pg_exec($conn, $nav_query);
+			$nav_n_rows = pg_num_rows($prod_types);
+			for($i=0; $i<$nav_n_rows; $i++) {
 				$prod_type = pg_fetch_row($prod_types, $i);
 				if(!empty($active_type)){
 					if($active_type == $prod_type[0]) {
