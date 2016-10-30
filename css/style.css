@@ -55,6 +55,11 @@ html, body  {
 	color: #323F4F;
 }
 
+.btn-large {
+	font-size: 1.1em;
+	height: 30px;
+}
+
 .centered {
 	display: table-cell;
 	vertical-align: middle;
@@ -164,8 +169,6 @@ html, body  {
 }
 
 .order-item {
-	font-size: 1.1em;
-	height: 30px;
 	margin: auto 10px;
 	text-align: center;
 }
@@ -200,6 +203,12 @@ html, body  {
 	margin-top: 10px;
 	margin-right: 10px;
 	width: auto;
+}
+
+.text-input-quantity {
+	font-size: 1.2em;
+	height: 30px;
+	width: 40px;
 }
 
 .texto-produtos {
