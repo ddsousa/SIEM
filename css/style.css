@@ -173,6 +173,16 @@ html, body  {
 	text-align: center;
 }
 
+.page-nr {
+	background: #4991C8;
+	color: white;
+	display: inline;
+	height: 20px;
+	margin: 0 1px;
+	text-align: center;
+	width: 20px;
+}
+
 .tab-centrada {
 	margin: auto;
 	text-align: center;

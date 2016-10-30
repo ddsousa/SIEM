@@ -9,13 +9,13 @@
 				$prod_type = pg_fetch_row($prod_types, $i);
 				if(!empty($active_type)){
 					if($active_type == $prod_type[0]) {
-						echo '<li class="nav-active"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'">'.$prod_type[0].'</a></li>';
+						echo '<li class="nav-active"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'&page_nr=1">'.$prod_type[0].'</a></li>';
 					}
 					else {
-						echo '<li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'">'.$prod_type[0].'</a></li>';
+						echo '<li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'&page_nr=1">'.$prod_type[0].'</a></li>';
 					}
 				}	else {
-					echo '<li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'">'.$prod_type[0].'</a></li>';
+					echo '<li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&type='.$prod_type[0].'&page_nr=1">'.$prod_type[0].'</a></li>';
 				}
 			}
 		?>
