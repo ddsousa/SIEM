@@ -1,11 +1,19 @@
 <?php
 	include_once("../../common/init.php");
 	include_once("../../common/header.php");
+	if(!empty($_GET['menu'])) {
+		$active_menu = $_GET['menu'];
+	}
 	include_once("../../common/navbar.php");
+	if(!empty($_GET['type'])) {
+		$active_type = $_GET['type'];
+	}
+	include_once("../../common/sub_navbar.php");
 
 	$query = "SELECT id, nome, preco
 						FROM produto";
 	$prod_array = pg_exec($conn, $query);
+
 ?>
 
 </div>
