@@ -77,7 +77,7 @@
 				}
 			}
 			if(!empty($active_type)) {
-				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr=0">Todas</a></li>';
+				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr=-1">Todas</a></li>';
 			} else {
 				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?page_nr=-1">Todas</a></li>';
 			}
