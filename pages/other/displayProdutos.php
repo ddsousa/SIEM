@@ -1,13 +1,14 @@
 <?php
-	include_once("../init.php");
-	include_once("../common/header.php");
-	//include_once("common/connect_db.php");
+	include_once("../../common/init.php");
+	include_once("../../common/header.php");
+	include_once("../../common/navbar.php");
 ?>
 
+</div>
 <div id="container">
 	
 </div>
 
 <?php
-	//include_once("../common/footer.php");
+	include_once("../../common/footer.php");
 ?>
