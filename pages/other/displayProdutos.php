@@ -26,9 +26,11 @@
 </div>
 <div id="container">
 		<?php
-			include_once("../../common/display_mais_vendidos.php");
+			if(empty($_GET['type'])) {
+				include_once("../../common/display_mais_vendidos.php");
+				echo '<hr>';
+			}
 		?>
-		<hr>
 		<h4 class="titulo-centrado">Todos os produtos</h4>
 		<table class="tab-centrada">
 				<?php
