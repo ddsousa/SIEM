@@ -31,7 +31,6 @@
 	}
 
 	$query = $base_query.$query_add.";";
-	echo $query.'<br>';
 	$prod_array = pg_exec($conn, $query);
 ?>
 
