@@ -27,7 +27,7 @@
 						</td>
 						</form>
 					<td>
-						<a href="../../pages/users/register.php"><input type="submit" value="Registrar" class="btn-princ"></input></a>
+						<a href="../../pages/users/register.php"><input type="button" value="Registrar" class="btn-princ"></input></a>
 					</td>
 				</tr>
 <?php } else { ?>
@@ -36,7 +36,7 @@
 					<?php echo $_SESSION['USERNAME']; ?>
 			</td>
 			<td>
-					<a href="../../actions/users/logout.php"><input type="submit" value="Logout" class="btn-princ"></input></a>
+					<a href="../../actions/users/logout.php"><input type="button" value="Logout" class="btn-princ"></input></a>
 			</td>
 	</tr>
 <?php } ?>
