@@ -60,7 +60,7 @@
 				</td>
 				<td>
 					<form method="POST" action="displayCarrinho.php?action=edit&id=<?php echo $item['id']?>">
-						<input type="text" class="text-input-quantity" value="<?php echo $item['quantity'];?>" name="quantity" >
+						<input type="text" class="text-input-small" value="<?php echo $item['quantity'];?>" name="quantity" >
 						<input type="submit" value="Editar" class="btn-princ btn-large">
 					</form>
 				</td>

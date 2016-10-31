@@ -24,6 +24,11 @@
 		$query_add = $query_add." ORDER BY ".$_GET['sort_by'];
 	}
 
+	if(!empty($_POST['lower_lim']) && !empty($_POST['upper_lim'])) {
+		echo "aqui filipe";
+		$query_add = $query_add." WHERE preco>=".$_POST['lower_lim'].' AND preco<='.$_POST['upper_lim'];
+	}
+
 	$query = $base_query.$query_add.";";
 	echo $query.'<br>';
 	$prod_array = pg_exec($conn, $query);
@@ -60,13 +65,45 @@
 			}
 		?>
 		<h4 class="titulo-centrado">Todos os produtos</h4>
+		<div style="margin-left: 5%;">
+			<select class="dropbtn" onchange="sortProductsBy(this)">
+				<option disabled selected>Ordenar</option>
+			  <option value="preco asc">Preço mais baixo</option>
+			  <option value="preco desc">Preço mais alto</option>
+			  <option value="nome">Nome</option>
+			</select>
+		</div>
 
-		<select class="dropbtn" onchange="sortProductsBy(this)">
-			<option disabled selected>Ordenar</option>
-		  <option value="preco asc">Preço mais baixo</option>
-		  <option value="preco desc">Preço mais alto</option>
-		  <option value="nome">Nome</option>
-		</select>
+		<div style="margin-right: 5%; float: right; border: 1px solid red;">
+			<?php
+				$aux = "";
+				if(!empty($_GET['page_nr'])) {
+					if($_GET['page_nr'] == -1) {
+						$page_nr = -1;
+					} else {
+						$page_nr = 1;
+					}
+					$aux = $aux."page_nr=".$page_nr;
+				}
+				if(!empty($_GET['type'])) {
+					$aux = "&type=".$_GET['type'];
+				}
+				if(!empty($_GET['menu'])) {
+					$aux = $aux."&menu=".$_GET['menu'];
+				}
+				if(!empty($_GET['sort_by'])) {
+					$aux = $aux."&sort_by=".$_GET['sort_by'];
+				}
+			?>
+			<form method="POST" action="displayProdutos.php?<?php echo $aux;?>">
+			Preço de:
+				<input type="text" class="text-input-small" name="lower_lim">
+				até
+				<input type="text" class="text-input-small" name="upper_lim">
+				<input type="submit" value="Filtrar" class="btn-princ btn-large">
+			</form>
+		</div>
+
 		<table class="tab-centrada">
 				<?php
 					$n_rows = pg_num_rows($prod_array);

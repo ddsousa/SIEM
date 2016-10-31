@@ -62,7 +62,7 @@
 			</div>
 			<div class="order">
 				<form method="POST" action="displayProduto.php?action=add&id=<?php echo $prod_id;?> ">
-					<input class="text-input-quantity" type="text" name="quantity" value="1">
+					<input class="text-input-small" type="text" name="quantity" value="1">
 					Unid.
 					<input type="submit" value="+Adicionar ao carrinho" class="btn-princ btn-large">
 				</form>
