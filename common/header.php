@@ -13,6 +13,7 @@
 		<div style="height: 80px">
 			<a href="../common/home.php"> <img src="../../media/img/logos/logo.png" class="logo"></a>
 			<table class="tab-login" style="visibility: visible">
+<?php if(!isset($_SESSION['USERNAME'])) { ?>
 				<tr>
 					<form method="POST" action="../../actions/users/login.php">
 						<td>
@@ -29,12 +30,17 @@
 						<a href="../../pages/users/register.php"><input type="submit" value="Registrar" class="btn-princ"></input></a>
 					</td>
 				</tr>
+<?php } else { ?>
+	<tr>
+			<td>
+					<?php echo $_SESSION['USERNAME']; ?>
+			</td>
+			<td>
+					<a href="../../actions/users/logout.php"><input type="submit" value="Logout" class="btn-princ"></input></a>
+			</td>
+	</tr>
+<?php } ?>
 			</table>
-			<?php
-				if(isset($_SESSION['USERNAME'])) {
-					echo $_SESSION['USERNAME'];
-				}
-			 ?>
 
 			<div id="login_messages">
 				<?php
