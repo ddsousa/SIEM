@@ -36,9 +36,9 @@ create table stock (
 
 create table utilizador (
 	id serial primary key,
-	id_cliente integer references cliente not null,
+	id_cliente integer references cliente,
 	tipo_conta varchar not null,
-	username varchar not null,
+	username varchar not null UNIQUE,
 	password varchar
 );
 

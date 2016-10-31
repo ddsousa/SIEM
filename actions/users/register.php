@@ -16,7 +16,7 @@
    $username  = "'" . strip_tags($_POST['username']) . "'";
    $password  = strip_tags($_POST['password']);
    $name      = "'" . strip_tags($_POST['name']) . "'";
-   $address   = "'" . strip_tags($_POST['address'] . '#1:' . $_POST['postalcode1'] . '#2:' . $_POST['postalcode2']) . "'";
+   $address   = "'" . strip_tags('morada=' . urlencode($_POST['address']) . '&pc1=' . urlencode($_POST['postalcode1']) . '&pc2=' . urlencode($_POST['postalcode2'])) . "'";
    $email     = "'" . strip_tags($_POST['email']) . "'";
    $phone     = strip_tags($_POST['phone']);
 

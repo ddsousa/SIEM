@@ -51,4 +51,22 @@
 
     return pg_num_rows($result);
   }
+
+  function getClientId($username) {
+    global $conn;
+
+    $result = pg_query($conn, "SELECT id_cliente
+                               FROM utilizador
+                               WHERE username = $username");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    if(pg_num_rows($result) == 0) return -1;
+    else {
+      $id_client = pg_fetch_row($result, 0);
+      return $id_client[0];
+    }
+  }
 ?>
