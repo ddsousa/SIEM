@@ -13,6 +13,6 @@
     exit;
   }
 
-  $query = "set schema 'trabalhophp1';";
+  $query = "SET SCHEMA 'trabalhophp1';";
   pg_exec($conn, $query);
 ?>

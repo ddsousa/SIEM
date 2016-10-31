@@ -5,31 +5,68 @@
 		$active_menu = $_GET['menu'];
 	}
 	include_once("../../common/navbar.php");
+	$base_query = "SELECT id, nome, preco
+								 FROM produto";
+	$query_add = "";
 	if(!empty($_GET['type'])) {
 		$active_type = $_GET['type'];
-		$query = "SELECT id, nome, preco
-							FROM produto
-							WHERE tipo = '".$active_type."';";
-	} else {
-		$query = "SELECT id, nome, preco
-							FROM produto";
+		$query_add = " WHERE tipo = '".$active_type."'";
 	}
+
 	include_once("../../common/sub_navbar.php");
 
-	$prod_array = pg_exec($conn, $query);
 
 	if(!empty($_GET['page_nr'])) {
 		$page_nr = $_GET['page_nr'];
 	}
+
+	if(!empty($_GET['sort_by'])) {
+		$query_add = $query_add." ORDER BY ".$_GET['sort_by'];
+	}
+
+	$query = $base_query.$query_add.";";
+	echo $query.'<br>';
+	$prod_array = pg_exec($conn, $query);
 ?>
+
+<script language="javascript">
+	function sortProductsBy(sel) {
+		var str_aux = "";
+		// check if has type value
+		<?php	if(!empty($_GET['type'])) { ?>
+			var type = '<?php echo $_GET['type']; ?>';
+			str_aux += "&type="+type;
+		<?php } 
+		if(!empty($_GET['menu'])) { ?>
+			var menu = '<?php echo $_GET['menu']; ?>';
+			str_aux += "&menu="+menu;
+		<?php }
+		if(!empty($_GET['page_nr'])) { ?>
+			var page_nr = '<?php echo $_GET['page_nr']; ?>';
+			str_aux += "&page_nr="+page_nr;
+		<?php } ?>
+
+		window.location.assign("displayProdutos.php?sort_by="+sel.value+str_aux);
+	
+	}
+</script>
 
 </div>
 <div id="container">
 		<?php
-			include_once("../../common/display_mais_vendidos.php");
+			if(empty($_GET['type'])) {
+				include_once("../../common/display_mais_vendidos.php");
+				echo '<hr>';
+			}
 		?>
-		<hr>
 		<h4 class="titulo-centrado">Todos os produtos</h4>
+
+		<select class="dropbtn" onchange="sortProductsBy(this)">
+			<option disabled selected>Ordenar</option>
+		  <option value="preco asc">Preço mais baixo</option>
+		  <option value="preco desc">Preço mais alto</option>
+		  <option value="nome">Nome</option>
+		</select>
 		<table class="tab-centrada">
 				<?php
 					$n_rows = pg_num_rows($prod_array);
