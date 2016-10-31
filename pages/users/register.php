@@ -10,11 +10,11 @@
     <table>
       <tr>
         <td align="right">Nome</td>
-        <td><input type="text" name="name" value="Insira o seu nome..."></input></td>
+        <td><input type="text" name="name" placeholder="Insira o seu nome..."></input></td>
       </tr>
       <tr>
         <td align="right">Morada</td>
-        <td><input type="text" name="address" value="Insira a sua morada..."></input></td>
+        <td><input type="text" name="address" placeholder="Insira a sua morada..."></input></td>
       </tr>
       <tr>
         <td align="right">Código postal</td>
@@ -24,11 +24,11 @@
       </tr>
       <tr>
         <td align="right">Email</td>
-        <td><input type="e-mail" name="email" value="Insira o seu endereço de email..."></input></td>
+        <td><input type="e-mail" name="email" placeholder="Insira o seu endereço de email..."></input></td>
       </tr>
       <tr>
         <td align="right">Telefone</td>
-        <td><input type="text" name="phone" value="Insira a seu número de telefone..."></input></td>
+        <td><input type="text" name="phone" placeholder="Insira a seu número de telefone..."></input></td>
       </tr>
       <tr>
         <!-- -->
