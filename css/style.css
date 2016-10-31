@@ -83,6 +83,20 @@ html, body  {
 	width: 69%;
 }
 
+.dropbtn {
+  background: #777;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  height: 25px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #ccc;
+  color: black;
+}
+
 .img-produto {
 	border: 1px solid black;
 	height: 200px;
