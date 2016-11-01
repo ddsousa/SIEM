@@ -197,6 +197,48 @@ html, body  {
 	width: 20px;
 }
 
+
+.search-bar {
+	border: 1px solid red;
+	background: white;
+	height: 25px;
+	/*margin-top: 5px;
+	margin-right: 40px;*/
+	width: 200px;
+	float: left;
+}
+
+.search-box {
+	float: right;
+	display: inline-block;
+	position: relative;
+	margin-right: 8%;
+}
+#search-button {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	/*margin-top: 5px;
+	margin-right: 5%;*/
+	float: right;
+}
+#search-icon {
+	position: absolute;
+	height: 20px;
+	width: 20px;
+	/*margin-top: 5px;
+	margin-right: 5%;*/
+	float: right;
+}
+.search-button-container {
+	position: relative;
+	width: 20px;
+}
+/*
+.search-button {
+	background: url("../../media/img/icons/search_icon.png") no-repeat scroll 20px 20px;;
+}*/
+
 .tab-centrada {
 	margin: auto;
 	text-align: center;

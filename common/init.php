@@ -9,7 +9,7 @@
 
   $conn = pg_connect("host=db.fe.up.pt dbname=siem1636 user=siem1636 password=siempr16");
   if (!$conn) {
-    echo "An error occured.\n";
+    echo "ERROR - Cannot connect to the database.\n";
     exit;
   }
 

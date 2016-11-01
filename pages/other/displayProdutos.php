@@ -26,7 +26,6 @@
 	}
 
 	if(!empty($_POST['lower_lim']) && !empty($_POST['upper_lim'])) {
-		echo "aqui filipe";
 		$query_add = $query_add." WHERE preco>=".$_POST['lower_lim'].' AND preco<='.$_POST['upper_lim'];
 	}
 
