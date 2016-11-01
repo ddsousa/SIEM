@@ -22,7 +22,6 @@
 
 	if(!empty($_GET['sort_by'])) {
 		$query_add = $query_add." ORDER BY ".$_GET['sort_by'];
-		$selected = $_GET['sort_by'];
 	}
 
 	if(!empty($_POST['lower_lim']) && !empty($_POST['upper_lim'])) {
@@ -68,19 +67,9 @@
 		<div style="margin-left: 5%;">
 			<select class="dropbtn" onchange="sortProductsBy(this)">
 				<option disabled selected>Ordenar</option>
-				<?php if($selected == "preco asc") { ?>
-			  <option value="preco asc" selected>Preço mais baixo</option>
-			  <?php } else { ?>
 			  <option value="preco asc">Preço mais baixo</option>
-			  <?php } if($selected == "preco desc") { ?>
-			  <option value="preco desc" selected>Preço mais alto</option>
-			  <?php } else { ?>
 			  <option value="preco desc">Preço mais alto</option>
-			  <?php } if($selected == "nome") { ?> 
-			  <option value="nome" selected>Nome</option>
-			  <?php } else { ?>
 			  <option value="nome">Nome</option>
-			  <?php } ?>
 			</select>
 		</div>
 
