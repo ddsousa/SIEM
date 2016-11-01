@@ -1,4 +1,4 @@
-<div class="navbar menu">
+<div class="navbar sub-navbar menu">
 	<ul>
 		<?php
 			$nav_query = "SELECT DISTINCT tipo

@@ -29,8 +29,12 @@
 		$query_add = $query_add." WHERE preco>=".$_POST['lower_lim'].' AND preco<='.$_POST['upper_lim'];
 	}
 
+	if(!empty($_POST['search'])) {
+		$query_add = " WHERE nome LIKE '%".$_POST['search']."%'"; // ignora restricoes anteriores
+	}
+
 	$query = $base_query.$query_add.";";
-	echo $query.'<br>';
+	echo $query."<br>"; // TODO - apagar
 	$prod_array = pg_exec($conn, $query);
 ?>
 
