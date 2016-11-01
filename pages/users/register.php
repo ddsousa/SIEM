@@ -18,17 +18,17 @@
       </tr>
       <tr>
         <td align="right">Código postal</td>
-        <td><input type="text" name="postalcode1"></input></td>
+        <td><input type="text" name="postalcode1" maxlength="4"></input></td>
         <td>-</td>
-        <td><input type="text" name="postalcode2"></input></td>
+        <td><input type="text" name="postalcode2" maxlength="3"></input></td>
       </tr>
       <tr>
         <td align="right">Email</td>
-        <td><input type="e-mail" name="email" placeholder="Insira o seu endereço de email..."></input></td>
+        <td><input type="email" name="email" placeholder="Insira o seu endereço de email..."></input></td>
       </tr>
       <tr>
         <td align="right">Telefone</td>
-        <td><input type="text" name="phone" placeholder="Insira a seu número de telefone..."></input></td>
+        <td><input type="text" name="phone" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
       </tr>
       <tr>
         <!-- -->
