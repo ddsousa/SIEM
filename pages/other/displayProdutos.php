@@ -35,7 +35,7 @@
 	}
 
 	if(!empty($_POST['search'])) {
-		$prod_array = searchProductByName($_POST['search']); // ignora restricoes anteriores
+		$prod_array = searchProductByName($_POST['search']); // ignores previous restrictions
 	} else {
 		$prod_array = searchProduct($type, $sort_by, $lower_lim, $upper_lim);
 	}
@@ -124,7 +124,7 @@
 
 		<table class="tab-centrada">
 				<?php
-					$n_rows = pg_num_rows($prod_array);
+					$n_rows = sizeof($prod_array);
 					if(!empty($page_nr)) {
 						for($j=0; $j<$n_rows; $j+=4) {
 							if($j<$page_nr*8 && $j>=($page_nr-1)*8 || $page_nr==-1) {
@@ -132,8 +132,8 @@
 								for($i=0; $i<4; $i++) {	// imagens produtos
 									echo '<td>';
 									if(($i+$j)<$n_rows) {
-										$prod = pg_fetch_row($prod_array, $i+$j);
-										echo 	'<img class="img-produto" src="../../media/img/products/'.$prod[0].'.jpg" alt="fotografia de '.$prod[1].'">';
+										$prod = $prod_array[$i+$j];
+										echo 	'<img class="img-produto" src="../../media/img/products/'.$prod['id'].'.jpg" alt="fotografia de '.$prod['nome'].'">';
 									}
 									echo '</td>';
 								}
@@ -142,10 +142,10 @@
 								for($i=0; $i<4; $i++) { // nome e preco
 								echo '<td>';
 								if(($i+$j)<$n_rows) {
-									$prod = pg_fetch_row($prod_array, $i+$j);
+									$prod = $prod_array[$i+$j];
 									echo 	'<table class="tab-centrada texto-produtos">';
-									echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod[0].'">'.$prod[1].'</a></td>';
-									echo 		'<td style="text-align: right;">'.$prod[2].'€</td>';
+									echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+									echo 		'<td style="text-align: right;">'.$prod['preco'].'€/'.$prod['preco_por'].'</td>';
 									echo 	'</table>';
 								}
 								echo '</td>';
