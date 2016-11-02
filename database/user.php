@@ -69,4 +69,22 @@
       return $id_client[0];
     }
   }
+
+  function updatePassword($username, $password) {
+    global $conn;
+
+    $username = "'" . $username . "'";
+    $password = "'" . sha1($password) . "'";
+
+    $result = pg_query($conn, "UPDATE utilizador
+                               SET    password=$password
+                               WHERE  username=$username");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    if(pg_num_rows($result) == 0) return -1;
+    else return 0;
+  }
 ?>

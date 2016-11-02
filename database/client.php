@@ -46,4 +46,22 @@
       return $client_data;
     }
   }
+
+  function updateClient($id, $name, $address, $phone, $email) {
+    global $conn;
+
+    $name = "'" . $name . "'";
+    $email = "'" . $email . "'";
+
+    $result = pg_query($conn, "UPDATE cliente
+                               SET    nome=$name, morada=$address, telefone=$phone, email=$email
+                               WHERE  id=$id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    if(pg_num_rows($result) == 0) return -1;
+    else return 0;
+  }
 ?>
