@@ -1,18 +1,12 @@
 <?php
 	include_once("../../common/init.php");
 	include_once("../../common/header.php");
+	include_once($BASE_DIR."/database/product.php");
+
 	if(!empty($_GET['menu'])) {
 		$active_menu = $_GET['menu'];
 	}
 	include_once("../../common/navbar.php");
-	$base_query = "SELECT id, nome, preco
-								 FROM produto";
-	$query_add = "";
-	if(!empty($_GET['type'])) {
-		$active_type = $_GET['type'];
-		$query_add = " WHERE tipo = '".$active_type."'";
-	}
-
 	include_once("../../common/sub_navbar.php");
 
 
@@ -21,22 +15,32 @@
 	}
 
 	if(!empty($_GET['sort_by'])) {
-		$query_add = $query_add." ORDER BY ".$_GET['sort_by'];
-		$selected = $_GET['sort_by'];
+		$sort_by = $_GET['sort_by'];
+	} else {
+		$sort_by = null;
 	}
 
 	if(!empty($_POST['lower_lim']) && !empty($_POST['upper_lim'])) {
-		$query_add = $query_add." WHERE preco>=".$_POST['lower_lim'].' AND preco<='.$_POST['upper_lim'];
+		$lower_lim = $_POST['lower_lim'];
+		$upper_lim = $_POST['upper_lim'];
+	} else {
+		$lower_lim = null;
+		$upper_lim = null;
+	}
+
+	if(!empty($_GET['type'])) {
+		$type = $_GET['type'];
+	} else {
+		$type = null;
 	}
 
 	if(!empty($_POST['search'])) {
-		$query_add = " WHERE nome LIKE '%".$_POST['search']."%'"; // ignora restricoes anteriores
+		$prod_array = searchProductByName($_POST['search']); // ignora restricoes anteriores
+	} else {
+		$prod_array = searchProduct($type, $sort_by, $lower_lim, $upper_lim);
 	}
 
-	$query = $base_query.$query_add.";";
-	echo $query."<br>"; // TODO - apagar
-	$prod_array = pg_exec($conn, $query);
-?>
+?> 
 
 <script language="javascript">
 	function sortProductsBy(sel) {

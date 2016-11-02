@@ -18,7 +18,9 @@ html, body  {
 
 #container {
 	padding-bottom: 30px;
+	margin: auto;
 	margin-top: 10px;
+	width: 90%;
 }
 
 #header {
