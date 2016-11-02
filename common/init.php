@@ -7,13 +7,18 @@
 
   $BASE_DIR = dirname(__DIR__);
 
-  //$conn = pg_connect("host=db.fe.up.pt dbname=siem1636 user=siem1636 password=siempr16");
-  $conn = pg_connect("host=db.fe.up.pt dbname=siem1636 user=siem1636 password=siempr16");
-  if (!$conn) {
-    echo "ERROR - Cannot connect to the database.\n";
+  include_once($BASE_DIR."/database/connect.php");
+
+  // database connection
+  $host     = "db.fe.up.pt";
+  $dbname   = "siem1636";
+  $user     = "siem1636";
+  $password = "siempr16";
+
+  $conn = connect($host, $dbname, $user, $password);
+  if(!$conn) {
     exit;
   }
 
-  $query = "SET SCHEMA 'trabalhophp1';";
-  pg_exec($conn, $query);
+  setSchema("trabalhophp1");
 ?>
