@@ -99,6 +99,12 @@ html, body  {
   color: black;
 }
 
+.edit-icon-big {
+	height: 30px;
+	margin: 5px;
+	width: 30px;
+}
+
 .img-produto {
 	border: 1px solid black;
 	height: 200px;
@@ -242,13 +248,28 @@ html, body  {
 	width: 100%;
 }
 
+.tab-blue {
+	border: 1px solid red;
+	width: 100%;
+}
+
+.tab-blue td {
+	background: #9BD2FA;
+	color: black;
+	padding: 4px;
+}
+
+.tab-blue tr {
+	line-height: 30px;
+}
+
 .tab-centrada {
 	margin: auto;
 	text-align: center;
 	width: 100%;
 }
 
-.tab-centrada a {
+.tab-centrada a, .tab-blue a {
 	color: black;
 	text-decoration: none;
 }
@@ -265,6 +286,12 @@ html, body  {
 
 .tab-centrada-peq td {
 	padding: 0 10px;
+}
+
+.tab-first-row td {
+	background: #323F4F;
+	color: white;
+	font-weight: bold;
 }
 
 .tab-login {

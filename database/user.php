@@ -87,4 +87,27 @@
     if(pg_num_rows($result) == 0) return -1;
     else return 0;
   }
+
+  function getClientById($id) {
+    global $conn;
+
+    if(!$id || !$conn) {
+      echo "An Error occured";
+      exit;
+    }
+
+    $result = pg_query($conn, "SELECT *
+                               FROM cliente
+                               WHERE id=$id;");
+    if(!$result) {
+      echo "An error occured";
+      exit;
+    }
+
+    if(pg_num_rows($result)==0) { // id does not exist on DB
+      return null;
+    } else {
+      return pg_fetch_array($result); // array
+    }
+  }
 ?>

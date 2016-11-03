@@ -4,6 +4,7 @@
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
 ?>
+</div>
 <div id="container">
   <form method="POST" action="../../actions/users/register.php">
 

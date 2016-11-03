@@ -2,6 +2,7 @@
 	include_once("../../common/init.php");
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/database/client.php");
+	include_once($BASE_DIR."/common/navbar.php");
 ?>
 </div>
 
@@ -10,8 +11,8 @@
 	$clients_array = getClients();
 ?>
 <div id="container">
-	<table>
-		<tr>
+	<table class="tab-blue">
+		<tr class="tab-first-row">
 			<td>Nome</td>
 			<td>Morada</td>
 			<td>Código Postal</td>
@@ -22,10 +23,10 @@
 			for($i=0; $i<sizeof($clients_array); $i++) { 
 						$client = $clients_array[$i]; ?>
 				<tr>
-					<td><?php echo $client['nome']; ?></td>
+				<td><a href="displayClientDetails.php?menu=Clientes&id=<?php echo $client['id']?>"><?php echo $client['nome']?></a></td>
 					<td><?php echo $client['morada']; ?></td>
 					<td>TODO-zip-code</td>
-					<td><?php echo $client['email']; ?></td>
+					<td><a href="mailto:<?php echo $client['email']?>"><?php echo $client['email']; ?></a></td>
 					<td><?php echo $client['telefone'] ?></td>
 				</tr>
 		<?php } ?>
