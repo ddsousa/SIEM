@@ -69,13 +69,18 @@
   function getClients() {
     global $conn;
 
-    $result = pg_exec($conn, "SELECT *
+    $result = pg_exec($conn, "SELECT id
                               FROM cliente;");
     if(!$result) {
       echo "An error occured.\n";
       exit;
     }
 
-    return pg_fetch_all($result);
+    $ids_array = pg_fetch_all($result);
+    foreach($ids_array as $id) {
+      $clients_array[] = getClientData($id['id']);
+    }
+
+    return $clients_array;
   }
 ?>
