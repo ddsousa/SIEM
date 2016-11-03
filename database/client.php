@@ -64,4 +64,17 @@
     if(pg_num_rows($result) == 0) return -1;
     else return 0;
   }
+
+  function getClients() {
+    global $conn;
+
+    $result = pg_exec($conn, "SELECT *
+                              FROM cliente;");
+    if(!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    return pg_fetch_all($result);
+  }
 ?>

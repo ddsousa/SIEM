@@ -1,3 +1,7 @@
+<?php
+	include_once($BASE_DIR . "/database/product.php");
+?>
+
 <h4 class="titulo-centrado">Produtos mais vendidos</h4>
 <div>
 	<table class="tab-centrada">

@@ -1,10 +1,15 @@
 <?php
 	include_once("../../common/init.php");
-	include_once("../../common/header.php");
+	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/database/product.php");
 
 	if(!empty($_GET['menu'])) {
 		$active_menu = $_GET['menu'];
+	}
+	if(!empty($_GET['type'])) {
+		$type = $_GET['type'];
+	} else {
+		$type = null;
 	}
 	include_once("../../common/navbar.php");
 	include_once("../../common/sub_navbar.php");
@@ -26,12 +31,6 @@
 	} else {
 		$lower_lim = null;
 		$upper_lim = null;
-	}
-
-	if(!empty($_GET['type'])) {
-		$type = $_GET['type'];
-	} else {
-		$type = null;
 	}
 
 	if(!empty($_POST['search'])) {
@@ -179,5 +178,5 @@
 </div>
 
 <?php
-	include_once("../../common/footer.php");
+	include_once($BASE_DIR."/common/footer.php");
 ?>

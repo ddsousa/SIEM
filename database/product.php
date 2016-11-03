@@ -25,7 +25,7 @@
 		$add_query = "";
 
 		if($type!=null) {
-			$add_query = "$add_query WHERE tipo=$type";
+			$add_query = "$add_query WHERE tipo='$type'";
 		}
 		if($sort_by!=null) {
 			$add_query = "$add_query ORDER BY $sort_by";
@@ -49,6 +49,19 @@
 		$result = pg_exec($conn, "SELECT id, nome, preco, preco_por
 															FROM produto
 															ORDER BY n_vendas DESC, nome;");
+		if(!$result) {
+			echo "An error occured.\n";
+      exit;
+		}
+
+		return pg_fetch_all($result); // array
+	}
+
+	function searchPrductsTypes() {
+		global $conn;
+
+		$result = pg_exec($conn, "SELECT DISTINCT tipo
+															FROM produto;");
 		if(!$result) {
 			echo "An error occured.\n";
       exit;
