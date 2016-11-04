@@ -55,6 +55,8 @@
   function getClientId($username) {
     global $conn;
 
+    $username = "'" . $username . "'";
+
     $result = pg_query($conn, "SELECT id_cliente
                                FROM utilizador
                                WHERE username = $username");

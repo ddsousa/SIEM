@@ -8,6 +8,9 @@
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
+  include_once ($BASE_DIR . "/database/client.php");
+  include_once ($BASE_DIR . "/database/user.php");
+  include_once ($BASE_DIR . "/database/order.php");
 ?>
 
 <div id="container">
@@ -17,18 +20,30 @@
 
     <!-- Impressao dos headers da tabela  -->
     <tr>
-      <td>Estado</td><td>Nr Encomenda</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td>
+      <td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td>
     </tr>
 
     <!-- Impressao da  linha contendo o resultado da consulta -->
-    <tr>
-      <td>
-        <?php echo $cidade;?>
-      </td>
-      <td>
-        <?php echo $temperatura;?>
-      </td>
-    </tr>
+
+        <?php
+
+        		$result = getOrders(getClientId($_SESSION['USERNAME']));
+
+            $row = pg_fetch_assoc($result);
+            if(!isset($row["numero"])) {
+              echo "Não efectou encomendas.";
+            } else {
+          		while (isset($row["numero"])) {
+          			echo "<tr><td>" . $row["numero"] . "</td>" .
+                     "<td>-</td>" .
+                     "<td>" . $row["data"] . "</td>" .
+                     "<td>" . $row["artigos"] . "</td>" .
+                     "<td>" . $row["total"] . "</td> </tr>";
+          			$row = pg_fetch_assoc($result);
+          		}
+            }
+            
+        ?>
   </table>
 </div>
 

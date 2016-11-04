@@ -3,21 +3,17 @@
   function getOrders($id_client) {
     global $conn;
 
-    $id_client = '"' . $id_clientn. '"';
-
-    $result = pg_query($conn, "SELECT numero, data_efetuada, COUNT(encomenda.numero), SUM(produto.preco)
+    $result = pg_query($conn, "SELECT numero, MIN(data_efetuada) AS data, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
                                FROM encomenda
-                               JOIN cliente ON encomenda.id_cliente = cliente.id
+                               JOIN cliente ON encomenda.id_cliente = cliente.id AND id_cliente = $id_client
                                JOIN produto ON encomenda.id_produto = produto.id
-                               WHERE id_cliente = $id_client");
+                               GROUP BY encomenda.numero");
     if (!$result) {
       echo "An error occured.\n";
       exit;
     }
 
-    $id = pg_fetch_row($result, 0);
-    $id = $id[0];
-    return $id;
+    return $result;
   }
 
  ?>
