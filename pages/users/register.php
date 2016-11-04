@@ -7,10 +7,10 @@
 
 <script language="javascript">
   function validateForm(user_type) {
-    var flagSubmitOk = true
-    var form = document.register_form
-    var username = form.username.value
-    var password = form.password.value
+    var flagSubmitOk  = true
+    var form          = document.register_form
+    var username      = form.username.value
+    var password      = form.password.value
 
     // validate username
     if(username.length<4 || username.length>10) {
@@ -25,14 +25,14 @@
     }
 
     if(user_type=="cliente") {
-      var email_pos_at = form.email.value.indexOf("@")
-      var email_pos_dot = form.email.value.indexOf(".")
-      var codigo_postal1 = form.postalcode1.value
-      var codigo_postal2 = form.postalcode2.value
-      var address = form.address.value
-      var name = form.name.value
-      var name_pos_space = form.name.value.indexOf(" ")
-      var phone_number = form.phone_number.value
+      var email_pos_at      = form.email.value.indexOf("@")
+      var email_pos_dot     = form.email.value.indexOf(".")
+      var codigo_postal1    = form.postalcode1.value
+      var codigo_postal2    = form.postalcode2.value
+      var address           = form.address.value
+      var name              = form.name.value
+      var name_pos_space    = form.name.value.indexOf(" ")
+      var phone_number      = form.phone_number.value
       
       // validate name
       if(name.length<10) {
@@ -65,14 +65,14 @@
       var codigo_postal = codigo_postal1+"-"+codigo_postal2
 
       // validate phone_number
-      if(phone_number.toString().length<9) {
+      if(phone_number.length<9 || !is_numeric(phone_number)) {
         alert("O número de telefone deve conter exatamente 9 dígitos")
         flagSubmitOk = false
       }
     }
 
-    if(flagSubmitOk) {
-      window.location.assign("../../actions/register.php?user_type"+user_type)
+    if(!flagSubmitOk) {
+      return false
     }
 
   }
@@ -80,8 +80,8 @@
 
 </div>
 <div id="container">
-  <form method="POST" name="register_form" action="../../actions/users/register.php"> 
-
+  <!--<form method="POST" name="register_form" action="../../actions/users/register.php"> --> 
+    <form method="POST" name="register_form" onsubmit="validateForm(<?php $user_type ?>)" action="../../actions/users/register.php">
     <table>
 <?php if(!empty($_GET['user_type'])) {
         switch($_GET['user_type']) {
@@ -110,7 +110,7 @@
             </tr>
             <tr>
               <td align="right">Telefone</td>
-              <td><input type="number" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
+              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
             </tr>
     <?php break; 
         }

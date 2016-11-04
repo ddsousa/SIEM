@@ -16,17 +16,26 @@
   				<li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&page_nr=1">Produtos</a></li>
   			<?php }
 
+        // admin tabs
         if(isset($_SESSION['PERMISSIONS'])) {
           if($_SESSION['PERMISSIONS'] == 1) {
             if($active_menu == 'Clientes') { ?>
-              <!-- admin tabs -->
               <li class="nav-active"><a href="../../pages/users/displayClients.php?menu=Clientes">Clientes</a></li>
-            <?php } else { ?>
+      <?php } else { ?>
               <li class="nav-inactive"><a href="../../pages/users/displayClients.php?menu=Clientes">Clientes</a></li>
-            <?php } 
+      <?php } 
           }
+          if($active_menu == 'Stocks') { ?>
+            <li class="nav-active"><a href="../../pages/other/displayStocks.php?menu=Stocks">Stocks</a></li>
+    <?php } else { ?>
+            <li class="nav-inactive"><a href="../../pages/other/displayStocks.php?menu=Stocks">Stocks</a></li>
+    <?php } 
+          if($active_menu == 'Encomendas') { ?>
+            <li class="nav-active"><a href="../../pages/other/displayEncomendas.php?menu=Encomendas">Encomendas</a></li>
+    <?php } else { ?>
+            <li class="nav-inactive"><a href="../../pages/other/displayEncomendas.php?menu=Encomendas">Encomendas</a></li>
+    <?php } 
         }
-
   		} else { ?>
   			<li class="nav-active"><a href="../../pages/common/home.php?menu=Inicio">Início</a></li>
         <li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&page_nr=1">Produtos</a></li>
