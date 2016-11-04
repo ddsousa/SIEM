@@ -2,6 +2,18 @@
 	function createUser(sel) {
 		window.location.assign("../../pages/users/register.php?user_type="+sel.value);
 	}
+
+	function addCategory() {
+		 if(document.getElementById("product_category").value == "adicionar") {
+			 //document.getElementById("new_category").style.visibility = "visible";
+			 $("#new_category").show(1000);
+		 } else {
+			 //document.getElementById("new_category").style.visibility = "hidden";
+			 $("#new_category").hide(1000);
+		 }
+	}
+
+
 </script>
 
 <html>
@@ -10,6 +22,7 @@
 	<title>Oceano Hipermercado</title>
 	<!--<link rel="icon" href="media/img/logos/icon.png"> -->
 	<?php echo '<link rel="icon" href="'.'../../media/img/logos/icon.png">'?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
@@ -49,7 +62,7 @@
 		</tr>
 	<?php } ?>
 				</table>
-			
+
 	<?php if(isset($_SESSION['PERMISSIONS'])) {
 					if($_SESSION['PERMISSIONS']==1) { // admin ?>
 						<!-- create-user dropdown -->

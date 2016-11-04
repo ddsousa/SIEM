@@ -30,7 +30,7 @@
 		$prod_array = searchProduct($type, $sort_by, $lower_lim, $upper_lim);
 	}
 
-?> 
+?>
 
 <script language="javascript">
 	function sortProductsBy(sel) {
@@ -39,7 +39,7 @@
 		<?php	if(!empty($_GET['type'])) { ?>
 			var type = '<?php echo $_GET['type']; ?>';
 			str_aux += "&type="+type;
-		<?php } 
+		<?php }
 		if(!empty($_GET['menu'])) { ?>
 			var menu = '<?php echo $_GET['menu']; ?>';
 			str_aux += "&menu="+menu;
@@ -50,12 +50,15 @@
 		<?php } ?>
 
 		window.location.assign("displayProdutos.php?sort_by="+sel.value+str_aux);
-	
+
 	}
 </script>
 
 <div id="container">
 		<?php
+			if($_SESSION['PERMISSIONS'] == 1) {
+				echo '<a href="../../pages/other/addProduct.php"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
+			}
 			if(empty($_GET['type'])) {
 				include_once("../../common/display_mais_vendidos.php");
 				echo '<hr>';
@@ -73,7 +76,7 @@
 			  <option value="preco desc" selected>Preço mais alto</option>
 			  <?php } else { ?>
 			  <option value="preco desc">Preço mais alto</option>
-			  <?php } if($selected == "nome") { ?> 
+			  <?php } if($selected == "nome") { ?>
 			  <option value="nome" selected>Nome</option>
 			  <?php } else { ?>
 			  <option value="nome">Nome</option>
@@ -144,7 +147,7 @@
 						}
 					}
 				?>
-				</div>	
+				</div>
 	</table>
 	<div style="border: 1px solid red;">
 	<ul>
