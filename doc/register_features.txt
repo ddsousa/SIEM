@@ -1,0 +1,9 @@
+funcionalidades de verificação do formulário de registo:
+--------------------------------------------------------
+	* confirma se email introduzido contém caracter @ e . (a seguir ao @)
+	* confirma se codigo postal entre 1000 e 9980 e a partir daqui calcula automaticamente a cidade
+	* confirmar se a morada contém o número da porta
+	* Nome tem de contem mais que 10 caracteres e ter um espaco (primeiro e ultimo)
+	* Numero de telefone deve conter 9 digitos
+	* username deve conter entre 4 a 10 caracteres
+	* password deve conter no minimo 5 a 24 caracteres

@@ -5,9 +5,82 @@
   include_once ($BASE_DIR . "/common/messages.php");
 ?>
 
+<script language="javascript">
+  function validateForm(user_type) {
+    var flagSubmitOk = true
+    var form = document.register_form
+    var username = form.username.value
+    var password = form.password.value
+
+    // validate username
+    if(username.length<4 || username.length>10) {
+      alert("O username deverá conter no mínimo 4 caracteres e no máximo 10 caracteres")
+      flagSubmitOk = false
+    }
+
+    // validate password
+    if(password.length<5 || password.length>24) {
+      alert("A password deverá conter no mínimo 5 caracteres e no máximo 24 caracteres.")
+      flagSubmitOk = false
+    }
+
+    if(user_type=="cliente") {
+      var email_pos_at = form.email.value.indexOf("@")
+      var email_pos_dot = form.email.value.indexOf(".")
+      var codigo_postal1 = form.postalcode1.value
+      var codigo_postal2 = form.postalcode2.value
+      var address = form.address.value
+      var name = form.name.value
+      var name_pos_space = form.name.value.indexOf(" ")
+      var phone_number = form.phone_number.value
+      
+      // validate name
+      if(name.length<10) {
+        alert("O campo de nome deve conter no mínimo 10 caracteres")
+        flagSubmitOk = false
+      }
+      else if(name_pos_space==-1) {
+        alert("Por favor introduza o primeiro e o último nome")
+        flagSubmitOk = false
+      }
+
+      // validate email address
+      if(email_pos_at==-1 || email_pos_dot<email_pos_at) {
+        alert("O Endereço de email não é válido porque não contém o caracter @ e conter o . a seguir ao @")
+        flagSubmitOk = false
+      }
+
+      // validate address
+      if(isNaN(parseFloat(address))) {
+        alert("A morada também deve conter o número da porta")
+        flagSubmitOk = false
+      }
+
+      // validate zip code
+      if(codigo_postal1<1000 || codigo_postal1>9980) {
+        alert("Código postal incorreto. Deve ser válido e estar entre o intervalo 1000-9980")
+        flagSubmitOk = false
+      }
+      // TODO - obtain city from zip code
+      var codigo_postal = codigo_postal1+"-"+codigo_postal2
+
+      // validate phone_number
+      if(phone_number.toString().length<9) {
+        alert("O número de telefone deve conter exatamente 9 dígitos")
+        flagSubmitOk = false
+      }
+    }
+
+    if(flagSubmitOk) {
+      window.location.assign("../../actions/register.php?user_type"+user_type)
+    }
+
+  }
+</script>
+
 </div>
 <div id="container">
-  <form method="POST" action="../../actions/users/register.php"> 
+  <form method="POST" name="register_form" action="../../actions/users/register.php"> 
 
     <table>
 <?php if(!empty($_GET['user_type'])) {
@@ -37,7 +110,7 @@
             </tr>
             <tr>
               <td align="right">Telefone</td>
-              <td><input type="text" name="phone" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
+              <td><input type="number" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
             </tr>
     <?php break; 
         }
