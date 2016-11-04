@@ -6,7 +6,7 @@
 		global $conn;
 
 		$result = pg_exec($conn, "SELECT id, nome, preco, preco_por
-								 	 						FROM produto 
+								 	 						FROM produto
 															WHERE nome LIKE '%$name%';");
 
 		if(!$result){
@@ -68,5 +68,49 @@
 		}
 
 		return pg_fetch_all($result); // array
+	}
+
+	function getCategories() {
+		global $conn;
+
+    $result = pg_query($conn, "SELECT DISTINCT tipo
+															 FROM produto;");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    return $result;
+	}
+
+	function addProduct($codigo, $nome, $tipo, $descricao, $preco) {
+		global $conn;
+
+
+		$nome = "'" . $nome . "'";
+		$tipo = "'" . $tipo . "'";
+
+		$query = "INSERT INTO produto
+                               VALUES ( default,
+                                      	$codigo,
+                                      	$nome,
+                                      	$tipo,
+                                      	$descricao,
+																				$preco,
+																				NULL,
+																				0 )
+                               RETURNING id;";
+
+															 	echo $query;
+
+    $result = pg_query($conn, $query);
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    $id = pg_fetch_row($result, 0);
+    $id = $id[0];
+    return $id;
 	}
 ?>
