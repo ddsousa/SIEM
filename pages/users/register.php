@@ -33,6 +33,7 @@
       </tr>
       <tr>
         <!-- -->
+        <hr>
       </tr>
       <tr>
         <td align="right">Username</td>

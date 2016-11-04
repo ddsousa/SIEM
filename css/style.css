@@ -94,8 +94,24 @@ html, body  {
   height: 25px;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #ccc;
+.dropbtn:hover, .dropbtn-blue:focus {
+  background: #ccc;
+  color: black;
+}
+
+.dropbtn-blue {
+  background: #4991C8;
+  border: none;
+  color: white;
+  cursor: pointer;
+  clear: right;
+  font-size: 16px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.dropbtn-blue:hover, .dropbtn-blue:focus {
+  background: #4991C8;
   color: black;
 }
 
@@ -249,7 +265,7 @@ html, body  {
 }
 
 .tab-blue {
-	border: 1px solid red;
+	border: 1px s red;
 	width: 100%;
 }
 
@@ -266,7 +282,7 @@ html, body  {
 .tab-centrada {
 	margin: auto;
 	text-align: center;
-	width: 100%;
+	width: 101%;
 }
 
 .tab-centrada a, .tab-blue a {
@@ -299,6 +315,10 @@ html, body  {
 	margin-top: 10px;
 	margin-right: 10px;
 	width: auto;
+}
+
+.tab-login td {
+	padding-bottom: 5px;
 }
 
 .text-input-small {

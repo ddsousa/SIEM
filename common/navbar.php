@@ -19,6 +19,7 @@
         if(isset($_SESSION['PERMISSIONS'])) {
           if($_SESSION['PERMISSIONS'] == 1) {
             if($active_menu == 'Clientes') { ?>
+              <!-- admin tabs -->
               <li class="nav-active"><a href="../../pages/users/displayClients.php?menu=Clientes">Clientes</a></li>
             <?php } else { ?>
               <li class="nav-inactive"><a href="../../pages/users/displayClients.php?menu=Clientes">Clientes</a></li>
