@@ -1,6 +1,6 @@
 <script language="javascript">
 	function createUser(sel) {
-		window.location.assign("../../pages/users/register.php?user_type="+sel);
+		window.location.assign("../../pages/users/register.php?user_type="+sel.value);
 	}
 </script>
 
@@ -52,7 +52,7 @@
 			
 	<?php if(isset($_SESSION['PERMISSIONS'])) {
 					if($_SESSION['PERMISSIONS']==1) { // admin ?>
-						<!-- create user dropdown -->
+						<!-- create-user dropdown -->
 		        <select class="dropbtn-blue" style="float:right;" onchange="createUser(this)">
 		          <option disabled selected>Adicionar Utilizador</option>
 		          <option value="cliente">Cliente</option>
