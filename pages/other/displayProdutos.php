@@ -54,7 +54,6 @@
 	}
 </script>
 
-</div>
 <div id="container">
 		<?php
 			if(empty($_GET['type'])) {

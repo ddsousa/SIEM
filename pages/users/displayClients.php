@@ -4,7 +4,6 @@
 	include_once($BASE_DIR."/database/client.php");
 	include_once($BASE_DIR."/common/navbar.php");
 ?>
-</div>
 
 <?php 
 	// get clients from database

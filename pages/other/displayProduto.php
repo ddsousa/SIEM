@@ -44,7 +44,6 @@
 	$result = pg_exec($conn, $query);
 	$product = pg_fetch_row($result, 0);
 ?>
-	</div>
 	<div id="container">
 		<div class="display-prod">
 			<div class="display-prod-left">

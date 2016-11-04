@@ -34,7 +34,7 @@
 							</td>
 						</form>
 						<td>
-							<a href="../../pages/users/register.php"><input type="button" value="Registrar" class="btn-princ"></input></a>
+							<a href="../../pages/users/register.php?user_type=cliente"><input type="button" value="Registrar" class="btn-princ"></input></a>
 						</td>
 					</tr>
 
@@ -84,4 +84,5 @@
 			    }
 			  ?>
 			</div>
-			</div>
+		</div>
+	</div>
