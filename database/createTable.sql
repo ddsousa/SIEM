@@ -20,11 +20,17 @@ create table cliente (
 
 create table encomenda (
 	id serial primary key,
+	estado boolean DEFAULT 'FALSE',
 	numero integer not null,
-	id_produto integer references produto not null,
 	id_cliente integer references cliente not null,
-	quantidade integer not null,
 	data_efetuada timestamp
+);
+
+create table detalhesencomenda (
+	id serial primary key,
+	id_encomeda integer references encomenda not null,
+	id_produto integer references produto not null,
+	quantidade integer not null
 );
 
 create table stock (

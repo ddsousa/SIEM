@@ -1,9 +1,4 @@
 <?php
-/*
-  User em questão indicado por GET?
-  Só o próprio user logado e admins é que podem ver o detalhes do User
-  Tem de ser redireccionado
-*/
   include_once('../../common/init.php');
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
@@ -14,14 +9,9 @@
 ?>
 
 <div id="container">
-  <H3>Resultado da consulta</H3>
+  <H3>Encomendas</H3>
 
   <table border="1">
-
-    <!-- Impressao dos headers da tabela  -->
-    <tr>
-      <td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td>
-    </tr>
 
     <!-- Impressao da  linha contendo o resultado da consulta -->
 
@@ -33,16 +23,20 @@
             if(!isset($row["numero"])) {
               echo "Não efectou encomendas.";
             } else {
+              echo "<tr><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>\n";
+
           		while (isset($row["numero"])) {
+                $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";
+
           			echo "<tr><td>" . $row["numero"] . "</td>" .
-                     "<td>-</td>" .
-                     "<td>" . $row["data"] . "</td>" .
+                     "<td>" . $estado . "</td>" .
+                     "<td>" . $row["data_efetuada"] . "</td>" .
                      "<td>" . $row["artigos"] . "</td>" .
                      "<td>" . $row["total"] . "</td> </tr>";
           			$row = pg_fetch_assoc($result);
           		}
             }
-            
+
         ?>
   </table>
 </div>

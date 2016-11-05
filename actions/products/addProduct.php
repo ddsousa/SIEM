@@ -11,34 +11,41 @@
     exit;
   }
 
-  // Verify that the image is valid
-  $target_dir = "../../media/img/products/";
-  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-  $uploadOk = 1;
-  echo "<br><br>Target file:" . $target_file . ".<br>";
-  $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-  // Check if image file is a actual image or fake image
-  if(isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-      if($check == false) {
-          $_SESSION['ERROR_MESSAGES'][] = "O ficheiro não é uma imagem.";
-          header("Location: ../../pages/other/addProduct.php");
-          exit;
-      }
-  }
+  // Verify if the user uploaded a file
+  if(file_exists($_FILES['fileToUpload']['tmp_name']) && is_uploaded_file($_FILES['fileToUpload']['tmp_name'])) {
+    // Verify that the image is valid
+    $target_dir = "../../media/img/products/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    echo "<br><br>Target file:" . $target_file . ".<br>";
+    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+    // Check if image file is a actual image or fake image
+    if(isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if($check == false) {
+            $_SESSION['ERROR_MESSAGES'][] = "O ficheiro não é uma imagem.";
+            header("Location: ../../pages/other/addProduct.php");
+            exit;
+        }
+    }
 
-  // Check file size
-  if ($_FILES["fileToUpload"]["size"] > 500000) {
-    $_SESSION['ERROR_MESSAGES'][] = "O tamanho da imagem é demasido grande. Por favor seleccione uma imagem com menos de 500KB...";
-    header("Location: ../../pages/other/addProduct.php");
-    exit;
-  }
+    // Check file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+      $_SESSION['ERROR_MESSAGES'][] = "O tamanho da imagem é demasido grande. Por favor seleccione uma imagem com menos de 500KB...";
+      header("Location: ../../pages/other/addProduct.php");
+      exit;
+    }
 
-  // Allow certain file formats
-  if($imageFileType != "jpg") {
-    $_SESSION['ERROR_MESSAGES'][] = "Apenas ficheiros JPG são permitidos.";
-    header("Location: ../../pages/other/addProduct.php");
-    exit;
+    // Allow certain file formats
+    if($imageFileType != "jpg") {
+      $_SESSION['ERROR_MESSAGES'][] = "Apenas ficheiros JPG são permitidos.";
+      header("Location: ../../pages/other/addProduct.php");
+      exit;
+    }
+
+    $no_image = 0;
+  } else {
+    $no_image = 1;
   }
 
   // Verify if the category is new
@@ -58,12 +65,18 @@
 
   $target_file = $target_dir . $id_product . ".jpg";
 
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    $_SESSION['SUCCESS_MESSAGES'][] = "Upload da imagem com sucesso.";
-    header("Location: ../../pages/other/displayProdutos.php");
-    exit;
+  if($no_image == 0) {
+    if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      $_SESSION['SUCCESS_MESSAGES'][] = "Upload da imagem com sucesso.";
+      header("Location: ../../pages/other/displayProdutos.php");
+      exit;
+    } else {
+      $_SESSION['ERROR_MESSAGES'][] = "Ocorreu um erro: o produto foi criado mas não foi possível fazer o upload da imagem.";
+      header("Location: ../../pages/other/displayProdutos.php");
+      exit;
+    }
   } else {
-    $_SESSION['ERROR_MESSAGES'][] = "Ocorreu um erro: o produto foi criado mas não foi possível fazer o upload da imagem.";
+    $_SESSION['SUCCESS_MESSAGES'][] = "Produto adicionado com sucesso.";
     header("Location: ../../pages/other/displayProdutos.php");
     exit;
   }
