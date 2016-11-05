@@ -4,25 +4,34 @@
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
   include_once ($BASE_DIR . "/database/product.php");
-?>
+
+  if(!$_GET['id']) {
+    echo "Não foi fornecido nenhum id!";
+  } else {
+    $id = $_GET['id'];
+    $_SESSION['EDIT_PRODUCT'] = $id;
+  }
+
+  $product_details = getProduct($id);
+ ?>
 
 <div id="container">
-  <form action="../../actions/products/addProduct.php" method="POST" enctype="multipart/form-data">
 
-
+  <?php echo '<img class="img-produto" src="../../media/img/products/'.$id.'.jpg?=' . filemtime('../../media/img/products/'.$id.'.jpg') . '">' ?>
+  <form action="../../actions/products/updateProduct.php" method="POST" enctype="multipart/form-data">
     <table>
       <tr>
-        <td  align="right">Imagem</td>
+        <td  align="right">Editar imagem</td>
         <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
       </tr>
       <tr>
         <td align="right">Código</td>
-        <td><input type="text" name="codigo"></input></td>
+        <td><input type="text" name="codigo" value="<?php echo $product_details['codigo']; ?>"></input></td>
       </tr>
       <tr>
         <td align="right">Categoria</td>
         <td>
-          <select id="product_category" name="tipo" onchange="addCategory()">
+          <select id="product_category" name="tipo" value="<?php echo $product_details['tipo']; ?>" onchange="addCategory()">
             <?php
               $result = getCategories();
               $row = pg_fetch_assoc($result);
@@ -41,16 +50,16 @@
       </tr>
       <tr>
         <td align="right">Nome</td>
-        <td><input type="text" name="nome"></input></td>
+        <td><input type="text" name="nome" value="<?php echo $product_details['nome']; ?>"></input></td>
       </tr>
 
       <tr>
         <td align="right">Descrição</td>
-        <td><textarea name="descricao"></textarea></td>
+        <td><textarea name="descricao"><?php echo $product_details['descricao']; ?></textarea></td>
       </tr>
       <tr>
         <td align="right">Preço</td>
-        <td><input type="text" name="preco"></input></td>
+        <td><input type="text" name="preco" value="<?php echo $product_details['preco']; ?>"></input></td>
       </tr>
       <tr>
         <td></td>

@@ -86,7 +86,6 @@
 	function addProduct($codigo, $nome, $tipo, $descricao, $preco) {
 		global $conn;
 
-
 		$nome = "'" . $nome . "'";
 		$tipo = "'" . $tipo . "'";
 
@@ -112,5 +111,41 @@
     $id = pg_fetch_row($result, 0);
     $id = $id[0];
     return $id;
+	}
+
+	function getProduct($id) {
+    global $conn;
+    $result = pg_query($conn, "SELECT *
+                               FROM produto
+                               WHERE id = $id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    if(pg_num_rows($result) == 0) return -1;
+    else {
+      $result = pg_fetch_assoc($result, 0);
+
+      return $result;
+    }
+  }
+
+	function updateProduct($id, $code, $category, $name, $description, $price) {
+		global $conn;
+
+		$name = "'" . $name . "'";
+		$category = "'" . $category . "'";
+
+    $result = pg_query($conn, "UPDATE produto
+                               SET    codigo=$code, nome=$name, tipo=$category, descricao=$description, preco=$price
+                               WHERE  id=$id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    if(pg_num_rows($result) == 0) return -1;
+    else return 0;
 	}
 ?>
