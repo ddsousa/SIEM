@@ -23,13 +23,6 @@ html, body  {
 	width: 90%;
 }
 
-#header {
-	background: #323F4F;
-	margin: auto;
-	top: 0;
-	width: 90%;
-}
-
 #footer {
 	background: #323F4F;
 	bottom: 0;
@@ -37,6 +30,18 @@ html, body  {
 	height: 30px;
 	margin-left: 5%;
 	position: absolute;
+	width: 90%;
+}
+
+#header {
+	background: #323F4F;
+	margin: auto;
+	top: 0;
+	width: 90%;
+}
+
+#error_messages {
+	color: #9D0000;
 	width: 90%;
 }
 

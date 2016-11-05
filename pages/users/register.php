@@ -10,6 +10,11 @@
 ?>
 
 <script type="text/javascript">
+  function hasNumber(address) {
+    alert(/\d/.test(address));
+    return /\d/.test(address);
+  }
+
   function validateForm() {
     var flagSubmitOk  = true
     var user_type = "<?php echo $_SESSION['user_type'] ?>"
@@ -55,7 +60,7 @@
       }
 
       // validate address
-      if(isNaN(parseFloat(address))) {
+      if(!hasNumber(address)) {
         alert("A morada também deve conter o número da porta")
         flagSubmitOk = false
       }
