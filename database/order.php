@@ -1,4 +1,52 @@
 <?php
+  include_once("user.php");
+
+  function newOrder($cart_items) {
+    global $conn;
+    date_default_timezone_set('UTC');
+
+    if(!isset($_SESSION['USERNAME'])) {
+      echo "An error occured.\n";
+        return false;
+    }
+    $client_id = getClientId($_SESSION['USERNAME']);
+
+    // create order
+    $result = pg_exec($conn, "INSERT INTO encomenda
+                              VALUES (default,
+                                      FALSE,
+                                      default,
+                                      $client_id,
+                                      current_timestamp)
+                              RETURNING id;");
+
+    if(!$result) {
+      echo "An error occured.\n";
+      return false;
+    }
+    $order_id = pg_fetch_row($result, 0)[0];
+
+    foreach ($cart_items as $item) {
+      // create order detail
+      $id = $item['id'];
+      $quantity = $item['quantity'];
+      echo "INSERT INTO detalhesencomenda
+                                VALUES (default,
+                                        $order_id,
+                                        $id,
+                                        $quantity);";
+      $result = pg_exec($conn, "INSERT INTO detalhesencomenda
+                                VALUES (default,
+                                        $order_id,
+                                        $id,
+                                        $quantity);");
+      if(!$result) {
+        echo "An error occured.\n";
+        return false;
+      }
+    }
+    return true;
+  }
 
   function getOrders($id_client) {
     global $conn;
