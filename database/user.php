@@ -1,8 +1,6 @@
 <?php
 
   function createUser($id, $permissions, $username, $password) {
-    $id = intval($id);
-    
     if($id<0) {
       $_id = "null";
     } else {

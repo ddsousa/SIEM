@@ -6,10 +6,10 @@
   if (isset($_SESSION['user_type'])) {
     // Data verification
     if($_SESSION['user_type']=="cliente") { 
-      if (!$_POST['username'] || !$_POST['name'] || !$_POST['email'] || !$_POST['password'] || !$_POST['address'] || !$_POST['postalcode1'] || !$_POST['postalcode2'] || $_POST['phone_number']) {
+      if (!$_POST['username'] || !$_POST['name'] || !$_POST['email'] || !$_POST['password'] || !$_POST['address'] || !$_POST['postalcode1'] || !$_POST['postalcode2'] || !$_POST['phone_number']) {
         $_SESSION['ERROR_MESSAGES'][] = 'Por favor, preencha todos os campos.';
         $_SESSION['form_values'] = $_POST; // save data in session
-
+        
         header("Location: ../../pages/users/register.php");
         exit;
       }
