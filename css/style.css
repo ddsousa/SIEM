@@ -70,6 +70,9 @@ html, body  {
 	background: #5B9BD5;
 	border: 2px solid #5B9BD5;
 	color: black;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 5px;
 }
 
 .btn-princ:hover {
@@ -81,6 +84,20 @@ html, body  {
 .btn-large {
 	font-size: 1.1em;
 	height: 30px;
+}
+
+.cart {
+	clear: right;
+	display: inline-block;
+	float: right;
+	height: 20px;
+	margin-right: 10px;
+}
+
+.cart-page-btn {
+	display: inline-block;
+	margin-top: 2%;
+	width: 100%;
 }
 
 .centered {
@@ -329,7 +346,6 @@ html, body  {
 .tab-first-row td {
 	background: #323F4F;
 	color: white;
-	font-weight: bold;
 }
 
 .tab-login {
@@ -354,6 +370,7 @@ html, body  {
 }
 
 .titulo-centrado {
+	font-weight: bold;
 	padding: 2% 0;
 	text-align: center;
 }

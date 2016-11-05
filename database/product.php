@@ -1,7 +1,19 @@
-// Don't forget to close the connection!
-//pg_close($conn);
-
 <?php
+	function searchProductById($id) {
+		global $conn;
+
+		$result = pg_exec($conn, "SELECT *
+															FROM produto
+															WHERE id=$id;");
+
+		if(!$result) {
+			echo "An error occured.\n";
+      exit;
+		}
+
+		return pg_fetch_row($result, 0);
+	}
+
 	function searchProductByName($name) {
 		global $conn;
 
@@ -9,7 +21,7 @@
 								 	 						FROM produto
 															WHERE nome LIKE '%$name%';");
 
-		if(!$result){
+		if(!$result) {
 			echo "An error occured.\n";
       exit;
 		}

@@ -73,9 +73,10 @@
 		        </select>
 	  <?php } else if($_SESSION['PERMISSIONS']==0) { ?>
 						<!-- user cart section -->
-						<div class="cart" style="float: right">
-							<a href="#">
-								<div class="btn-princ">Finalizar</div>
+						<div class="cart">
+							<a href="../../pages/other/displayCarrinho.php">
+								<img width=29px height=29px src="../../media/img/icons/cart_icon.png" alt="imagem de carrinho">
+								<div class="btn-princ" style="color: white; float: right;">Finalizar</div>
 							</a>
 						</div>
 	  <?php }

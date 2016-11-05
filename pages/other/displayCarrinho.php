@@ -3,6 +3,8 @@
 	include_once("../../common/header.php");
 	include_once("../../common/navbar.php");
 
+	$total_price = 0;
+
 	if(!empty($_GET['action'])) {
 		switch($_GET['action']) {
 			case 'remove':
@@ -45,17 +47,30 @@
 <div id="container">
 	<div class="display-prod">
 		<h3>Carrinho</h3>
-		<table>
-
+		<br>
+		<table class="tab-centrada">
+			<tr class="titulo-centrado" style="line-height: 50px;">
+				<td style="text-align: left;"><strong>Nome/Preço</strong></td>
+				<td><strong>Quantidade</strong></td>
+				<td><strong>Total</strong></td>
+			</tr>
 			<?php
 				foreach($_SESSION['cart_item'] as $item) {
 			?>
 			<tr>
-			<td>
-				<?php echo $item['id'] ?>
-			</td>
 				<td>
-					<?php echo $item['name'].'<br>'.$item['price']; ?>
+				<table>
+					<tr>
+						<td>
+							<?php echo $item['name']; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo $item['price']."€/".$item['price_unit']; ?>
+						</td>
+					</tr>
+				</table>
 				</td>
 				<td>
 					<form method="POST" action="displayCarrinho.php?action=edit&id=<?php echo $item['id']?>">
@@ -64,7 +79,8 @@
 					</form>
 				</td>
 				<td>
-					<?php echo $item['price'];?>
+					<?php echo $item['price']*$item['quantity'];
+						$total_price += $item['price']*$item['quantity'];?>
 				</td>
 				<td>
 					<form method="POST" action="displayCarrinho.php?action=remove&id=<?php echo $item['id']; ?>">
@@ -72,18 +88,34 @@
 					</form>
 				</td>
 			</tr>
-			<hr>
+			<tr>
+				<td colspan="4">
+					<hr style="width: 100%;">
+				</td>
+			</tr>
 			<?php
 				}
 			?>
+			<tr style="line-height: 50px;">
+				<td></td>
+				<td><strong>Preço Total</strong></td>
+				<td><?php echo $total_price; ?></td>
+				<td></td>
+			</tr>
 		</table>
-
-		<form method="POST" action="displayCarrinho.php?action=clean">
-			<input type="submit" value="Limpar" class="btn-princ btn-large">
-		</form>
-		<form method="POST" action="displayCarrinho.php?action=checkout">
-			<input type="submit" value="Finalizar Encomenda" class="btn-princ btn-large">
-		</form>
+		
+		<div class="cart-page-btn">
+			<div style="float: left; width: auto;">
+				<form method="POST" action="displayCarrinho.php?action=clean">
+					<input type="submit" value="Limpar" class="btn-princ btn-large">
+				</form>
+			</div>
+			<div style="float: right; width: auto;">
+				<form method="POST" action="displayCarrinho.php?action=checkout">
+					<input type="submit" value="Finalizar Encomenda" class="btn-princ btn-large">
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
 
