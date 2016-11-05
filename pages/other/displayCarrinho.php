@@ -42,7 +42,6 @@
 	}
 ?>
 
-</div>
 <div id="container">
 	<div class="display-prod">
 		<h3>Carrinho</h3>

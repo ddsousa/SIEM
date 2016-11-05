@@ -3,8 +3,7 @@
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/common/navbar.php");
 ?>
-	 </div>
-	 </html>
+	</html>
 		<div id="container">
 			<?php
 				include_once("../../common/display_mais_vendidos.php");

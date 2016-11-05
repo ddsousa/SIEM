@@ -2,15 +2,22 @@
 
   function createUser($id, $permissions, $username, $password) {
     $id = intval($id);
+    
+    if($id<0) {
+      $_id = "null";
+    } else {
+      $_id = $id;
+    }
+
     $password = "'" . sha1($password) . "'";
     global $conn;
 
     $result = pg_query($conn, "INSERT INTO utilizador
                                VALUES (default,
-                                      $id,
+                                      $_id,
                                       $permissions,
                                       $username,
-                                      $password)");
+                                      $password);");
     if (!$result) {
       echo "An error occured.\n";
       exit;
@@ -25,7 +32,7 @@
 
     $result = pg_query($conn, "SELECT tipo_conta
                                FROM utilizador
-                               WHERE username = $username AND password = $password");
+                               WHERE username = $username AND password = $password;");
     if (!$result) {
       echo "An error occured.\n";
       exit;

@@ -54,7 +54,6 @@
 	}
 </script>
 
-</div>
 <div id="container">
 		<?php
 			if($_SESSION['PERMISSIONS'] == 1) {

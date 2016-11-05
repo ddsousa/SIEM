@@ -3,11 +3,21 @@
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
+
+  if(!empty($_GET['user_type'])) {
+    $_SESSION['user_type'] = $_GET['user_type'];
+  } 
 ?>
 
-<script language="javascript">
-  function validateForm(user_type) {
+<script type="text/javascript">
+  function hasNumber(address) {
+    alert(/\d/.test(address));
+    return /\d/.test(address);
+  }
+
+  function validateForm() {
     var flagSubmitOk  = true
+    var user_type = "<?php echo $_SESSION['user_type'] ?>"
     var form          = document.register_form
     var username      = form.username.value
     var password      = form.password.value
@@ -23,7 +33,6 @@
       alert("A password deverá conter no mínimo 5 caracteres e no máximo 24 caracteres.")
       flagSubmitOk = false
     }
-
     if(user_type=="cliente") {
       var email_pos_at      = form.email.value.indexOf("@")
       var email_pos_dot     = form.email.value.indexOf(".")
@@ -51,7 +60,7 @@
       }
 
       // validate address
-      if(isNaN(parseFloat(address))) {
+      if(!hasNumber(address)) {
         alert("A morada também deve conter o número da porta")
         flagSubmitOk = false
       }
@@ -78,13 +87,16 @@
   }
 </script>
 
-</div>
 <div id="container">
-  <!--<form method="POST" name="register_form" action="../../actions/users/register.php"> --> 
-    <form method="POST" name="register_form" onsubmit="validateForm(<?php $user_type ?>)" action="../../actions/users/register.php">
+    <form method="POST" name="register_form" onsubmit="return validateForm()" action="../../actions/users/register.php">
     <table>
-<?php if(!empty($_GET['user_type'])) {
-        switch($_GET['user_type']) {
+<?php if(!empty($_GET['user_type']) || isset($_SESSION['user_type'])) {
+        if(!empty($_GET['user_type']))
+          $user_type = $_GET['user_type'];
+        else
+          $user_type = $_SESSION['user_type'];
+
+        switch($user_type) {
           case "admin": ?>
             <h3>Formulário de Registo de Administrador</h3>
     <?php break; 
@@ -92,25 +104,25 @@
             <h3>Formulário de Registo de Cliente</h3>
             <tr>
               <td align="right">Nome</td>
-              <td><input type="text" name="name" placeholder="Insira o seu nome..."></input></td>
+              <td><input type="text" name="name" placeholder="Insira o seu nome..." <?php if(isset($_SESSION['form_values']['name'])) echo "value=".$_SESSION['form_values']['name']; ?> ></input></td>
             </tr>
             <tr>
               <td align="right">Morada</td>
-              <td><input type="text" name="address" placeholder="Insira a sua morada..."></input></td>
+              <td><input type="text" name="address" placeholder="Insira a sua morada..." <?php if(isset($_SESSION['form_values']['address'])) echo "value=".$_SESSION['form_values']['address']; ?> ></input></td>
             </tr>
             <tr>
               <td align="right">Código postal</td>
-              <td><input type="text" name="postalcode1" maxlength="4" size="5px"></input>
+              <td><input type="text" name="postalcode1" maxlength="4" size="5px" <?php if(isset($_SESSION['form_values']['postalcode1'])) echo "value=".$_SESSION['form_values']['postalcode1']; ?> ></input>
               -
-              <input type="text" name="postalcode2" maxlength="3" size="5px"></input>
+              <input type="text" name="postalcode2" maxlength="3" size="5px" <?php if(isset($_SESSION['form_values']['postalcode2'])) echo "value=".$_SESSION['form_values']['postalcode2']; ?>></input>
             </tr>
             <tr>
               <td align="right">Email</td>
-              <td><input type="email" name="email" placeholder="Insira o seu endereço de email..."></input></td>
+              <td><input type="email" name="email" placeholder="Insira o seu endereço de email..." <?php if(isset($_SESSION['form_values']['email'])) echo "value=".$_SESSION['form_values']['email']; ?>></input></td>
             </tr>
             <tr>
               <td align="right">Telefone</td>
-              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9"></input></td>
+              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo "value=".$_SESSION['form_values']['phone_number']; ?>></input></td>
             </tr>
     <?php break; 
         }
@@ -118,7 +130,7 @@
         <!-- -->
       <tr>
         <td align="right">Username</td>
-        <td><input type="text" name="username"></input></td>
+        <td><input type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo "value=".$_SESSION['form_values']['username']; ?>></input></td>
       </tr>
       <tr>
         <td align="right">Password</td>

@@ -10,7 +10,6 @@
 		$client_data = getClientData($_GET['id']);
 	}
 ?>
-</div>
 
 <div id="container">
 	<h3 style="display: inline-block;">Dados do utilizador <?php echo $client_data['nome']?></h3>
