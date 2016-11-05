@@ -4,6 +4,7 @@
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
   include_once ($BASE_DIR . "/database/product.php");
+  include_once ($BASE_DIR . "/database/stock.php");
 
   if(!$_GET['id']) {
     echo "Não foi fornecido nenhum id!";
@@ -13,6 +14,7 @@
   }
 
   $product_details = getProduct($id);
+  $stock_detail = getStocks($id);
  ?>
 
 <div id="container">
@@ -65,6 +67,22 @@
         <td></td>
         <td align="right"><input type="submit" value="GUARDAR"></td>
       </tr>
+  </form>
+  <form action="../../actions/products/editStock.php" method="POST" enctype="multipart/form-data">
+    <table>
+      <tr>
+        <td  align="right">Qt. Armazém</td>
+        <td><input type="text" name="qt_armazem" value="<?php echo $stock_detail['qt_armazem']; ?>"></td>
+      </tr>
+      <tr>
+        <td align="right">Qt. Disponível</td>
+        <td><input type="text" name="qt_disponivel" value="<?php echo $stock_detail['qt_disponivel']; ?>"></input></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right"><input type="submit" value="EDITAR STOCK"></td>
+      </tr>
+    </table>
   </form>
 </div>
 
