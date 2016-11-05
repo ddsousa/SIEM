@@ -14,7 +14,8 @@
       exit;
     }
 
-    return $result;
+    $id = pg_fetch_row($result, 0);
+    return $id[0];
   }
 
   function getClientData($id_client) {
