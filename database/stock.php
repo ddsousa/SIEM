@@ -28,4 +28,18 @@
     }
   }
 
+  function newStock($id_product) {
+    global $conn;
+
+    $result = pg_query($conn, "INSERT INTO stock
+                               VALUES ( default,
+                                        $id_product,
+                                        0,
+                                        0)");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+  }
+
  ?>

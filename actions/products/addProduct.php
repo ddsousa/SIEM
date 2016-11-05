@@ -3,6 +3,7 @@
   include_once ($BASE_DIR . "/database/client.php");
   include_once ($BASE_DIR . "/database/user.php");
   include_once ($BASE_DIR . "/database/product.php");
+  include_once ($BASE_DIR . "/database/stock.php");
 
   // Data verification
   if (!$_POST['nome'] || !$_POST['preco']) {
@@ -62,6 +63,7 @@
   strlen($descricao) == 0 ? $descricao = "NULL" : $descricao = "'" . $descricao . "'";
 
   $id_product = addProduct($codigo, $_POST['nome'], $tipo, $descricao, $_POST['preco']);
+  newStock($id_product);
 
   $target_file = $target_dir . $id_product . ".jpg";
 
