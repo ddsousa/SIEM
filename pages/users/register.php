@@ -6,7 +6,7 @@
 
   if(!empty($_GET['user_type'])) {
     $_SESSION['user_type'] = $_GET['user_type'];
-  } 
+  }
 ?>
 
 <script type="text/javascript">
@@ -42,7 +42,7 @@
       var name              = form.name.value
       var name_pos_space    = form.name.value.indexOf(" ")
       var phone_number      = form.phone_number.value
-      
+
       // validate name
       if(name.length<10) {
         alert("O campo de nome deve conter no mínimo 10 caracteres")
@@ -99,38 +99,38 @@
         switch($user_type) {
           case "admin": ?>
             <h3>Formulário de Registo de Administrador</h3>
-    <?php break; 
+    <?php break;
           case "cliente":?>
             <h3>Formulário de Registo de Cliente</h3>
             <tr>
               <td align="right">Nome</td>
-              <td><input type="text" name="name" placeholder="Insira o seu nome..." <?php if(isset($_SESSION['form_values']['name'])) echo "value=".$_SESSION['form_values']['name']; ?> ></input></td>
+              <td><input type="text" name="name" placeholder="Insira o seu nome..." <?php if(isset($_SESSION['form_values']['name'])) echo 'value="'.$_SESSION['form_values']['name'].'"'; ?> ></input></td>
             </tr>
             <tr>
               <td align="right">Morada</td>
-              <td><input type="text" name="address" placeholder="Insira a sua morada..." <?php if(isset($_SESSION['form_values']['address'])) echo "value=".$_SESSION['form_values']['address']; ?> ></input></td>
+              <td><input type="text" name="address" placeholder="Insira a sua morada..." <?php if(isset($_SESSION['form_values']['address'])) echo 'value="'.$_SESSION['form_values']['address'].'"'; ?> ></input></td>
             </tr>
             <tr>
               <td align="right">Código postal</td>
-              <td><input type="text" name="postalcode1" maxlength="4" size="5px" <?php if(isset($_SESSION['form_values']['postalcode1'])) echo "value=".$_SESSION['form_values']['postalcode1']; ?> ></input>
+              <td><input type="text" name="postalcode1" maxlength="4" size="5px" <?php if(isset($_SESSION['form_values']['postalcode1'])) echo 'value="'.$_SESSION['form_values']['postalcode1'].'"'; ?> ></input>
               -
-              <input type="text" name="postalcode2" maxlength="3" size="5px" <?php if(isset($_SESSION['form_values']['postalcode2'])) echo "value=".$_SESSION['form_values']['postalcode2']; ?>></input>
+              <input type="text" name="postalcode2" maxlength="3" size="5px" <?php if(isset($_SESSION['form_values']['postalcode2'])) echo 'value="'.$_SESSION['form_values']['postalcode2'].'"'; ?>></input>
             </tr>
             <tr>
               <td align="right">Email</td>
-              <td><input type="email" name="email" placeholder="Insira o seu endereço de email..." <?php if(isset($_SESSION['form_values']['email'])) echo "value=".$_SESSION['form_values']['email']; ?>></input></td>
+              <td><input type="email" name="email" placeholder="Insira o seu endereço de email..." <?php if(isset($_SESSION['form_values']['email'])) echo 'value="'.$_SESSION['form_values']['email'].'"'; ?>></input></td>
             </tr>
             <tr>
               <td align="right">Telefone</td>
-              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo "value=".$_SESSION['form_values']['phone_number']; ?>></input></td>
+              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo 'value="'.$_SESSION['form_values']['phone_number'].'"'; ?>></input></td>
             </tr>
-    <?php break; 
+    <?php break;
         }
       } ?>
         <!-- -->
       <tr>
         <td align="right">Username</td>
-        <td><input type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo "value=".$_SESSION['form_values']['username']; ?>></input></td>
+        <td><input type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo 'value="'.$_SESSION['form_values']['username'].'"'; ?>></input></td>
       </tr>
       <tr>
         <td align="right">Password</td>
