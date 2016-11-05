@@ -56,8 +56,10 @@
 
 <div id="container">
 		<?php
-			if($_SESSION['PERMISSIONS'] == 1) {
-				echo '<a href="../../pages/other/addProduct.php"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
+			if(isset($_SESSION['PERMISSIONS'])) {
+				if($_SESSION['PERMISSIONS'] == 1) {
+					echo '<a href="../../pages/other/addProduct.php"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
+				}
 			}
 			if(empty($_GET['type'])) {
 				include_once("../../common/display_mais_vendidos.php");
@@ -65,53 +67,55 @@
 			}
 		?>
 		<h4 class="titulo-centrado">Todos os produtos</h4>
-		<div style="margin-left: 5%;">
-			<select class="dropbtn" onchange="sortProductsBy(this)">
-				<option disabled selected>Ordenar</option>
-				<?php if($selected == "preco asc") { ?>
-			  <option value="preco asc" selected>Preço mais baixo</option>
-			  <?php } else { ?>
-			  <option value="preco asc">Preço mais baixo</option>
-			  <?php } if($selected == "preco desc") { ?>
-			  <option value="preco desc" selected>Preço mais alto</option>
-			  <?php } else { ?>
-			  <option value="preco desc">Preço mais alto</option>
-			  <?php } if($selected == "nome") { ?>
-			  <option value="nome" selected>Nome</option>
-			  <?php } else { ?>
-			  <option value="nome">Nome</option>
-			  <?php } ?>
-			</select>
-		</div>
+		<div class="filter-div">
+			<div class="sort-dropdown">
+				<select class="dropbtn" onchange="sortProductsBy(this)">
+					<option disabled selected>Ordenar</option>
+					<?php if($selected == "preco asc") { ?>
+				  <option value="preco asc" selected>Preço mais baixo</option>
+				  <?php } else { ?>
+				  <option value="preco asc">Preço mais baixo</option>
+				  <?php } if($selected == "preco desc") { ?>
+				  <option value="preco desc" selected>Preço mais alto</option>
+				  <?php } else { ?>
+				  <option value="preco desc">Preço mais alto</option>
+				  <?php } if($selected == "nome") { ?>
+				  <option value="nome" selected>Nome</option>
+				  <?php } else { ?>
+				  <option value="nome">Nome</option>
+				  <?php } ?>
+				</select>
+			</div>
 
-		<div style="margin-right: 5%; float: right; border: 1px solid red;">
-			<?php
-				$aux = "";
-				if(!empty($_GET['page_nr'])) {
-					if($_GET['page_nr'] == -1) {
-						$page_nr = -1;
-					} else {
-						$page_nr = 1;
+			<div class="filter-price">
+				<?php
+					$aux = "";
+					if(!empty($_GET['page_nr'])) {
+						if($_GET['page_nr'] == -1) {
+							$page_nr = -1;
+						} else {
+							$page_nr = 1;
+						}
+						$aux = $aux."page_nr=".$page_nr;
 					}
-					$aux = $aux."page_nr=".$page_nr;
-				}
-				if(!empty($_GET['type'])) {
-					$aux = "&type=".$_GET['type'];
-				}
-				if(!empty($_GET['menu'])) {
-					$aux = $aux."&menu=".$_GET['menu'];
-				}
-				if(!empty($_GET['sort_by'])) {
-					$aux = $aux."&sort_by=".$_GET['sort_by'];
-				}
-			?>
-			<form method="POST" action="displayProdutos.php?<?php echo $aux;?>">
-			Preço de:
-				<input type="text" class="text-input-small" name="lower_lim">
-				até
-				<input type="text" class="text-input-small" name="upper_lim">
-				<input type="submit" value="Filtrar" class="btn-princ btn-large">
-			</form>
+					if(!empty($_GET['type'])) {
+						$aux = "&type=".$_GET['type'];
+					}
+					if(!empty($_GET['menu'])) {
+						$aux = $aux."&menu=".$_GET['menu'];
+					}
+					if(!empty($_GET['sort_by'])) {
+						$aux = $aux."&sort_by=".$_GET['sort_by'];
+					}
+				?>
+				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>">
+				Preço de:
+					<input type="text" class="text-input-small" name="lower_lim">
+					até
+					<input type="text" class="text-input-small" name="upper_lim">
+					<input type="submit" value="Filtrar" class="btn-princ btn-large">
+				</form>
+			</div>
 		</div>
 
 		<table class="tab-centrada">

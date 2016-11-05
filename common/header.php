@@ -71,6 +71,13 @@
 		          <option value="cliente">Cliente</option>
 		          <option value="admin">Administrador</option>
 		        </select>
+	  <?php } else if($_SESSION['PERMISSIONS']==0) { ?>
+						<!-- user cart section -->
+						<div class="cart" style="float: right">
+							<a href="#">
+								<div class="btn-princ">Finalizar</div>
+							</a>
+						</div>
 	  <?php }
 	  		} ?>
 			</div>
