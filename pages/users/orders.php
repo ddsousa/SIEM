@@ -11,19 +11,15 @@
 <div id="container">
   <H3>Encomendas</H3>
 
-  <table border="1">
-
-    <!-- Impressao da  linha contendo o resultado da consulta -->
-
+  <table class="tab-blue">
         <?php
-
         		$result = getOrders(getClientId($_SESSION['USERNAME']));
 
             $row = pg_fetch_assoc($result);
             if(!isset($row["numero"])) {
               echo "Não efectou encomendas.";
             } else {
-              echo "<tr><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>\n";
+              echo '<tr class="tab-first-row"><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';
 
           		while (isset($row["numero"])) {
                 $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";

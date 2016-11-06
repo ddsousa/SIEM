@@ -84,6 +84,7 @@
       </tr>
     </table>
   </form>
+  <a href="../../actions/products/deleteProduct.php?id=<?php echo $id; ?>"><input type="button" value="REMOVER PRODUTO" class="btn-princ"></input></a>
 </div>
 
 <?php
