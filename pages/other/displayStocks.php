@@ -6,20 +6,20 @@
 ?>
 
 <div id="container">
-  <table border="1">
+  <table class="tab-blue">
     <?php
-			$result = getStocks();
+			$result = getAllStocks();
   		$row = pg_fetch_assoc($result);
       if(!isset($row["nome"])) {
         echo "Não existem produtos em stock.";
       } else {
-        echo "<tr><td>Código</td><td>Nome produto</td><td>Qt. Armazém</td><td>Qt. Disponível</td></tr>\n";
+        echo '<tr class="tab-first-row"><td>Código</td><td>Nome produto</td><td>Qt. Armazém</td><td>Qt. Disponível</td></tr>';
 
     		while (isset($row["nome"])) {
-    			echo "<tr><td>" . $row["codigo"] . "</td>" .
-							 "<td>" . $row["nome"] . "</td>" .
+    			echo '<tr><td>' . $row["codigo"] . "</td>" .
+							 '<td><a href="../../pages/other/editProduct.php?id=' . $row["id"] . '">' . $row["nome"] . "</a></td>" .
                "<td>" . $row["qt_armazem"] . "</td>" .
-               "<td>" . $row["qt_disponivel"] . "</td>" . "<td>EDITAR</td>";
+               "<td>" . $row["qt_disponivel"] . "</td></a>\n";
     			$row = pg_fetch_assoc($result);
     		}
       }

@@ -1,4 +1,19 @@
 <?php
+
+  function getAllStocks() {
+    global $conn;
+
+    $result = pg_query($conn, "SELECT produto.id, codigo, nome, qt_armazem, qt_disponivel
+                               FROM stock
+                               JOIN produto ON stock.id_produto = produto.id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    return $result;
+  }
+
   function getStocks($id_product) {
     global $conn;
 

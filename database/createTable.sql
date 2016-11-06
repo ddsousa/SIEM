@@ -4,7 +4,7 @@ create table produto (
 	nome varchar,
 	tipo varchar,
 	descricao varchar,
-	preco real not null,
+	preco decimal(10,2) not null,
 	preco_por varchar,
 	n_vendas integer
 );
