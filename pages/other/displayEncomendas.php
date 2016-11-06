@@ -37,17 +37,15 @@
       if(!isset($row["numero"])) {
         echo "Não há encomendas.";
       } else {
-        echo '<tr class="tab-first-row"><td>Cliente</td><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';
+        echo '<tr class="tab-first-row"><td>Cliente</td><td>Nº Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>Nº artigos</td><td>Preco total</td></tr>';
 
     		while (isset($row["numero"])) {
-          $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";
-
-    			echo '<tr><td><a href="../../pages/users/displayClientDetails.php?id='. $row["idclient"] . '">' . $row["nome"] . "</a></td>" .
+          echo '<tr><td><a href="../../pages/users/displayClientDetails.php?id='. $row["idclient"] . '">' . $row["nome"] . "</a></td>" .
 							 '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["numero"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $estado . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["estado"] . "</a></td>" .
                '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["data_efetuada"] . "</a></td>" .
                '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["artigos"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["total"] . "</a></td> </tr>";
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["total"] . "&euro;</a></td> </tr>";
     			$row = pg_fetch_assoc($result);
     		}
       }
