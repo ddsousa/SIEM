@@ -2,55 +2,8 @@
 	include_once("../../common/init.php");
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/common/navbar.php");
-	include_once($BASE_DIR."/database/order.php");
-
-	function clearCart() {
-		unset($_SESSION['cart_item']);
-		$_SESSION['cart_item'] = array();
-	}
 
 	$total_price = 0;
-
-	if(!empty($_GET['action'])) {
-		switch($_GET['action']) {
-			case 'remove':
-				if(!empty($_GET['id'])) {
-					$id = $_GET['id'];
-					if(!empty($_SESSION['cart_item'])) {
-						foreach($_SESSION['cart_item'] as $item) {
-							if($item['id'] == $id) {
-								$key = array_search($item, $_SESSION['cart_item']);
-								unset($_SESSION['cart_item'][$key]);
-							}
-						}
-					}
-				}
-			break;
-			case 'edit':
-				if(!empty($_GET['id'])) {
-					$id = $_GET['id'];
-					if(!empty($_SESSION['cart_item'])) {
-						foreach ($_SESSION['cart_item'] as $item) {
-							if($item['id'] == $id) {
-								$key = array_search($item, $_SESSION['cart_item']);
-								$_SESSION['cart_item'][$key]['quantity'] = $_POST['quantity'];
-							}
-						}
-					}
-				}
-			break;
-			case 'clean':
-				clearCart();
-			break;
-			case 'checkout': // TODO - falta implementar
-				if(!empty($_SESSION['cart_item'])) {
-					if(newOrder($_SESSION['cart_item'])) {
-						clearCart();
-					}
-				}
-			break;
-		}
-	}
 ?>
 
 <div id="container">
@@ -83,7 +36,7 @@
 					</table>
 					</td>
 					<td>
-						<form method="POST" action="displayCarrinho.php?action=edit&id=<?php echo $item['id']?>">
+						<form method="POST" action="../../actions/products/cartHandler.php?action=edit&id=<?php echo $item['id']?>">
 							<input type="text" class="text-input-small" value="<?php echo $item['quantity'];?>" name="quantity" >
 							<input type="submit" value="Editar" class="btn-princ btn-large">
 						</form>
@@ -93,7 +46,7 @@
 							$total_price += $item['price']*$item['quantity'];?>
 					</td>
 					<td>
-						<form method="POST" action="displayCarrinho.php?action=remove&id=<?php echo $item['id']; ?>">
+						<form method="POST" action="../../actions/products/cartHandler.php?action=remove&id=<?php echo $item['id']; ?>">
 							<input type="submit" value="Remover" class="btn-princ btn-large">
 						</form>
 					</td>
@@ -116,12 +69,12 @@
 
 			<div class="cart-page-btn">
 				<div style="float: left; width: auto;">
-					<form method="POST" action="displayCarrinho.php?action=clean">
+					<form method="POST" action="../../actions/products/cartHandler.php?action=clean">
 						<input type="submit" value="Limpar" class="btn-princ btn-large">
 					</form>
 				</div>
 				<div style="float: right; width: auto;">
-					<form method="POST" action="displayCarrinho.php?action=checkout">
+					<form method="POST" action="../../actions/products/cartHandler.php?action=checkout">
 						<input type="submit" value="Finalizar Encomenda" class="btn-princ btn-large">
 					</form>
 				</div>

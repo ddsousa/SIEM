@@ -3,7 +3,7 @@
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/common/navbar.php");
 	include_once($BASE_DIR."/database/product.php");
-
+/*
 	if(!empty($_GET['action'])) {
 		if($_GET['action'] == 'add') {
 			if(!empty($_POST['quantity']) && !empty($_GET['id'])) {
@@ -32,7 +32,7 @@
 			}
 		}
 	}
-
+*/
 	$product = searchProductById($_GET['id']);
 ?>
 
@@ -52,7 +52,8 @@
 				?>
 			</div>
 			<div class="order">
-				<form method="POST" action="displayProduto.php?action=add&id=<?php echo $_GET['id'];?> ">
+				<!-- <form method="POST" action="displayProduto.php?action=add&id=<?php echo $_GET['id'];?> "> TODO - apagar -->
+				<form method="POST" action="../../actions/products/cartHandler.php?action=add&id=<?php echo $_GET['id'];?> ">
 					<input class="text-input-small" type="text" name="quantity" value="1">
 					Unid.
 					<input type="submit" value="+Adicionar ao carrinho" class="btn-princ btn-large">
