@@ -127,8 +127,7 @@
               <td><input class="medium" type="text" name="phone_number" placeholder="Insira a seu telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo 'value="'.$_SESSION['form_values']['phone_number'].'"'; ?>></input></td>
             </tr>
     <?php break;
-        }
-      } ?>
+        } ?>
         <!-- -->
       <tr>
         <td align="right">Username</td>
@@ -140,6 +139,7 @@
       </tr>
       </table>
       <input type="submit" class="btn-princ" value="Submeter" style="margin: 20px auto auto 215px; width: 80px;">
+<?php } ?>
   </form>
 </div>
 

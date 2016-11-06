@@ -43,6 +43,7 @@ input.medium {
 #error_messages {
 	color: #9D0000;
 	width: 90%;
+	margin: 20px auto auto auto;
 }
 
 #footer {
@@ -62,6 +63,11 @@ input.medium {
 	width: 90%;
 }
 
+#info {
+	width: 90%;
+	margin: auto;
+}
+
 #search-button {
 	background: rgba(0,0,0,0);
 	border: 1px solid white;
@@ -76,6 +82,11 @@ input.medium {
 	height: 25px;
 	width: 25px;
 	float: right;
+}
+
+#success_messages {
+	width: 90%;
+	margin: 20px auto;
 }
 
 #wrapper {

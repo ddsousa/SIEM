@@ -1,5 +1,5 @@
 <?php
-  if(isset($_SESSION['PERMISSIONS'])) {
+  if(!isset($_SESSION['PERMISSIONS'])) {
     header("Location: ../../");
     exit;
   }
