@@ -6,14 +6,8 @@
   include_once ($BASE_DIR . "/common/guest_only.php");
 
   if(!empty($_GET['user_type'])) {
-    echo "aqui";
     $_SESSION['user_type'] = $_GET['user_type'];
   }
-  if(isset($_SESSION['user_type'])) {
-    echo "Aqui 3";
-  }
-
-  echo var_dump($_SESSION['form_values']);
 ?>
 
 <script type="text/javascript">
