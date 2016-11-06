@@ -3,7 +3,6 @@
 
   function newOrder($cart_items) {
     global $conn;
-    date_default_timezone_set('UTC');
 
     if(!isset($_SESSION['USERNAME'])) {
       echo "An error occured.\n";
@@ -12,13 +11,13 @@
     $client_id = getClientId($_SESSION['USERNAME']);
 
     // create order
-    $result = pg_exec($conn, "INSERT INTO encomenda
-                              VALUES (default,
+    $result = pg_query($conn, "INSERT INTO encomenda
+                               VALUES (default,
                                       FALSE,
                                       default,
                                       $client_id,
                                       current_timestamp)
-                              RETURNING id;");
+                              RETURNING id");
 
     if(!$result) {
       echo "An error occured.\n";
@@ -30,11 +29,29 @@
       // create order detail
       $id = $item['id'];
       $quantity = $item['quantity'];
-      $result = pg_exec($conn, "INSERT INTO detalhesencomenda
-                                VALUES (default,
+      $result = pg_query($conn, "INSERT INTO detalhesencomenda
+                                 VALUES (default,
                                         $order_id,
                                         $id,
                                         $quantity);");
+      if(!$result) {
+        echo "An error occured.\n";
+        return false;
+      }
+
+      // increment product number of sales
+      $result = pg_query($conn, "UPDATE produto
+                                 SET n_vendas = n_vendas + $quantity
+                                 WHERE id = $id;");
+      if(!$result) {
+        echo "An error occured.\n";
+        return false;
+      }
+
+      // update stock
+      $result = pg_query($conn, "UPDATE stock
+                                 SET qt_disponivel = qt_disponivel - $quantity
+                                 WHERE id_produto = $id;");
       if(!$result) {
         echo "An error occured.\n";
         return false;
@@ -51,7 +68,7 @@
                                JOIN cliente ON encomenda.id_cliente = cliente.id AND id_cliente = $id_client
                                JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id
                                JOIN produto ON detalhesencomenda.id_produto = produto.id
-                               GROUP BY encomenda.id");
+                               GROUP BY encomenda.id;");
     if (!$result) {
       echo "An error occured.\n";
       exit;
@@ -74,7 +91,7 @@
                                JOIN cliente ON encomenda.id_cliente = cliente.id
                                JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id
                                JOIN produto ON detalhesencomenda.id_produto = produto.id
-                               GROUP BY encomenda.id, cliente.id" . $add_query);
+                               GROUP BY encomenda.id, cliente.id" . $add_query.";");
     if (!$result) {
       echo "An error occured.\n";
       exit;
