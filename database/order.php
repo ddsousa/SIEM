@@ -46,7 +46,7 @@
   function getOrders($id_client) {
     global $conn;
 
-    $result = pg_query($conn, "SELECT numero, estado, data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
+    $result = pg_query($conn, "SELECT numero, estado, to_char(data_efetuada, 'DD-MM-YYYY HH24:MI') AS data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
                                FROM encomenda
                                JOIN cliente ON encomenda.id_cliente = cliente.id AND id_cliente = $id_client
                                JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id
@@ -69,7 +69,7 @@
       $add_query = " ORDER BY $sort_by";
     }
 
-    $result = pg_query($conn, "SELECT cliente.nome, numero, estado, data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
+    $result = pg_query($conn, "SELECT cliente.nome, numero, estado, to_char(data_efetuada, 'DD-MM-YYYY HH24:MI') AS data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
                                FROM encomenda
                                JOIN cliente ON encomenda.id_cliente = cliente.id
                                JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id

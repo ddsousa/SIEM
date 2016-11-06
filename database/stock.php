@@ -57,4 +57,15 @@
     }
   }
 
+  function deleteStock($id_product) {
+    global $conn;
+
+    $result = pg_query($conn, "DELETE FROM stock
+                               WHERE id_produto = $id_product");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+  }
+
  ?>

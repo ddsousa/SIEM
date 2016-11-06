@@ -12,7 +12,7 @@
 
 <div id="container">
 
-  <a href="../../actions/users/logout.php"><input type="button" value="Encomendas" class="btn-princ"></input></a>
+  <a href="../../pages/users/orders.php"><input type="button" value="Encomendas" class="btn-princ"></input></a>
   <form method="POST" action="../../actions/clients/updateDetails.php">
 
     <table>

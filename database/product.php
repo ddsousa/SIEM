@@ -160,4 +160,15 @@
     if(pg_num_rows($result) == 0) return -1;
     else return 0;
 	}
+
+	function deleteProduct($id) {
+		global $conn;
+
+    $result = pg_query($conn, "DELETE FROM produto
+                               WHERE id = $id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+	}
 ?>
