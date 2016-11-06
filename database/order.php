@@ -30,11 +30,6 @@
       // create order detail
       $id = $item['id'];
       $quantity = $item['quantity'];
-      echo "INSERT INTO detalhesencomenda
-                                VALUES (default,
-                                        $order_id,
-                                        $id,
-                                        $quantity);";
       $result = pg_exec($conn, "INSERT INTO detalhesencomenda
                                 VALUES (default,
                                         $order_id,

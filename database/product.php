@@ -45,7 +45,7 @@
 		if($lower_lim!=null && $upper_lim!=null) {
 			$add_query = "$add_query WHERE preco >= $lower_lim AND preco <= $upper_lim";
 		}
-		echo "$base_query $add_query;";
+
 		$result = pg_exec($conn, "$base_query $add_query;");
 		if(!$result){
 			echo "An error occured.\n";
