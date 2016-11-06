@@ -5,12 +5,12 @@
 	include_once($BASE_DIR."/common/navbar.php");
 ?>
 
-<?php 
+<?php
 	// get clients from database
 	$clients_array = getClients();
 ?>
 <div id="container">
-	<table class="tab-blue">
+	<table class="tab-blue" style="margin-bottom:20px;">
 		<tr class="tab-first-row">
 			<td>Nome</td>
 			<td>Morada</td>
@@ -18,8 +18,8 @@
 			<td>Email</td>
 			<td>Telefone</td>
 		</tr>
-		<?php 
-			for($i=0; $i<sizeof($clients_array); $i++) { 
+		<?php
+			for($i=0; $i<sizeof($clients_array); $i++) {
 				$client = $clients_array[$i]; ?>
 				<tr>
 				<td><a href="displayClientDetails.php?menu=Clientes&id=<?php echo $client['id']?>"><?php echo $client['nome']?></a></td>

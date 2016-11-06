@@ -30,14 +30,14 @@
 			<option value="total asc"					 <?php if($sort_by == 'total asc') echo "selected" ?>>Preço mais baixo</option>
 		</select>
 	</div>
-  <table border="1">
+  <table class="tab-blue">
     <?php
 
   		$row = pg_fetch_assoc($result);
       if(!isset($row["numero"])) {
         echo "Não há encomendas.";
       } else {
-        echo "<tr><td>Cliente</td><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>\n";
+        echo '<tr class="tab-first-row"><td>Cliente</td><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';
 
     		while (isset($row["numero"])) {
           $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";

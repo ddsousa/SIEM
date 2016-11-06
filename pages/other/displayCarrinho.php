@@ -14,7 +14,7 @@
 	if(!empty($_GET['action'])) {
 		switch($_GET['action']) {
 			case 'remove':
-				if(!empty($_GET['id']) && !empty($_POST['quantity'])) {
+				if(!empty($_GET['id'])) {
 					$id = $_GET['id'];
 					if(!empty($_SESSION['cart_item'])) {
 						foreach($_SESSION['cart_item'] as $item) {
@@ -57,7 +57,7 @@
 	<div class="display-prod">
 		<h3>Carrinho</h3>
 		<br>
-<?php if(sizeof($_SESSION['cart_item'])>0) { ?>
+<?php if(sizeof($_SESSION['cart_item']) > 0) { ?>
 			<table class="tab-centrada">
 				<tr class="titulo-centrado" style="line-height: 50px;">
 					<td style="text-align: left;"><strong>Nome/Preço</strong></td>
@@ -113,7 +113,7 @@
 					<td></td>
 				</tr>
 			</table>
-			
+
 			<div class="cart-page-btn">
 				<div style="float: left; width: auto;">
 					<form method="POST" action="displayCarrinho.php?action=clean">

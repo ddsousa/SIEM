@@ -7,6 +7,8 @@
       $_id = $id;
     }
 
+    $username  = "'" . strip_tags($_POST['username']) . "'";
+
     $password = "'" . sha1($password) . "'";
     global $conn;
 
@@ -45,6 +47,8 @@
 
   function userExists($username) {
     global $conn;
+
+    $username = "'" . $username . "'";
 
     $result = pg_query($conn, "SELECT *
                                FROM utilizador
