@@ -19,17 +19,14 @@
     exit;
   }
 
-  // Extract data
-  $username  = "'" . strip_tags($_GET['username']) . "'";
-
   // Database access
-  if(userExists($username) == 0) {
+  if(userExists($_GET['username']) == 0) {
     $_SESSION['ERROR_MESSAGES'][] = 'O username não existe, por favor seleccione outro.';
     header("Location: ../../pages/common/info.php");
     exit;
   }
 
-  $id_client = getClientId($username);
+  $id_client = getClientId($_GET['username']);
 
   $client_data = getClientData($id_client);
 

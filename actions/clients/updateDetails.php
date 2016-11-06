@@ -17,7 +17,7 @@
   }
 
   // Update the clients' data
-  $id_client = getClientId("'" . $_SESSION['USERNAME'] . "'");
+  $id_client = getClientId($_SESSION['USERNAME']);
 
   $address   = "'" . strip_tags('morada=' . urlencode($_POST['morada']) . '&pc1=' . urlencode($_POST['codigopostal1']) . '&pc2=' . urlencode($_POST['codigopostal2'])) . "'";
 

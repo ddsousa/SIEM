@@ -387,3 +387,8 @@ input {
 	min-width: 100px;
 	float: left;
 }
+
+a {
+    text-decoration: none;
+		color: black;
+}

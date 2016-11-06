@@ -5,11 +5,11 @@
 
   if (isset($_SESSION['user_type'])) {
     // Data verification
-    if($_SESSION['user_type']=="cliente") { 
+    if($_SESSION['user_type']=="cliente") {
       if (!$_POST['username'] || !$_POST['name'] || !$_POST['email'] || !$_POST['password'] || !$_POST['address'] || !$_POST['postalcode1'] || !$_POST['postalcode2'] || !$_POST['phone_number']) {
         $_SESSION['ERROR_MESSAGES'][] = 'Por favor, preencha todos os campos.';
         $_SESSION['form_values'] = $_POST; // save data in session
-        
+
         header("Location: ../../pages/users/register.php");
         exit;
       }
@@ -30,9 +30,9 @@
       $email     = "'" . strip_tags($_POST['email']) . "'";
       $phone     = strip_tags($_POST['phone_number']);
     }
-    $username  = "'" . strip_tags($_POST['username']) . "'";
-    $password  = strip_tags($_POST['password']);
     
+    $password  = strip_tags($_POST['password']);
+
     // Database access
     if(userExists($username) > 0) {
       $_SESSION['ERROR_MESSAGES'][] = 'O username inserido não se encontra disponível, por favor insira outro.';
@@ -48,7 +48,7 @@
     } else if($_SESSION['user_type']=="admin") {
       createUser(-1, 1, $username, $password);
     }
-  
+
     $_SESSION['SUCCESS_MESSAGES'][] = 'Conta criada com sucesso!';
 
     // unset session variables
