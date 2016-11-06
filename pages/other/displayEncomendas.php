@@ -42,12 +42,12 @@
     		while (isset($row["numero"])) {
           $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";
 
-    			echo "<tr><td>" . $row["nome"] . "</td>" .
-							 "<td>" . $row["numero"] . "</td>" .
-               "<td>" . $estado . "</td>" .
-               "<td>" . $row["data_efetuada"] . "</td>" .
-               "<td>" . $row["artigos"] . "</td>" .
-               "<td>" . $row["total"] . "</td> </tr>";
+    			echo '<tr><td><a href="../../pages/users/displayClientDetails.php?id='. $row["idclient"] . '">' . $row["nome"] . "</a></td>" .
+							 '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["numero"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $estado . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["data_efetuada"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["artigos"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["total"] . "</a></td> </tr>";
     			$row = pg_fetch_assoc($result);
     		}
       }

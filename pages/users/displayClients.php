@@ -1,5 +1,6 @@
 <?php
 	include_once("../../common/init.php");
+	include_once($BASE_DIR."/common/admin_only.php");
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/database/client.php");
 	include_once($BASE_DIR."/common/navbar.php");

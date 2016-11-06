@@ -43,6 +43,24 @@
     return true;
   }
 
+  function getOrderDetails($id_order) {
+    global $conn;
+
+    $result = pg_query($conn, "SELECT cliente.nome, numero, estado, to_char(data_efetuada, 'DD-MM-YYYY HH24:MI') AS data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
+                               FROM encomenda
+                               JOIN cliente ON encomenda.id_cliente = cliente.id AND encomenda.id = $id_order
+                               JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id
+                               JOIN produto ON detalhesencomenda.id_produto = produto.id
+                               GROUP BY encomenda.id, cliente.nome");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    $result = pg_fetch_assoc($result, 0);
+    return $result;
+  }
+
   function getOrders($id_client) {
     global $conn;
 
@@ -69,7 +87,7 @@
       $add_query = " ORDER BY $sort_by";
     }
 
-    $result = pg_query($conn, "SELECT cliente.nome, numero, estado, to_char(data_efetuada, 'DD-MM-YYYY HH24:MI') AS data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
+    $result = pg_query($conn, "SELECT encomenda.id, cliente.id AS idclient, cliente.nome, numero, estado, to_char(data_efetuada, 'DD-MM-YYYY HH24:MI') AS data_efetuada, COUNT(encomenda.numero) AS artigos, SUM(quantidade * preco) AS total
                                FROM encomenda
                                JOIN cliente ON encomenda.id_cliente = cliente.id
                                JOIN detalhesencomenda ON detalhesencomenda.id_encomeda = encomenda.id
@@ -81,6 +99,20 @@
     }
 
     return $result;
+  }
+
+  function updateOrderState($id, $state) {
+    global $conn;
+
+    $state = "'" . $state . "'";
+
+    $result = pg_query($conn, "UPDATE encomenda
+                               SET    estado=$state
+                               WHERE  id=$id");
+    if (!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
   }
 
  ?>
