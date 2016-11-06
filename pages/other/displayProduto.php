@@ -42,7 +42,7 @@
 				<?php
 					echo '<img class="img-produto" src="../../media/img/products/'.$_GET['id'].'.jpg" alt="'.$product[2].'">';
 				?>
-			</div>		
+			</div>
 			<div class="display-prod-right">
 				<?php
 					echo '<h4>'.$product[2].'</h4>';
@@ -51,6 +51,9 @@
 					echo '<p>'.$product[4].'</p>';
 				?>
 			</div>
+			<?php
+				if(isset($_SESSION['PERMISSIONS'])) {
+			  	if($_SESSION['PERMISSIONS'] == 0) { ?>
 			<div class="order">
 				<!-- <form method="POST" action="displayProduto.php?action=add&id=<?php echo $_GET['id'];?> "> TODO - apagar -->
 				<form method="POST" action="../../actions/products/cartHandler.php?action=add&id=<?php echo $_GET['id'];?> ">
@@ -59,6 +62,10 @@
 					<input type="submit" value="+Adicionar ao carrinho" class="btn-princ btn-large">
 				</form>
 			</div>
+			<?php
+				}
+					}
+			 ?>
 		</div>
 	</div>
 <?php

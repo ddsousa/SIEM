@@ -3,6 +3,7 @@
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/common/navbar.php");
 	include_once($BASE_DIR . "/database/order.php");
+	include_once($BASE_DIR . "/common/admin_only.php");
 
 	if(!empty($_GET['sort_by'])) {
 		$sort_by = $_GET['sort_by'];

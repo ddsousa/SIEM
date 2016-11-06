@@ -3,6 +3,7 @@
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
+  include_once ($BASE_DIR . "/common/guest_only.php");
 
   if(!empty($_GET['user_type'])) {
     echo "aqui";
@@ -90,7 +91,7 @@
 
 <div id="container">
     <form method="POST" name="register_form" onsubmit="return validateForm()" action="../../actions/users/register.php">
-    <table>
+    <table class="tab-register">
 <?php if(!empty($_GET['user_type']) || isset($_SESSION['user_type'])) {
         if(!empty($_GET['user_type']))
           $user_type = $_GET['user_type'];
@@ -99,10 +100,10 @@
 
         switch($user_type) {
           case "admin": ?>
-            <h3>Formulário de Registo de Administrador</h3>
+            <h3 class="page-title">Formulário de Registo de Administrador</h3>
     <?php break;
           case "cliente":?>
-            <h3>Formulário de Registo de Cliente</h3>
+            <h3 class="page-title">Formulário de Registo de Cliente</h3>
             <tr>
               <td align="right">Nome</td>
               <td><input type="text" name="name" placeholder="Insira o seu nome..." <?php if(isset($_SESSION['form_values']['name'])) echo 'value="'.$_SESSION['form_values']['name'].'"'; ?> ></input></td>
@@ -113,9 +114,15 @@
             </tr>
             <tr>
               <td align="right">Código postal</td>
-              <td><input type="text" name="postalcode1" maxlength="4" size="5px" <?php if(isset($_SESSION['form_values']['postalcode1'])) echo 'value="'.$_SESSION['form_values']['postalcode1'].'"'; ?> ></input>
-              -
-              <input type="text" name="postalcode2" maxlength="3" size="5px" <?php if(isset($_SESSION['form_values']['postalcode2'])) echo 'value="'.$_SESSION['form_values']['postalcode2'].'"'; ?>></input>
+              <td>
+                <table class="tab-zipcode">
+                  <tr>
+                    <td><input type="text" name="postalcode1" maxlength="4" style="width: 85px;" <?php if(isset($_SESSION['form_values']['postalcode1'])) echo 'value="'.$_SESSION['form_values']['postalcode1'].'"'; ?> ></input></td>
+                    <td>-</td>
+                    <td><input type="text" name="postalcode2" maxlength="3" style="width: 70px;" <?php if(isset($_SESSION['form_values']['postalcode2'])) echo 'value="'.$_SESSION['form_values']['postalcode2'].'"'; ?>></input></td>
+                  </tr>
+                </table>
+              </td>
             </tr>
             <tr>
               <td align="right">Email</td>
@@ -123,7 +130,7 @@
             </tr>
             <tr>
               <td align="right">Telefone</td>
-              <td><input type="text" name="phone_number" placeholder="Insira a seu número de telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo 'value="'.$_SESSION['form_values']['phone_number'].'"'; ?>></input></td>
+              <td><input class="medium" type="text" name="phone_number" placeholder="Insira a seu telefone..." maxlength="9" <?php if(isset($_SESSION['form_values']['phone_number'])) echo 'value="'.$_SESSION['form_values']['phone_number'].'"'; ?>></input></td>
             </tr>
     <?php break;
         }
@@ -131,19 +138,14 @@
         <!-- -->
       <tr>
         <td align="right">Username</td>
-        <td><input type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo 'value="'.$_SESSION['form_values']['username'].'"'; ?>></input></td>
+        <td><input class="medium" type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo 'value="'.$_SESSION['form_values']['username'].'"'; ?>></input></td>
       </tr>
       <tr>
         <td align="right">Password</td>
-        <td><input type="password" name="password"></input></td>
+        <td><input class="medium" type="password" name="password"></input></td>
       </tr>
-      <tr>
-        <td></td>
-        <td align="right"><input type="submit" class="btn-princ" value="Submeter"></td>
-      </tr>
-
-
       </table>
+      <input type="submit" class="btn-princ" value="Submeter" style="margin: 20px auto auto 215px; width: 80px;">
   </form>
 </div>
 

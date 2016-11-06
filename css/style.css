@@ -4,6 +4,11 @@
 	padding: 0;
 }
 
+a {
+    text-decoration: none;
+		color: black;
+}
+
 hr {
 	border-top: 1px solid #5B9BD5;
 	height: 0px;
@@ -16,6 +21,18 @@ html, body  {
 	font-family: 'Ubuntu', Arial;
 }
 
+input {
+	background: white;
+	border: 1px solid grey;
+	height: 25px;
+	min-width: 70px;
+	float: left;
+}
+
+input.medium {
+	width: 160px !important;
+}
+
 #container {
 	padding-bottom: 30px;
 	margin: auto;
@@ -25,11 +42,6 @@ html, body  {
 
 #error_messages {
 	color: #9D0000;
-	width: 90%;
-}
-
-#success_messages {
-	color: #249d00;
 	width: 90%;
 }
 
@@ -275,6 +287,9 @@ html, body  {
 	width: 20px;
 }
 
+.page-title {
+	padding: 30px 0 20px 0;
+}
 
 .search-bar {
 	background: white;
@@ -364,6 +379,146 @@ html, body  {
 	padding-bottom: 5px;
 }
 
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
+.tab-register input {
+	width: 300px;
+}
+
+.tab-register tr {
+	line-height: 30px;
+}
+
+.tab-register td {
+	padding: 0px 10px;
+}
+
+.tab-zipcode {
+	margin-left: -2px;
+}
+
+.tab-zipcode td {
+	padding: 0;
+}
+
 .text-input-small {
 	font-size: 1.2em;
 	height: 30px;
@@ -383,17 +538,4 @@ html, body  {
 .with-separator {
 	border-right: 1px solid white;
 	padding-right: 5px;
-}
-
-input {
-	background: white;
-	border: 1px solid grey;
-	height: 25px;
-	min-width: 100px;
-	float: left;
-}
-
-a {
-    text-decoration: none;
-		color: black;
 }

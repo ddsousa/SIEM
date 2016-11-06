@@ -23,10 +23,8 @@
 
   updateClient($id_client, $_POST['nome'], $address, $_POST['telefone'], $_POST['email']);
 
-  $_SESSION['SUCCESS_LOGIN'][] = 'Alterações efectuadas com sucesso!';
+  $_SESSION['SUCCESS_MESSAGES'][] = 'Alterações efectuadas com sucesso!';
 
-  //echo 'Location: ../../actions/clients/getDetails.php?username=' . $_SESSION['USERNAME'];
-
-  header('Location: ../../actions/clients/getDetails.php?username=' . $_SESSION['USERNAME']);
+  header('Location: ../../pages/users/details.php');
   exit;
  ?>

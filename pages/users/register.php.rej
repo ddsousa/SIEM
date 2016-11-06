@@ -1,0 +1,24 @@
+diff a/pages/users/register.php b/pages/users/register.php	(rejected hunks)
+@@ -131,14 +131,19 @@
+         <!-- -->
+       <tr>
+         <td align="right">Username</td>
+-        <td><input class="medium" type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo 'value="'.$_SESSION['form_values']['username'].'"'; ?>></input></td>
++        <td><input type="text" name="username" placeholder="Username" <?php if(isset($_SESSION['form_values']['username'])) echo 'value="'.$_SESSION['form_values']['username'].'"'; ?>></input></td>
+       </tr>
+       <tr>
+         <td align="right">Password</td>
+-        <td><input class="medium" type="password" name="password"></input></td>
++        <td><input type="password" name="password"></input></td>
++      </tr>
++      <tr>
++        <td></td>
++        <td align="right"><input type="submit" class="btn-princ" value="Submeter"></td>
+       </tr>
++
++
+       </table>
+-      <input type="submit" class="btn-princ" value="Submeter" style="margin: 20px auto auto 215px; width: 80px;">
+   </form>
+ </div>
+ 
