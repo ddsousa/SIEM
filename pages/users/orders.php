@@ -22,10 +22,8 @@
               echo '<tr class="tab-first-row"><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';
 
           		while (isset($row["numero"])) {
-                $estado = ($row["estado"]=='f') ? "Pendente" : "Entregue";
-
-          			echo "<tr><td>" . $row["numero"] . "</td>" .
-                     "<td>" . $estado . "</td>" .
+                echo "<tr><td>" . $row["numero"] . "</td>" .
+                     "<td>" . $row["estado"] . "</td>" .
                      "<td>" . $row["data_efetuada"] . "</td>" .
                      "<td>" . $row["artigos"] . "</td>" .
                      "<td>" . $row["total"] . "</td> </tr>";

@@ -1,9 +1,4 @@
 <?php
-/*
-  User em questão indicado por GET?
-  Só o próprio user logado e admins é que podem ver o detalhes do User
-  Tem de ser redireccionado
-*/
   include_once('../../common/init.php');
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
@@ -11,7 +6,6 @@
 ?>
 
 <div id="container">
-
   <a href="../../pages/users/orders.php"><input type="button" value="Encomendas" class="btn-princ"></input></a>
   <form method="POST" action="../../actions/clients/updateDetails.php">
 
