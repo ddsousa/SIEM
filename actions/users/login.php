@@ -33,8 +33,8 @@
 
    }
 
-   header('Location: ' . $_SERVER['HTTP_REFERER']);
+   //header('Location: ' . $_SERVER['HTTP_REFERER']);
+   header("Location: ../../pages/common/home.php?menu=Inicio");
    exit;
 
-   //header("Location: ../../pages/info.php");
  ?>
