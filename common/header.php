@@ -104,15 +104,6 @@
 
 			      unset($_SESSION['ERROR_LOGIN']);
 			    }
-
-			    if(isset($_SESSION['SUCCESS_LOGIN'])) {
-			      $success_login = $_SESSION['SUCCESS_LOGIN'];
-			      foreach ($success_login as $success) {
-			        echo '<div class="error">' . $success . '<a class="close" href="#">X</a></div>';
-			      }
-
-			      unset($_SESSION['SUCCESS_LOGIN']);
-			    }
 			  ?>
 			</div>
 		</div>
