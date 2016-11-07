@@ -5,6 +5,9 @@
 	include_once($BASE_DIR."/common/navbar.php");
 	include_once($BASE_DIR."/common/sub_navbar.php");
 
+	if(!empty($_GET['type'])) {
+		$active_type = $_GET['type'];
+	}
 
 	if(!empty($_GET['page_nr'])) {
 		$page_nr = $_GET['page_nr'];
