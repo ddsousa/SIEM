@@ -26,7 +26,8 @@
       exit;
     }
 
-    $result = pg_fetch_assoc($result, 0);
+    if(pg_num_rows($result) > 0)
+      $result = pg_fetch_assoc($result, 0);
 
     return $result;
   }
@@ -66,6 +67,35 @@
       echo "An error occured.\n";
       exit;
     }
+  }
+
+  function checkOrderDelivered($id_order) {
+    global $conn;
+
+    $result = pg_query($conn, "SELECT id_produto
+                               FROM   detalhesencomenda
+                               WHERE  id_encomeda = $id_order");
+    if (!$result) {
+     echo "An error occured.\n";
+     exit;
+    }
+
+    $product = pg_fetch_assoc($result, 0);
+
+		while (isset($product["id"])) {
+      $result = pg_query($conn, 'UPDATE stock
+                                 SET    qt_armazem = qt_armazem -
+                                   (
+                                     SELECT quantidade
+                                     FROM detalhesencomenda
+                                     WHERE id_produto = $product["id"] AND id_encomeda = $id_order
+                                   )
+                                 WHERE  id_produto = $product["id"]');
+      if (!$result) {
+        echo "An error occured.\n";
+        exit;
+      }
+		}
   }
 
  ?>

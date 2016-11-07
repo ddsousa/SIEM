@@ -21,7 +21,7 @@
 
   <?php echo '<img class="img-produto" src="../../media/img/products/'.$id.'.jpg?=' . filemtime('../../media/img/products/'.$id.'.jpg') . '">' ?>
   <form action="../../actions/products/updateProduct.php" method="POST" enctype="multipart/form-data">
-    <table>
+    <table class="tab-register">
       <tr>
         <td  align="right">Editar imagem</td>
         <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
@@ -38,7 +38,9 @@
               $result = getCategories();
               $row = pg_fetch_assoc($result);
           		while (isset($row["tipo"])) {
-          			echo "<option value=".$row["tipo"].">".$row["tipo"]."</option>";
+          			echo "<option value=".$row["tipo"];
+                if($product_details['tipo'] == $row["tipo"]) echo " selected";
+                echo ">".$row["tipo"]."</option>";
           			$row = pg_fetch_assoc($result);
           		}
              ?>
@@ -69,7 +71,7 @@
       </tr>
   </form>
   <form action="../../actions/products/editStock.php" method="POST" enctype="multipart/form-data">
-    <table>
+    <table class="tab-register">
       <tr>
         <td  align="right">Qt. Armazém</td>
         <td><input type="text" name="qt_armazem" value="<?php echo $stock_detail['qt_armazem']; ?>"></td>

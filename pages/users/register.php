@@ -3,10 +3,19 @@
   include_once ($BASE_DIR . "/common/header.php");
   include_once ($BASE_DIR . "/common/navbar.php");
   include_once ($BASE_DIR . "/common/messages.php");
-  include_once ($BASE_DIR . "/common/guest_only.php");
 
-  if(!empty($_GET['user_type'])) {
-    $_SESSION['user_type'] = $_GET['user_type'];
+  if(!isset($_SESSION['USERNAME'])) {
+    // If it's a guest
+    $user_type = "cliente";
+  } else {
+    if($_SESSION['PERMISSIONS'] == 0) {
+      // If it's a normal user redirect him out of here
+      header("Location: ../../");
+      exit;
+    } else {
+      // If it's an admin
+      $user_type = $_GET['user_type'];
+    }
   }
 ?>
 
@@ -17,7 +26,7 @@
 
   function validateForm() {
     var flagSubmitOk  = true;
-    var user_type = "<?php echo $_SESSION['user_type'] ?>";
+    var user_type     = "<?php echo $user_type ?>";
     var form          = document.register_form;
     var username      = form.username.value;
     var password      = form.password.value;
@@ -86,12 +95,7 @@
 <div id="container">
     <form method="POST" name="register_form" onsubmit="return validateForm()" action="../../actions/users/register.php">
     <table class="tab-register">
-<?php if(!empty($_GET['user_type']) || isset($_SESSION['user_type'])) {
-        if(!empty($_GET['user_type']))
-          $user_type = $_GET['user_type'];
-        else
-          $user_type = $_SESSION['user_type'];
-
+<?php
         switch($user_type) {
           case "admin": ?>
             <h3 class="page-title">Formulário de Registo de Administrador</h3>
@@ -139,7 +143,6 @@
       </tr>
       </table>
       <input type="submit" class="btn-princ" value="Submeter" style="margin: 20px auto auto 215px; width: 80px;">
-<?php } ?>
   </form>
 </div>
 

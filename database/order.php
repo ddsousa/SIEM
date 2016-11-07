@@ -121,6 +121,10 @@
   function updateOrderState($id, $state) {
     global $conn;
 
+    if($state == 'Enviada') {
+      checkOrderDelivered($id);
+    }
+
     $state = "'" . $state . "'";
 
     $result = pg_query($conn, "UPDATE encomenda
