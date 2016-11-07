@@ -20,7 +20,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Oceano Hipermercado</title>
-	<!--<link rel="icon" href="media/img/logos/icon.png"> -->
 	<?php echo '<link rel="icon" href="'.'../../media/img/logos/icon.png">'?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../../css/style.css">
@@ -30,7 +29,7 @@
 	<div id="wrapper">
 		<div id="header">
 		<div style="height: 80px;">
-			<a href="../common/home.php"> <img src="../../media/img/logos/logo.png" class="logo"></a>
+			<a href="../common/home.php?menu=Inicio"> <img src="../../media/img/logos/logo.png" class="logo"></a>
 			<div style="width: 300px; float: right">
 				<table class="tab-login" style="visibility: visible">
 	<?php if(!isset($_SESSION['USERNAME'])) { ?>

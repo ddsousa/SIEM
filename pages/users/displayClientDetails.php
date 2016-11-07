@@ -3,7 +3,7 @@
 	include_once($BASE_DIR."/common/header.php");
 	include_once($BASE_DIR."/common/navbar.php");
 	include_once($BASE_DIR."/database/client.php");
-	include_once($BASE_DIR . "/common/admin_only.php");
+	include_once($BASE_DIR."/common/admin_only.php");
 
 	// get user info
 	if(!empty($_GET['id'])) {
@@ -12,9 +12,9 @@
 ?>
 
 <div id="container">
-	<h3 style="display: inline-block;">Dados do utilizador <?php echo $client_data['nome']?></h3>
-	<img class="edit-icon-big" src="../../media/img/icons/edit.png" alt="icon de editar">
-	<table>
+	<h3 class="page-title" style="display: inline-block;">Dados do utilizador <?php echo $client_data['nome']?></h3>
+	<a href="changeClientDetails.php?id=<?php echo $_GET['id']?>"><img class="edit-icon-big" src="../../media/img/icons/edit.png" alt="icon de editar"></a>
+	<table class="tab-register">
 		<tr>
 			<td><strong>Nome:</strong></td>
 			<td><?php echo $client_data['nome']; ?></td>

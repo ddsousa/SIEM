@@ -12,12 +12,16 @@
   }
 
   // If the client submited the password update to the new one
-  if($_POST['password']) {
+  if(isset($_POST['password'])) {
     updatePassword($_SESSION['USERNAME'], $_POST['password']);
   }
 
   // Update the clients' data
-  $id_client = getClientId($_SESSION['USERNAME']);
+  if(!empty($_GET['id'])) {
+    $id_client = $_GET['id'];
+  } else {
+    $id_client = getClientId($_SESSION['USERNAME']);
+  }
 
   $address   = "'" . strip_tags('morada=' . urlencode($_POST['morada']) . '&pc1=' . urlencode($_POST['codigopostal1']) . '&pc2=' . urlencode($_POST['codigopostal2'])) . "'";
 

@@ -109,11 +109,14 @@
 					}
 				?>
 				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>">
-				Preço de:
-					<input type="text" class="text-input-small" name="lower_lim">
-					até
-					<input type="text" class="text-input-small" name="upper_lim">
-					<input type="submit" value="Filtrar" class="btn-princ btn-large">
+				<table>
+					<tr>
+						<td>Preço de:</td>
+						<td><input type="text" class="text-input-small" name="lower_lim"></td>
+						<td>até</td>
+						<td><input type="text" class="text-input-small" name="upper_lim"></td>
+						<td><input type="submit" value="Filtrar" class="btn-princ btn-large"></td>
+					</table>
 				</form>
 			</div>
 		</div>
