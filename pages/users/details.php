@@ -7,7 +7,7 @@
   include_once ($BASE_DIR . "/database/user.php");
   include_once ($BASE_DIR . "/common/user_only.php");
 
-  $id_client = getClientId($_GET['username']);
+  $id_client = getClientId($_SESSION['USERNAME']);
   $client_data = getClientData($id_client);
 ?>
 

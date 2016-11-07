@@ -53,7 +53,7 @@
 	<?php } else { ?>
 		<tr>
 				<td>
-						<?php echo '<a href="../../actions/clients/getDetails.php?username=' . $_SESSION['USERNAME'] . '">' . $_SESSION['USERNAME'] . '</a>' ?>
+						<?php echo '<a href="../../pages/users/details.php">' . $_SESSION['USERNAME'] . '</a>' ?>
 				</td>
 				<td>
 						<a href="../../actions/users/logout.php"><input type="button" value="Logout" class="btn-princ"></input></a>

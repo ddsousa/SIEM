@@ -12,10 +12,11 @@
     exit;
   }
 
+  $target_dir = "../../media/img/products/";
+
   // Verify if the user uploaded a file
   if(file_exists($_FILES['fileToUpload']['tmp_name']) && is_uploaded_file($_FILES['fileToUpload']['tmp_name'])) {
     // Verify that the image is valid
-    $target_dir = "../../media/img/products/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
     echo "<br><br>Target file:" . $target_file . ".<br>";
@@ -78,6 +79,9 @@
       exit;
     }
   } else {
+    // Let's copy the default image
+    copy("../../media/img/products/default.jpg", $target_file);
+
     $_SESSION['SUCCESS_MESSAGES'][] = "Produto adicionado com sucesso.";
     header("Location: ../../pages/other/displayProdutos.php");
     exit;
