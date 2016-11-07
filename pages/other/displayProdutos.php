@@ -167,7 +167,7 @@
 				?>
 				</div>
 	</table>
-	<div style="border: 1px solid red;">
+	<div class="page-nr-div">
 	<ul>
 		<?php
 			$n_pages = ceil($n_rows/8);

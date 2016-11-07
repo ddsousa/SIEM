@@ -289,13 +289,25 @@ input.medium {
 }
 
 .page-nr {
-	background: #4991C8;
+	background: white;
 	color: white;
 	display: inline;
-	height: 20px;
+	height: 25px;
 	margin: 0 1px;
 	text-align: center;
-	width: 20px;
+	width: 50px;
+}
+
+.page-nr-div {
+	padding: 20px 0 15px 0 !important;
+}
+
+.page-nr-div li {
+	padding-right: 5px;
+}
+
+.page-nr:hover a {
+	color: #4991C8;
 }
 
 .page-title {
