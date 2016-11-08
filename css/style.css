@@ -196,6 +196,11 @@ input.medium {
 	float: right;
 }
 
+.icon {
+	height: 70%;
+	width: auto;
+}
+
 .img-produto {
 	border: 1px solid black;
 	height: 200px;
@@ -398,6 +403,12 @@ input.medium {
 .tab-first-row td {
 	background: #323F4F;
 	color: white;
+}
+
+.tab-icons {
+	padding-top: 5%;
+	text-align: center;
+	width: 100%;
 }
 
 .tab-login {
