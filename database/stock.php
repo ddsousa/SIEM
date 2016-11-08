@@ -80,22 +80,28 @@
      exit;
     }
 
-    $product = pg_fetch_assoc($result, 0);
+    $products = pg_fetch_all($result);
 
-		while (isset($product["id"])) {
-      $result = pg_query($conn, 'UPDATE stock
-                                 SET    qt_armazem = qt_armazem -
-                                   (
-                                     SELECT quantidade
-                                     FROM detalhesencomenda
-                                     WHERE id_produto = $product["id"] AND id_encomeda = $id_order
-                                   )
-                                 WHERE  id_produto = $product["id"]');
-      if (!$result) {
-        echo "An error occured.\n";
-        exit;
+    echo "Aqui:";
+    print_r($products);
+    print_r($id_order);
+
+    if(!empty($products)) {
+      foreach($products as $product) {
+        $result = pg_query($conn, 'UPDATE stock
+                                   SET    qt_armazem = qt_armazem -
+                                     (
+                                       SELECT quantidade
+                                       FROM detalhesencomenda
+                                       WHERE id_produto = ' . $product["id_produto"] . 'AND id_encomeda =' . $id_order .'
+                                     )
+                                   WHERE  id_produto =' . $product["id_produto"]);
+        if (!$result) {
+          echo "An error occured.\n";
+          exit;
+        }
       }
-		}
+    }
   }
 
  ?>

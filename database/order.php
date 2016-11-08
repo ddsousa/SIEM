@@ -122,7 +122,7 @@
   function updateOrderState($id, $state) {
     global $conn;
 
-    if($state == 'Enviada') {
+    if($state == "Enviada") {
       checkOrderDelivered($id);
     }
 
