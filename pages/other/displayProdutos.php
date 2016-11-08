@@ -64,7 +64,7 @@
 				}
 			}
 
-			if(empty($_GET['type']) && !empty($_POST['search'])) {
+			if(empty($_GET['type']) && empty($_POST['search'])) {
 				include_once("../../common/display_mais_vendidos.php");
 				echo '<hr>';
 			}
