@@ -39,7 +39,7 @@
 				</table>
 			</div>
 			<div>
-				<h4 class="titulo-centrado">Versão Provisória</h4>
+				<h4 class="titulo-centrado">Versão Final</h4>
 				<table class="tab-centrada-peq">
 					<tr>
 						<td>usersiem</td>
@@ -53,6 +53,5 @@
 			</div>
 		</div>
 		<?php
-			include_once("../../common/disconnect_db.php");
 			include_once("../../common/footer.php");
 		?>
