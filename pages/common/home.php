@@ -53,6 +53,5 @@
 			</div>
 		</div>
 		<?php
-			include_once("../../common/disconnect_db.php");
 			include_once("../../common/footer.php");
 		?>

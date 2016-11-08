@@ -43,14 +43,14 @@
           }
         }
         if($active_menu == 'Relatorio') { ?>
-          <li class="nav-active"><a href="../../pages/other/relatorio.php?menu=Relatorio">Relatório</a></li>
+          <li class="nav-active"><a href="../../pages/other/report.php?menu=Relatorio">Relatório</a></li>
       <?php } else { ?>
-          <li class="nav-inactive"><a href="../../pages/other/relatorio.php?menu=Relatorio">Relatório</a></li>
+          <li class="nav-inactive"><a href="../../pages/other/report.php?menu=Relatorio">Relatório</a></li>
         <?php }
       } else { ?>
   			<li class="nav-active"><a href="../../pages/common/home.php?menu=Inicio">Início</a></li>
         <li class="nav-inactive"><a href="../../pages/other/displayProdutos.php?menu=Produtos&page_nr=1">Produtos</a></li>
-        <li class="nav-inactive"><a href="../../pages/other/relatorio.php?menu=Relatorio">Relatório</a></li>
+        <li class="nav-inactive"><a href="../../pages/other/report.php?menu=Relatorio">Relatório</a></li>
   		<?php } ?>
   </ul>
 
