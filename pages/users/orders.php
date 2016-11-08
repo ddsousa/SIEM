@@ -15,7 +15,7 @@
         <?php
         		$orders = getOrders(getClientId($_SESSION['USERNAME']));
 
-            if(sizeof($orders)<1) {
+            if(empty($orders)) {
               echo "Não efectou encomendas.";
             } else {
               echo '<tr class="tab-first-row"><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';

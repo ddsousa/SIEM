@@ -34,7 +34,7 @@
   <table class="tab-blue">
     <?php
     
-      if(sizeof($orders)<1) {
+      if(empty($orders)) {
         echo "Não há encomendas.";
       } else {
         echo '<tr class="tab-first-row"><td>Cliente</td><td>Nº Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>Nº artigos</td><td>Preco total</td></tr>';

@@ -9,7 +9,7 @@
   <table class="tab-blue">
     <?php
 			$stocks = getAllStocks();
-      if(sizeof($stocks)<1) {
+      if(empty($stocks)) {
         echo "Não existem produtos em stock.";
       } else {
         echo '<tr class="tab-first-row"><td>Código</td><td>Nome produto</td><td>Qt. Armazém</td><td>Qt. Disponível</td></tr>';
