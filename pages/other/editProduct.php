@@ -18,7 +18,7 @@
  ?>
 
 <div id="container">
-
+  <h3 class="page-title">Formulário de edição do Produto</h3>
   <?php echo '<img class="img-produto" src="../../media/img/products/'.$id.'.jpg?=' . filemtime('../../media/img/products/'.$id.'.jpg') . '">' ?>
   <form action="../../actions/products/updateProduct.php" method="POST" enctype="multipart/form-data">
     <table class="tab-register">
@@ -33,7 +33,7 @@
       <tr>
         <td align="right">Categoria</td>
         <td>
-          <select id="product_category" name="tipo" value="<?php echo $product_details['tipo']; ?>" onchange="addCategory()">
+          <select id="product_category" class="dropbtn" name="tipo" value="<?php echo $product_details['tipo']; ?>" onchange="addCategory()">
             <?php
               $categories = getCategories();
               foreach ($categories as $category) {
@@ -65,11 +65,12 @@
       </tr>
       <tr>
         <td></td>
-        <td align="right"><input type="submit" value="GUARDAR"></td>
+        <td align="right"><input type="submit" value="GUARDAR" class="btn-princ"></td>
       </tr>
   </form>
+  <tr height="15"></tr>
   <form action="../../actions/products/editStock.php" method="POST" enctype="multipart/form-data">
-    <table class="tab-register">
+      <tr></tr>
       <tr>
         <td  align="right">Qt. Armazém</td>
         <td><input type="text" name="qt_armazem" value="<?php echo $stock_detail['qt_armazem']; ?>"></td>
@@ -80,11 +81,17 @@
       </tr>
       <tr>
         <td></td>
-        <td align="right"><input type="submit" value="EDITAR STOCK"></td>
+        <td align="right"><input type="submit" value="EDITAR STOCK" class="btn-princ"></td>
+      </tr>
+  </form>
+      <tr height="20"></tr>
+      <tr>
+        <td></td>
+        <td><a href="../../actions/products/deleteProduct.php?id=<?php echo $id; ?>"><input type="button" value="REMOVER PRODUTO" class="btn-princ"></input></a></td>
       </tr>
     </table>
-  </form>
-  <a href="../../actions/products/deleteProduct.php?id=<?php echo $id; ?>"><input type="button" value="REMOVER PRODUTO" class="btn-princ"></input></a>
+
+
 </div>
 
 <?php
