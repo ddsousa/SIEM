@@ -402,9 +402,11 @@ input.medium {
 	padding-bottom: 5px;
 }
 
-.tab-register input {
+.tab-register input, textarea {
 	width: 300px;
 }
+
+.tab-register
 
 .tab-register tr {
 	line-height: 30px;

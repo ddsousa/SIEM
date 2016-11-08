@@ -25,14 +25,14 @@
 					echo 	'<table class="tab-centrada texto-produtos">';
 					if(isset($_SESSION['PERMISSIONS'])) {
 						if($_SESSION['PERMISSIONS'] == 1) {
-							echo 		'<td style="text-align: left;"><a href="../../pages/other/editProduct.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+							echo 		'<td style="text-align: left;"><a href="../../pages/other/editProduct.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 						} else {
-							echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+							echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 						}
 					} else {
-						echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+						echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 					}
-					echo 		'<td style="text-align: right;">'.$prod['preco'].'€/'.$prod['preco_por'].'</td>';
+					echo 		'<td style="text-align: right;">'.$prod['preco'].'€/un</td>';
 					echo 	'</table>';
 					echo '</td>';
 				}

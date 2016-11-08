@@ -17,7 +17,7 @@
 	function searchProductByName($name) {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT id, nome, preco, preco_por
+		$result = pg_exec($conn, "SELECT id, nome, preco
 								 	 						FROM produto
 															WHERE nome LIKE '%$name%';");
 
@@ -31,7 +31,7 @@
 
 	function searchProduct($type, $sort_by, $lower_lim, $upper_lim) {
 		global $conn;
-		$base_query = "SELECT id, nome, preco, preco_por
+		$base_query = "SELECT id, nome, preco
 								 	 FROM produto";
 
 		$add_query = "";
@@ -58,7 +58,7 @@
 	function searchMostSold() {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT id, nome, preco, preco_por
+		$result = pg_exec($conn, "SELECT id, nome, preco
 															FROM produto
 															ORDER BY n_vendas DESC, nome;");
 		if(!$result) {
@@ -92,7 +92,7 @@
       exit;
     }
 
-    return $result;
+    return pg_fetch_all($result);
 	}
 
 	function addProduct($codigo, $nome, $tipo, $descricao, $preco) {

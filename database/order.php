@@ -1,5 +1,6 @@
 <?php
   include_once("user.php");
+  include_once("stock.php");
 
   function newOrder($cart_items) {
     global $conn;
@@ -13,7 +14,7 @@
     // create order
     $result = pg_query($conn, "INSERT INTO encomenda
                                VALUES (default,
-                                      FALSE,
+                                      'Pendente',
                                       default,
                                       $client_id,
                                       current_timestamp)
@@ -92,7 +93,7 @@
       exit;
     }
 
-    return $result;
+    return pg_fetch_all($result);
   }
 
   function getAllOrders($sort_by) {
@@ -115,7 +116,7 @@
       exit;
     }
 
-    return $result;
+    return pg_fetch_all($result);
   }
 
   function updateOrderState($id, $state) {

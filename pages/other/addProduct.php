@@ -7,13 +7,14 @@
 ?>
 
 <div id="container">
+  <h3 class="page-title">Adicionar novo produto</h3>
+
   <form action="../../actions/products/addProduct.php" method="POST" enctype="multipart/form-data">
 
-
-    <table>
+    <table class="tab-register">
       <tr>
         <td  align="right">Imagem</td>
-        <td><input type="file" name="fileToUpload" id="fileToUpload"></td>
+        <td><input type="file" name="fileToUpload" data-classButton="btn-princ" id="fileToUpload" data-buttonText="David" ></td>
       </tr>
       <tr>
         <td align="right">Código</td>
@@ -22,14 +23,12 @@
       <tr>
         <td align="right">Categoria</td>
         <td>
-          <select id="product_category" name="tipo" onchange="addCategory()">
+          <select class="dropbtn" id="product_category" name="tipo" onchange="addCategory()">
             <?php
-              $result = getCategories();
-              $row = pg_fetch_assoc($result);
-          		while (isset($row["tipo"])) {
-          			echo "<option value=".$row["tipo"].">".$row["tipo"]."</option>";
-          			$row = pg_fetch_assoc($result);
-          		}
+              $categories = getCategories();
+              foreach($categories as $category) {
+                echo "<option value=".$category["tipo"].">".$category["tipo"]."</option>";
+              }
              ?>
              <option value="adicionar">Adicionar outra</option>
           </select>
@@ -54,7 +53,7 @@
       </tr>
       <tr>
         <td></td>
-        <td align="right"><input type="submit" value="GUARDAR"></td>
+        <td><input class="btn-princ" type="submit" value="GUARDAR"></input></td>
       </tr>
   </form>
 </div>

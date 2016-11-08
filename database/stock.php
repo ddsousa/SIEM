@@ -11,7 +11,7 @@
       exit;
     }
 
-    return $result;
+    return pg_fetch_all($result);
   }
 
   function getStocks($id_product) {

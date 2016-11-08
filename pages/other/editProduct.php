@@ -35,14 +35,12 @@
         <td>
           <select id="product_category" name="tipo" value="<?php echo $product_details['tipo']; ?>" onchange="addCategory()">
             <?php
-              $result = getCategories();
-              $row = pg_fetch_assoc($result);
-          		while (isset($row["tipo"])) {
-          			echo "<option value=".$row["tipo"];
-                if($product_details['tipo'] == $row["tipo"]) echo " selected";
-                echo ">".$row["tipo"]."</option>";
-          			$row = pg_fetch_assoc($result);
-          		}
+              $categories = getCategories();
+              foreach ($categories as $category) {
+                echo "<option value=".$category["tipo"];
+                if($product_details['tipo'] == $category["tipo"]) echo " selected";
+                echo ">".$category["tipo"]."</option>";
+              }
              ?>
              <option value="adicionar">Adicionar outra</option>
           </select>

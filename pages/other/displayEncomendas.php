@@ -11,7 +11,7 @@
 		$sort_by = null;
 	}
 
-	$result = getAllOrders($sort_by);
+	$orders = getAllOrders($sort_by);
 ?>
 
 <script language="javascript">
@@ -33,22 +33,19 @@
 	</div>
   <table class="tab-blue">
     <?php
-
-  		$row = pg_fetch_assoc($result);
-      if(!isset($row["numero"])) {
+    
+      if(sizeof($orders)<1) {
         echo "Não há encomendas.";
       } else {
         echo '<tr class="tab-first-row"><td>Cliente</td><td>Nº Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>Nº artigos</td><td>Preco total</td></tr>';
-
-    		while (isset($row["numero"])) {
-          echo '<tr><td><a href="../../pages/users/displayClientDetails.php?id='. $row["idclient"] . '">' . $row["nome"] . "</a></td>" .
-							 '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["numero"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["estado"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["data_efetuada"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["artigos"] . "</a></td>" .
-               '<td><a href="../../pages/other/detailsOrder.php?id='. $row["id"] . '">' . $row["total"] . "&euro;</a></td> </tr>";
-    			$row = pg_fetch_assoc($result);
-    		}
+        foreach($orders as $order) {
+        	 echo '<tr><td><a href="../../pages/users/displayClientDetails.php?id='. $order["idclient"] . '&menu=Encomendas">' . $order["nome"] . "</a></td>" .
+							 '<td><a href="../../pages/other/detailsOrder.php?id='. $order["id"] . '&menu=Encomendas">' . $order["numero"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $order["id"] . '&menu=Encomendas">' . $order["estado"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $order["id"] . '&menu=Encomendas">' . $order["data_efetuada"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $order["id"] . '&menu=Encomendas">' . $order["artigos"] . "</a></td>" .
+               '<td><a href="../../pages/other/detailsOrder.php?id='. $order["id"] . '&menu=Encomendas">' . $order["total"] . "&euro;</a></td> </tr>";
+        }
       }
 
   ?>

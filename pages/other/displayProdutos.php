@@ -61,7 +61,7 @@
 		<?php
 			if(isset($_SESSION['PERMISSIONS'])) {
 				if($_SESSION['PERMISSIONS'] == 1) {
-					echo '<a href="../../pages/other/addProduct.php"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
+					echo '<a href="../../pages/other/addProduct.php?menu=Produtos"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
 				}
 			}
 			if(empty($_GET['type'])) {
@@ -111,7 +111,7 @@
 						$aux = $aux."&sort_by=".$_GET['sort_by'];
 					}
 				?>
-				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>">
+				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>&menu=Produtos">
 				<table>
 					<tr>
 						<td>Preço de:</td>
@@ -148,14 +148,14 @@
 									echo 	'<table class="tab-centrada texto-produtos">';
 									if(isset($_SESSION['PERMISSIONS'])) {
 										if($_SESSION['PERMISSIONS'] == 1) {
-											echo 		'<td style="text-align: left;"><a href="../../pages/other/editProduct.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+											echo 		'<td style="text-align: left;"><a href="../../pages/other/editProduct.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 										} else {
-											echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+											echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 										}
 									} else {
-										echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'">'.$prod['nome'].'</a></td>';
+										echo 		'<td style="text-align: left;"><a href="../../pages/other/displayProduto.php?id='.$prod['id'].'&menu=Produtos">'.$prod['nome'].'</a></td>';
 									}
-									echo 		'<td style="text-align: right;">'.$prod['preco'].'€/'.$prod['preco_por'].'</td>';
+									echo 		'<td style="text-align: right;">'.$prod['preco'].'€/un</td>';
 									echo 	'</table>';
 								}
 								echo '</td>';
@@ -173,15 +173,15 @@
 			$n_pages = ceil($n_rows/8);
 			for($i=1; $i<=$n_pages; $i++) {
 				if(!empty($active_type)) {
-					echo '<li class="page-nr"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr='.$i.'">'.$i.'</a></li>';
+					echo '<li class="page-nr"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr='.$i.'&menu=Produtos">'.$i.'</a></li>';
 				} else {
-					echo '<li class="page-nr"><a href="../../pages/other/displayProdutos.php?page_nr='.$i.'">'.$i.'</a></li>';
+					echo '<li class="page-nr"><a href="../../pages/other/displayProdutos.php?page_nr='.$i.'&menu=Produtos">'.$i.'</a></li>';
 				}
 			}
 			if(!empty($active_type)) {
-				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr=-1">Todas</a></li>';
+				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?type='.$active_type.'&page_nr=-1&menu=Produtos">Todas</a></li>';
 			} else {
-				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?page_nr=-1">Todas</a></li>';
+				echo '<li class="page-nr" style="width: 40px;"><a href="../../pages/other/displayProdutos.php?page_nr=-1&menu=Produtos">Todas</a></li>';
 			}
 		?>
 		</ul>

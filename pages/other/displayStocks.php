@@ -8,20 +8,18 @@
 <div id="container">
   <table class="tab-blue">
     <?php
-			$result = getAllStocks();
-  		$row = pg_fetch_assoc($result);
-      if(!isset($row["nome"])) {
+			$stocks = getAllStocks();
+      if(sizeof($stocks)<1) {
         echo "Não existem produtos em stock.";
       } else {
         echo '<tr class="tab-first-row"><td>Código</td><td>Nome produto</td><td>Qt. Armazém</td><td>Qt. Disponível</td></tr>';
 
-    		while (isset($row["nome"])) {
-    			echo '<tr><td>' . $row["codigo"] . "</td>" .
-							 '<td><a href="../../pages/other/editProduct.php?id=' . $row["id"] . '">' . $row["nome"] . "</a></td>" .
-               "<td>" . $row["qt_armazem"] . "</td>" .
-               "<td>" . $row["qt_disponivel"] . "</td></a>\n";
-    			$row = pg_fetch_assoc($result);
-    		}
+        foreach ($stocks as $stock) {
+        	echo '<tr><td>' . $stock["codigo"] . "</td>" .
+							 '<td><a href="../../pages/other/editProduct.php?id=' . $stock["id"] . '">' . $stock["nome"] . "</a></td>" .
+               "<td>" . $stock["qt_armazem"] . "</td>" .
+               "<td>" . $stock["qt_disponivel"] . "</td></a>\n";
+        }
       }
 
   ?>

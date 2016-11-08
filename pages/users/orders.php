@@ -13,22 +13,20 @@
 
   <table class="tab-blue">
         <?php
-        		$result = getOrders(getClientId($_SESSION['USERNAME']));
+        		$orders = getOrders(getClientId($_SESSION['USERNAME']));
 
-            $row = pg_fetch_assoc($result);
-            if(!isset($row["numero"])) {
+            if(sizeof($orders)<1) {
               echo "Não efectou encomendas.";
             } else {
               echo '<tr class="tab-first-row"><td>Nr Encomenda</td><td>Estado</td><td>Data da encomenda</td><td>N artigos</td><td>Preco total</td></tr>';
 
-          		while (isset($row["numero"])) {
-                echo "<tr><td>" . $row["numero"] . "</td>" .
-                     "<td>" . $row["estado"] . "</td>" .
-                     "<td>" . $row["data_efetuada"] . "</td>" .
-                     "<td>" . $row["artigos"] . "</td>" .
-                     "<td>" . $row["total"] . "</td> </tr>";
-          			$row = pg_fetch_assoc($result);
-          		}
+              foreach($orders as $order) {
+                 echo "<tr><td>" . $order["numero"] . "</td>" .
+                     "<td>" . $order["estado"] . "</td>" .
+                     "<td>" . $order["data_efetuada"] . "</td>" .
+                     "<td>" . $order["artigos"] . "</td>" .
+                     "<td>" . $order["total"] . "</td> </tr>";
+              }
             }
 
         ?>

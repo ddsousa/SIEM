@@ -17,6 +17,8 @@
       $user_type = $_GET['user_type'];
     }
   }
+
+  $_SESSION['user_type'] = $user_type;
 ?>
 
 <script type="text/javascript">
