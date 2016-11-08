@@ -747,3 +747,213 @@ VALUES (
 	7.19,
 	0
 );
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 1, 721, 715);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 2, 85, 78);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 3, 290, 290);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 4, 451, 448);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 5, 412, 412);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 6, 505, 501);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 7, 790, 783);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 8, 272, 265);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 9, 754, 747);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 10, 845, 838);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 11, 67, 58);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 12, 471, 466);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 13, 175, 169);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 14, 463, 461);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 15, 956, 954);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 16, 551, 543);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 17, 551, 551);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 18, 701, 699);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 19, 738, 737);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 20, 366, 362);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 21, 498, 493);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 22, 745, 740);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 23, 512, 508);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 24, 337, 331);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 25, 981, 980);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 26, 219, 212);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 27, 713, 704);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 28, 61, 57);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 29, 609, 601);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 30, 486, 483);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 31, 827, 819);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 32, 412, 411);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 33, 758, 753);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 34, 543, 542);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 35, 892, 888);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 36, 635, 629);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 37, 969, 967);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 38, 969, 968);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 39, 657, 652);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 40, 572, 566);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 41, 562, 553);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 42, 855, 852);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 43, 607, 599);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 44, 567, 567);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 45, 75, 72);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 46, 471, 468);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 47, 984, 975);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 48, 545, 539);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 49, 584, 575);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 50, 344, 339);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 51, 719, 716);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 52, 77, 70);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 53, 707, 702);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 54, 869, 866);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 55, 868, 860);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 56, 471, 468);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 57, 543, 539);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 58, 441, 437);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 59, 414, 408);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 60, 593, 585);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 61, 113, 110);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 62, 487, 477);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 63, 915, 912);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 64, 925, 923);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 65, 76, 74);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 66, 510, 507);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 67, 136, 134);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 68, 878, 878);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 69, 78, 7);
+
+INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+VALUES (default, 70, 8, 8);
