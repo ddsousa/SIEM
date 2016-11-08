@@ -4,13 +4,17 @@
 	include_once($BASE_DIR."/database/client.php");
 	include_once($BASE_DIR."/common/navbar.php");
 	include_once($BASE_DIR."/common/admin_only.php");
-?>
 
-<?php
 	// get clients from database
-	$clients_array = getClients();
+	if(!empty($_POST['search'])) {
+		$clients_array = getClientsByName($_POST['search']);
+	} else {
+		$clients_array = getClients();
+	}
 ?>
 <div id="container">
+	<h3 class="page-title">Clientes</h3>
+
 	<table class="tab-blue" style="margin-bottom:20px;">
 		<tr class="tab-first-row">
 			<td>Nome</td>

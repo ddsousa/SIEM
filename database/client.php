@@ -82,4 +82,24 @@
 
     return $clients_array;
   }
+
+  function getClientsByName($name) {
+    global $conn;
+
+    $result = pg_query($conn, "SELECT id
+                               FROM cliente
+                               WHERE nome LIKE '%$name%';");
+
+    if(!$result) {
+      echo "An error occured.\n";
+      exit;
+    }
+
+    $ids_array = pg_fetch_all($result);
+    foreach($ids_array as $id) {
+      $clients_array[] = getClientData($id['id']);
+    }
+
+    return $clients_array;
+  }
 ?>

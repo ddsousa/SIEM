@@ -50,15 +50,19 @@
 
   <?php 
   if(!empty($active_menu)) {
-    if($active_menu == 'Produtos') { ?> 
+    if($active_menu == 'Produtos' || $active_menu == 'Clientes') { ?> 
       <div class="search-box">
-        <form method="POST" action="displayProdutos.php?menu=Produtos&page_nr=1" style="display: inline-block;">
-          <input type="text" class="search-bar" name="search" placeholder="Pesquisa">
-          <div class="search-button-containter">
-            <img src="../../media/img/icons/search_icon.png" alt="icon de pesquisa" id="search-icon">
-            <input type="submit" id="search-button" value="">
-          </div> 
-      </form>
+  <?php if($active_menu == 'Produtos') { ?>
+          <form method="POST" action="displayProdutos.php?menu=Produtos&page_nr=1" style="display: inline-block;">
+  <?php } else { // clients?>
+          <form method="POST" action="displayClients.php?menu=Clientes" style="display: inline-block;">
+  <?php } ?>
+            <input type="text" class="search-bar" name="search" placeholder="Pesquisa">
+            <div class="search-button-containter">
+              <img src="../../media/img/icons/search_icon.png" alt="icon de pesquisa" id="search-icon">
+              <input type="submit" id="search-button" value="">
+            </div> 
+        </form>
       </div>
     <?php }
     } ?>
