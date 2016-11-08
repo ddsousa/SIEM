@@ -32,7 +32,6 @@
 	} else {
 		$prod_array = searchProduct($type, $sort_by, $lower_lim, $upper_lim);
 	}
-
 ?>
 
 <script language="javascript">
@@ -64,11 +63,13 @@
 					echo '<a href="../../pages/other/addProduct.php?menu=Produtos"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
 				}
 			}
-			if(empty($_GET['type'])) {
+
+			if(empty($_GET['type']) && !empty($_POST['search'])) {
 				include_once("../../common/display_mais_vendidos.php");
 				echo '<hr>';
 			}
 		?>
+
 		<h4 class="titulo-centrado">Todos os produtos</h4>
 		<div class="filter-div">
 			<div class="sort-dropdown">

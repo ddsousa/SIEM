@@ -7,10 +7,10 @@
 	<table class="tab-centrada">
 		<tr>
 			<?php
-				$prod_array = searchMostSold();
+				$prod_array_ms = searchMostSold();
 
 				for($i=0; $i<4; $i++) { // imagens produto
-					$prod = $prod_array[$i];
+					$prod = $prod_array_ms[$i];
 					echo '<td>';
 					echo 	'<img class="img-produto" src="../../media/img/products/'.$prod['id'].'.jpg" alt="fotografia de '.$prod['nome'].'">';
 					echo '</td>';
@@ -20,7 +20,7 @@
 				echo '<tr>';
 
 				for($i=0; $i<4; $i++) { // nome e preco
-					$prod = $prod_array[$i];
+					$prod = $prod_array_ms[$i];
 					echo '<td>';
 					echo 	'<table class="tab-centrada texto-produtos">';
 					if(isset($_SESSION['PERMISSIONS'])) {
