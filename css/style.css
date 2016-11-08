@@ -118,7 +118,7 @@ input.medium {
 	clear: right;
 	display: inline-block;
 	float: right;
-	height: 20px;
+	height: auto;
 	margin-right: 10px;
 }
 
@@ -272,6 +272,15 @@ input.medium {
 
 .nav-inactive a:hover {
 	color: white !important;
+}
+
+.nr-cart-items {
+	color: white;
+	display: inline-block;
+	float: left !important;
+	height: 29px;
+	line-height: 29px;
+	padding-right: 10px;
 }
 
 .order {

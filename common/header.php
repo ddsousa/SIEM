@@ -79,11 +79,9 @@
 
 									foreach($_SESSION['cart_item'] as $item) {
 										$artigos++;
-									}
-
-									echo $artigos . " artigos no carrinho";
-								}
-							 ?>
+									} ?>
+									<p class="nr-cart-items"> <?=$artigos?> artigos no carrinho</p>
+					<?php	} ?>
 							<a href="../../pages/other/displayCarrinho.php?menu=Encomendas">
 								<img width=29px height=29px src="../../media/img/icons/cart_icon.png" alt="imagem de carrinho">
 								<div class="btn-princ" style="color: white; float: right;">Finalizar</div>
