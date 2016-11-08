@@ -68,7 +68,7 @@
   function getClients() {
     global $conn;
 
-    $result = pg_exec($conn, "SELECT id
+    $result = pg_query($conn, "SELECT id
                               FROM cliente;");
     if(!$result) {
       echo "An error occured.\n";

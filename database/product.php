@@ -2,7 +2,7 @@
 	function searchProductById($id) {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT *
+		$result = pg_query($conn, "SELECT *
 															FROM produto
 															WHERE id=$id;");
 
@@ -17,7 +17,7 @@
 	function searchProductByName($name) {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT id, nome, preco
+		$result = pg_query($conn, "SELECT id, nome, preco
 								 	 						FROM produto
 															WHERE nome LIKE '%$name%';");
 
@@ -46,7 +46,7 @@
 			$add_query = "$add_query WHERE preco >= $lower_lim AND preco <= $upper_lim";
 		}
 
-		$result = pg_exec($conn, "$base_query $add_query;");
+		$result = pg_query($conn, "$base_query $add_query;");
 		if(!$result){
 			echo "An error occured.\n";
       exit;
@@ -58,7 +58,7 @@
 	function searchMostSold() {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT id, nome, preco
+		$result = pg_query($conn, "SELECT id, nome, preco
 															FROM produto
 															ORDER BY n_vendas DESC, nome;");
 		if(!$result) {
@@ -72,7 +72,7 @@
 	function searchPrductsTypes() {
 		global $conn;
 
-		$result = pg_exec($conn, "SELECT DISTINCT tipo
+		$result = pg_query($conn, "SELECT DISTINCT tipo
 															FROM produto;");
 		if(!$result) {
 			echo "An error occured.\n";

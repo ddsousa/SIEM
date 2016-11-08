@@ -16,7 +16,7 @@
 
 		if($schema!=null) {
 			$query = "SET SCHEMA '$schema'";
-			pg_exec($conn, $query);
+			pg_query($conn, $query);
 		}
 	}
 ?>
