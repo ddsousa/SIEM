@@ -19,7 +19,7 @@ create table cliente (
 
 create table encomenda (
 	id serial primary key,
-	estado boolean DEFAULT 'FALSE',
+	estado varchar DEFAULT 'FALSE',
 	numero integer not null,
 	id_cliente integer references cliente not null,
 	data_efetuada timestamp

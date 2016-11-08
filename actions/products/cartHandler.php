@@ -69,7 +69,7 @@
 				clearCart();
 				header("Location: ../../pages/other/displayCarrinho.php");
 			break;
-			case 'checkout': // TODO - falta implementar
+			case 'checkout': 
 				if(!empty($_SESSION['cart_item'])) {
 					if(newOrder($_SESSION['cart_item'])) {
 						clearCart();
