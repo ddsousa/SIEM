@@ -39,11 +39,15 @@
 		if($type!=null) {
 			$add_query = "$add_query WHERE tipo='$type'";
 		}
+		if($lower_lim!=null && $upper_lim!=null) {
+			if($type==null) {	
+				$add_query = "$add_query WHERE preco >= $lower_lim AND preco <= $upper_lim";
+			} else {
+				$add_query = "$add_query AND preco >= $lower_lim AND preco <= $upper_lim";
+			}
+		}
 		if($sort_by!=null) {
 			$add_query = "$add_query ORDER BY $sort_by";
-		}
-		if($lower_lim!=null && $upper_lim!=null) {
-			$add_query = "$add_query WHERE preco >= $lower_lim AND preco <= $upper_lim";
 		}
 
 		$result = pg_query($conn, "$base_query $add_query;");
@@ -108,7 +112,6 @@
                                       	$tipo,
                                       	$descricao,
 																				$preco,
-																				NULL,
 																				0 )
                                RETURNING id;";
 

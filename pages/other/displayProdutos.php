@@ -63,13 +63,11 @@
 					echo '<a href="../../pages/other/addProduct.php?menu=Produtos"><input type="button" value="Adicionar novo produto" class="btn-princ"></input></a>';
 				}
 			}
-
 			if(empty($_GET['type']) && empty($_POST['search'])) {
 				include_once("../../common/display_mais_vendidos.php");
 				echo '<hr>';
 			}
 		?>
-
 		<h4 class="titulo-centrado">Todos os produtos</h4>
 		<div class="filter-div">
 			<div class="sort-dropdown">
@@ -112,7 +110,7 @@
 						$aux = $aux."&sort_by=".$_GET['sort_by'];
 					}
 				?>
-				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>&menu=Produtos">
+				<form method="POST" action="displayProdutos.php?<?php echo $aux;?>&menu=Produtos&page_nr=1">
 				<table>
 					<tr>
 						<td>Preço de:</td>
