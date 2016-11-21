@@ -249,8 +249,8 @@ class Smarty_Internal_Templateparser
     public function mergePrefixCode($code)
     {
         $tmp = '';
-        foreach ($this->compiler->prefix_code as $preCode) {
-            $tmp .= $preCode;
+        foreach ($this->compiler->prefix_code as $pricede) {
+            $tmp .= $pricede;
         }
         $this->compiler->prefix_code = array();
         $tmp .= $code;
