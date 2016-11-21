@@ -2,7 +2,7 @@
 	function getAllProducts() {
 		global $conn;
 		$stmt = $conn->prepare('SELECT *
-                          FROM produto;');
+                          	FROM produto;');
 	  $stmt->execute();
 	  return $stmt->fetchAll();
 	}

@@ -2,3 +2,34 @@ html, body {
 	margin:  0;
 	padding: 0;
 }
+
+#container {
+	border: 1px solid blue;
+}
+
+#header {
+	background: #323F4F;
+	top: 0;
+}
+
+#logo {
+	margin: 10px;
+	width: 20%;
+}
+
+#wrapper {
+	width: 90%;
+	margin: auto;
+}
+
+.product-data {
+	border: 1px solid red;
+	display: inline-block;
+	padding: 2%;
+	margin: auto;
+	width: 20%;
+}
+
+.product-img {
+	border: 1px solid black;
+}
