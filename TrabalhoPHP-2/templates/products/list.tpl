@@ -1,14 +1,11 @@
 <section id="products">
-  <h2>Produtos</h2>
-  <div id="container">
+  <h2>products</h2>
     {foreach $products as $product}
       <article class="product-data">
-        <img class="product-img" src="{$BASE_URL}media/img/products/{$product.id}.jpg" alt="imagem de {$product.nome}">
+        <img class="product-img" src="{$BASE_URL}media/img/products/{$product.id}.jpg" alt="imagem de {$product.name}">
         <br>
-        <span>{$product.nome}</span>
-        <span>{$product.preco}</span>
+        <span>{$product.name}</span>
+        <span>{$product.price}</span>
       </article>
     {/foreach}
-  </div>
-
 </section>

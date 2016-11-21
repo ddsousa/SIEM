@@ -1,54 +1,57 @@
-create table produto (
+create sequence seq_products start 1000;
+create sequence seq_orders start 100;
+
+create table products (
 	id serial primary key,
-	codigo integer,
-	nome varchar,
-	tipo varchar,
-	descricao varchar,
-	preco decimal(10,2) not null,
-	n_vendas integer
+	code integer default nextval('seq_products') not null,
+	name varchar,
+	type varchar,
+	description varchar,
+	price decimal(10,2) not null,
+	n_sales integer
 );
 
-create table cliente (
+create table clients (
 	id serial primary key,
-	codigo serial not null,
-	nome varchar not null,
-	morada varchar not null,
-	telefone integer not null,
+	code serial not null,
+	name varchar not null,
+	address varchar not null,
+	phone integer not null,
 	email varchar not null
 );
 
-create table encomenda (
+create table orders (
 	id serial primary key,
-	estado varchar DEFAULT 'FALSE',
-	numero integer not null,
-	id_cliente integer references cliente not null,
-	data_efetuada timestamp
+	state varchar default 'Pendente',
+	num integer default nextval('seq_orders') not null,
+	id_clients integer references clients not null,
+	order_date timestamp
 );
 
-create table detalhesencomenda (
+create table orderdetails (
 	id serial primary key,
-	id_encomeda integer references encomenda not null,
-	id_produto integer references produto not null,
-	quantidade integer not null
+	id_orders integer references orders not null,
+	id_products integer references products not null,
+	quantity integer not null
 );
 
-create table stock (
+create table stocks (
 	id serial primary key,
-	id_produto integer references produto not null,
-	qt_armazem integer,
-	qt_disponivel integer
+	id_products integer references products not null,
+	qt_warehouse integer,
+	qt_available integer
 );
 
-create table utilizador (
+create table users (
 	id serial primary key,
-	id_cliente integer references cliente,
-	tipo_conta varchar not null,
+	id_clients integer references clients default currval('clients_id_seq'::regclass),
+	account_type varchar not null,
 	username varchar not null UNIQUE,
 	password varchar
 );
 
--- preenchimento da tabela de produtos (TODO - meter codigos produtos
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+-- preenchimento da tabela de products (TODO - meter codigos produtos
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite evaporado',
@@ -58,7 +61,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Magro Sem Lactose',
@@ -68,7 +71,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Meio Gordo',
@@ -78,7 +81,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Meio Gordo Sem Lactose',
@@ -88,7 +91,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Achocolatado Ucal',
@@ -98,7 +101,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Achocolatado Mimosa',
@@ -108,7 +111,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Condensado com Cacau',
@@ -118,7 +121,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Leite Condensado',
@@ -128,7 +131,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Queijo Flamengo Fatiado',
@@ -138,7 +141,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Queijo Mistura de Pimentão',
@@ -148,7 +151,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Queijo Fresco Sem Lactose',
@@ -158,7 +161,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Caldo de Carne',
@@ -168,7 +171,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Carne Picada de Vitelão Biológico',
@@ -178,7 +181,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Carne Picada de Vitela',
@@ -188,7 +191,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Chouriço de Carne Ponte de Lima',
@@ -198,7 +201,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salame Italiano',
@@ -208,7 +211,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salsichas Alemãs Wienerwurst',
@@ -218,7 +221,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Rodelinhas de Salsichas',
@@ -228,7 +231,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salsichas de Peru',
@@ -238,7 +241,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salsichas Frankfurt Aves',
@@ -248,7 +251,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bife do Lombo de Vitela',
@@ -258,7 +261,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bife da Vazia de Vitela',
@@ -268,7 +271,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bife de Peito de Peru',
@@ -278,7 +281,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bifes de Peru do Campo',
@@ -288,7 +291,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Hambúrger de Perú sem Glúten',
@@ -298,7 +301,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Peito de Peru Natura',
@@ -308,7 +311,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Miúdos de Frango do Campo',
@@ -318,7 +321,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Asas de Frango Campo',
@@ -328,7 +331,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Peito de Frango do Campo',
@@ -338,7 +341,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bifes de Frango do Campo',
@@ -348,7 +351,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Hambúger de Frango sem Glúten',
@@ -358,7 +361,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Frango do Campo Fresco Inteiro sem Miúdos',
@@ -368,7 +371,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Hambúrger de Vaca sem Glúten',
@@ -378,7 +381,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bife Novilho Pá/Acém',
@@ -388,7 +391,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Lombos Pescada Ultracongelados',
@@ -398,7 +401,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Pescada Pequena',
@@ -408,7 +411,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Pescada Grande',
@@ -418,7 +421,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Medalhões de Pescada sem Pele Ultracongelados',
@@ -428,7 +431,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Postas de Pescada Nº5 para Cozer Ultracongeladas',
@@ -438,7 +441,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Mimos de Pescada do Cabo Ultracongelados',
@@ -448,7 +451,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salmão em Posta',
@@ -458,7 +461,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Lombos de Salmão',
@@ -468,7 +471,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Salmão',
@@ -478,7 +481,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Lombos de Salmão Ultracongelados',
@@ -488,7 +491,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Patê de Salmão',
@@ -498,7 +501,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Dourada',
@@ -508,7 +511,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Carapau Médio',
@@ -518,7 +521,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Sardinha em óleo picante',
@@ -528,7 +531,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Sardinha Pequena (Petinga)',
@@ -538,7 +541,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Sardinha Congelada',
@@ -548,7 +551,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Truta Salmonada Fresca',
@@ -558,7 +561,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bebida Soja Baunilha',
@@ -568,7 +571,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Bebida Soja Chocolate',
@@ -578,7 +581,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Coca-Cola',
@@ -588,7 +591,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Coca-Cola Zero',
@@ -598,7 +601,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Coca-Cola Lata',
@@ -608,7 +611,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Fanta Laranja',
@@ -618,7 +621,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Fanta Maracujá',
@@ -628,7 +631,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Fanta Ananás',
@@ -638,7 +641,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Frisumo Ananás',
@@ -648,7 +651,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Frisumo Laranja',
@@ -658,7 +661,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Seven Up Lima',
@@ -668,7 +671,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Seven Up Limão',
@@ -678,7 +681,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Vodka Preta',
@@ -688,7 +691,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Vodka',
@@ -698,7 +701,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Cerveja',
@@ -708,7 +711,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Lambrusco',
@@ -718,7 +721,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Sangria',
@@ -728,7 +731,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Champanhe Bruto',
@@ -738,7 +741,7 @@ VALUES (
 	0
 );
 
-INSERT INTO produto (id, nome, tipo, descricao, preco, n_vendas)
+INSERT INTO products (id, name, type, description, price, n_sales)
 VALUES (
 	default,
 	'Espumante Bruto',
@@ -748,212 +751,212 @@ VALUES (
 	0
 );
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 1, 721, 715);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 2, 85, 78);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 3, 290, 290);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 4, 451, 448);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 5, 412, 412);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 6, 505, 501);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 7, 790, 783);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 8, 272, 265);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 9, 754, 747);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 10, 845, 838);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 11, 67, 58);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 12, 471, 466);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 13, 175, 169);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 14, 463, 461);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 15, 956, 954);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 16, 551, 543);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 17, 551, 551);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 18, 701, 699);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 19, 738, 737);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 20, 366, 362);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 21, 498, 493);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 22, 745, 740);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 23, 512, 508);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 24, 337, 331);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 25, 981, 980);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 26, 219, 212);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 27, 713, 704);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 28, 61, 57);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 29, 609, 601);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 30, 486, 483);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 31, 827, 819);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 32, 412, 411);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 33, 758, 753);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 34, 543, 542);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 35, 892, 888);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 36, 635, 629);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 37, 969, 967);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 38, 969, 968);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 39, 657, 652);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 40, 572, 566);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 41, 562, 553);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 42, 855, 852);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 43, 607, 599);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 44, 567, 567);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 45, 75, 72);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 46, 471, 468);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 47, 984, 975);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 48, 545, 539);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 49, 584, 575);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 50, 344, 339);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 51, 719, 716);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 52, 77, 70);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 53, 707, 702);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 54, 869, 866);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 55, 868, 860);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 56, 471, 468);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 57, 543, 539);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 58, 441, 437);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 59, 414, 408);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 60, 593, 585);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 61, 113, 110);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 62, 487, 477);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 63, 915, 912);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 64, 925, 923);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 65, 76, 74);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 66, 510, 507);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 67, 136, 134);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 68, 878, 878);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 69, 78, 7);
 
-INSERT INTO stock (id, id_produto, qt_armazem, qt_disponivel)
+INSERT INTO stocks (id, id_products, qt_warehouse, qt_available)
 VALUES (default, 70, 8, 8);

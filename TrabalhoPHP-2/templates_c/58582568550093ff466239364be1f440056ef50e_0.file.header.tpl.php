@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-14 13:00:05
+/* Smarty version 3.1.30, created on 2016-11-21 12:53:33
   from "/var/www/public/SIEM/TrabalhoPHP-2/templates/common/header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5829b55571a7e1_40509597',
+  'unifunc' => 'content_5832ee4d270139_14974827',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '58582568550093ff466239364be1f440056ef50e' => 
     array (
       0 => '/var/www/public/SIEM/TrabalhoPHP-2/templates/common/header.tpl',
-      1 => 1479128403,
+      1 => 1479732811,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5829b55571a7e1_40509597 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5832ee4d270139_14974827 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,9 +34,12 @@ media/img/logos/icon.png">
   </head>
   <body>
   	<div id="wrapper">
-			<div id="header">
-				<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_ULR']->value;?>
+			<header>
+				<a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/products/list_all.php"><img id="logo" src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-media/img/logos/logo.png" alt="Logotipo"></a>
-			</div><?php }
+media/img/logos/logo.png" alt="Logotype"></a>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/users/register.php">Resgista-te Amigo pf</a>
+			</header>
+<?php }
 }

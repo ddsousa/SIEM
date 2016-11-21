@@ -3,13 +3,13 @@ html, body {
 	padding: 0;
 }
 
-#container {
-	border: 1px solid blue;
-}
-
-#header {
+header {
 	background: #323F4F;
 	top: 0;
+}
+
+#container {
+	border: 1px solid blue;
 }
 
 #logo {
@@ -18,7 +18,7 @@ html, body {
 }
 
 #wrapper {
-	width: 90%;
+	width: 60em;
 	margin: auto;
 }
 
