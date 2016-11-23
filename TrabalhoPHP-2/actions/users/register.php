@@ -2,14 +2,13 @@
   include_once('../../config/init.php');
   include_once($BASE_DIR."database/users.php");
 
-  if(!isset($_POST['name']))     die('Falta de Nome');
-  if(!isset($_POST['address']))  die('Falta de Morada');
-  if(!isset($_POST['zipcode1'])) die('Falta do campo 1 do código postal');
-  if(!isset($_POST['zipcode2'])) die('Falta do campo 2 do código postal');
-  if(!isset($_POST['email']))    die('Falta de Email');
-  if(!isset($_POST['phone']))    die('Falta de número de telefone');
-  if(!isset($_POST['username'])) die('Falta de Username');
-  if(!isset($_POST['password'])) die('Falta de Password');
+  if(!$_POST['name'] || !$_POST['address'] || !$_POST['zipcode1'] || !$_POST['zipcode2'] || !$_POST['email'] || !$_POST['phone'] || !$_POST['username'] || !$_POST['password']) {
+      $_SESSION['error_messages'][] = 'Campos em falta';
+      $_SESSION['form_values'] = $_POST;
+      header("Location: $BASE_URL".'pages/users/register.php');
+      exit;
+    }
+
 
   $name      = strip_tags($_POST['name']);
   $address2  = strip_tags($_POST['address']);

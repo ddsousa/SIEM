@@ -12,3 +12,8 @@
 				<a href="{$BASE_URL}pages/products/list_all.php"><img id="logo" src="{$BASE_URL}media/img/logos/logo.png" alt="Logotype"></a>
         <a href="{$BASE_URL}pages/users/register.php">Resgista-te Amigo pf</a> <!-- TODO - meter isto bonito -->
 			</header>
+			<div id="error_messages">
+			  {foreach $ERROR_MESSAGES as $error}
+			    <div class="error">{$error}</div>
+			  {/foreach}
+			</div>
