@@ -1,1 +1,0 @@
-step10 - login and logout functionalities
