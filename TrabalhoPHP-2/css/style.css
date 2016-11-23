@@ -26,10 +26,23 @@ header {
 	border: 1px solid red;
 	display: inline-block;
 	padding: 2%;
-	margin: auto;
+	margin: 0 auto;
 	width: 20%;
+}
+
+.product-data img {
+	display: block;
+	width: 100%;
 }
 
 .product-img {
 	border: 1px solid black;
+}
+
+.tab-product-data {
+	width: 100%;
+}
+
+.tab-product-data .price {
+	float: right;
 }
