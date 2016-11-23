@@ -8,6 +8,20 @@ header {
 	top: 0;
 }
 
+header form {
+  display:inline;
+  float: right;
+}
+
+header input[type=text],
+header input[type=password] {
+  width: 100px;
+}
+
+header .username {
+  color: white;
+}
+
 #container {
 	border: 1px solid blue;
 }
@@ -44,6 +58,13 @@ header {
 
 .product-img {
 	border: 1px solid black;
+}
+
+.success {
+  background-color: #AAFFAA;
+  padding: 10px;
+  color: #333;
+  font-weight: bold;
 }
 
 .tab-product-data {

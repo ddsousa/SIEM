@@ -21,6 +21,17 @@
   $password  = strip_tags($_POST['password']);
 
   createClient($name, $address, $phone, $email);
-  createUser(0, $username, $password);
+  try {
+    createUser(0, $username, $password);
+  } catch (PDOException $e) {
+    if (strpos($e->getMessage(), 'users_username_key') !== false) {
+      $_SESSION['error_messages'][] = 'O username introduzido já existe';
+    } else {
+      $_SESSION['error_messages'][] = 'Erro ao criar utilizador';
+    }
+    $_SESSION['form_values'] = $_POST;
+    header("Location: $BASE_URL" . 'pages/users/register.php');
+    exit;
+  }
   header("Location: $BASE_URL");
 ?>
