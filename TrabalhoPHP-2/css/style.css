@@ -8,9 +8,21 @@ header {
 	top: 0;
 }
 
+header a {
+	color: white;
+	text-decoration: none;
+}
+
 header form {
   display:inline;
   float: right;
+  margin: 0.5em;
+}
+
+header input[type=submit] {
+	background-color: #4991C8;
+	border: 2px solid #4991C8;
+	color: white;
 }
 
 header input[type=text],
@@ -20,6 +32,17 @@ header input[type=password] {
 
 header .username {
   color: white;
+}
+
+header .register {
+	background-color: #4991C8;
+	border: 2px solid #4991C8;
+	color: white;
+	width: 5em;
+	text-align: center;
+	float: right;
+	margin-left: 0.2em;
+	height: 1.05em;
 }
 
 #container {
