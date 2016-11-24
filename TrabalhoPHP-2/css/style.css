@@ -45,6 +45,26 @@ header .register {
 	height: 1.05em;
 }
 
+label {
+	display: inline-block;
+	width: 8em;
+}
+
+form input[type=text],
+form input[type=email] {
+	width: 25em;
+	margin: 0.2em 0;
+}
+
+form .small {
+	width: 13em !important;
+}
+
+form input[type=submit] {
+	margin-top: 1em;
+	margin-left: 8em;
+}
+
 #container {
 	border: 1px solid blue;
 }
