@@ -6,7 +6,7 @@
 	session_start();
 
 	$BASE_DIR = dirname(__DIR__).'/';
-	$BASE_URL = "http://localhost:8888/SIEM/TrabalhoPHP-2/";
+	include_once($BASE_DIR."config/base_url.php"); // TODO - mudar isto
 
 	include_once($BASE_DIR."database/init_db.php");
 	include_once($BASE_DIR."lib/smarty/Smarty.class.php");
@@ -31,7 +31,7 @@
 		$smarty->assign('FORM_VALUES', $_SESSION['form_values']);
 		unset($_SESSION['form_values']);
 	}
-	//if(isset($_SESSION['username'])) 
+	//if(isset($_SESSION['username']))
 	{
 		$smarty->assign('USERNAME', $_SESSION['username']);
 	}
