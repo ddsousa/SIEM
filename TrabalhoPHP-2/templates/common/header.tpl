@@ -9,7 +9,7 @@
   <body>
   	<div id="wrapper">
 			<header>
-				<a href="{$BASE_URL}pages/products/list_all.php"><img id="logo" src="{$BASE_URL}media/img/logos/logo.png" alt="Logotype"></a>
+				<a href="{$BASE_URL}pages/other/home.php"><img id="logo" src="{$BASE_URL}media/img/logos/logo.png" alt="Logotype"></a>
 				{if $USERNAME}
 					{include file='common/menu_logged_in.tpl'}
 				{else}

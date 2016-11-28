@@ -69,6 +69,16 @@ form input[type=submit] {
 	border: 1px solid blue;
 }
 
+#footer {
+	background: #323F4F;
+	bottom: 0;
+	display: table;
+	height: 30px;
+	margin-left: 5%;
+	position: absolute;
+	width: 90%;
+}
+
 #logo {
 	margin: 10px;
 	width: 20%;
@@ -77,6 +87,23 @@ form input[type=submit] {
 #wrapper {
 	width: 60em;
 	margin: auto;
+}
+
+.details-prod {
+	margin: auto;
+	margin-top: 10%;
+	width: 90%;
+}
+
+.details-prod-left {
+	float: left;
+	width: 30%;
+}
+
+.details-prod-right {
+	float: right;
+	height: 200px;
+	width: 69%;
 }
 
 .developer {
@@ -177,35 +204,7 @@ form input[type=submit] {
 	float: right;
 }
 
-<<<<<<< HEAD
-.details-prod {
-	margin: auto;
-	margin-top: 10%;
-	width: 90%;
-}
-
-.details-prod-left {
-	float: left;
-	width: 30%;
-}
-
-.details-prod-right {
-	float: right;
-	height: 200px;
-	width: 69%;
-}
-
-#footer {
-	background: #323F4F;
-	bottom: 0;
-	display: table;
-	height: 30px;
-	margin-left: 5%;
-	position: absolute;
-	width: 90%;
-=======
 .version {
 	font-size: 2em;
 	font-weight: bold;
->>>>>>> 0d04837f54ae6c6bde279659c95db73ed2949e27
 }
