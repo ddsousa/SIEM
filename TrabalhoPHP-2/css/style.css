@@ -125,3 +125,30 @@ form input[type=submit] {
 .tab-product-data .price {
 	float: right;
 }
+
+.details-prod {
+	margin: auto;
+	margin-top: 10%;
+	width: 90%;
+}
+
+.details-prod-left {
+	float: left;
+	width: 30%;
+}
+
+.details-prod-right {
+	float: right;
+	height: 200px;
+	width: 69%;
+}
+
+#footer {
+	background: #323F4F;
+	bottom: 0;
+	display: table;
+	height: 30px;
+	margin-left: 5%;
+	position: absolute;
+	width: 90%;
+}
