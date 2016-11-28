@@ -1,3 +1,3 @@
 <?php
-	header("Location: pages/products/list_all.php");
+	header("Location: pages/other/home.php");
 ?>

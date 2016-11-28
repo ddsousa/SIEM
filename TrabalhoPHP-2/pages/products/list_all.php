@@ -6,12 +6,14 @@
     $pg = $_GET['pg'];
   } else {
     $pg = 1;
-    echo "aqui";
   }
 
+  $products_most_sold = getMostSoldProducts(); // returns 4 products most sold
   $products = getAllProducts($pg);
   $n_prod = getNumProducts();
 
+  print_r($products_most_sold);
+  $smarty->assign('products_most_sold', $products_most_sold);
   $smarty->assign('products', $products);
   $smarty->assign('n_prod', $n_prod);
   $smarty->display('common/header.tpl');

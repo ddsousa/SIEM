@@ -21,7 +21,8 @@
 		global $conn;
 		$stmt = $conn->prepare('SELECT *
 														FROM products
-														ORDER BY n_sales DESC, name;');
+														ORDER BY n_sales DESC, name
+														LIMIT 4;');
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}

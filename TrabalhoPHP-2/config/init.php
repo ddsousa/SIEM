@@ -16,11 +16,23 @@
 	$smarty->template_dir = $BASE_DIR . 'templates/';
   $smarty->compile_dir = $BASE_DIR . 'templates_c/';
 
-  $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);
-	unset($_SESSION['error_messages']);
-	$smarty->assign('SUCCESS_MESSAGES', $_SESSION['success_messages']);
-	unset($_SESSION['success_messages']);
-	$smarty->assign('FORM_VALUES', $_SESSION['form_values']);
-	unset($_SESSION['form_values']);
-	$smarty->assign('USERNAME', $_SESSION['username']);
+	//if(isset($_SESSION['error_messages']))
+	{
+	  $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);
+		unset($_SESSION['error_messages']);
+	}
+	//if(isset($_SESSION['success_messages']))
+	{
+		$smarty->assign('SUCCESS_MESSAGES', $_SESSION['success_messages']);
+		unset($_SESSION['success_messages']);
+	}
+	//if(isset($_SESSION['form_values']))
+	{
+		$smarty->assign('FORM_VALUES', $_SESSION['form_values']);
+		unset($_SESSION['form_values']);
+	}
+	//if(isset($_SESSION['username'])) 
+	{
+		$smarty->assign('USERNAME', $_SESSION['username']);
+	}
 ?>
