@@ -6,7 +6,7 @@
 	session_start();
 
 	$BASE_DIR = dirname(__DIR__).'/';
-	$BASE_URL = "http://192.168.33.10/SIEM/TrabalhoPHP-2/";
+	$BASE_URL = "http://localhost:8888/SIEM/TrabalhoPHP-2/";
 
 	include_once($BASE_DIR."database/init_db.php");
 	include_once($BASE_DIR."lib/smarty/Smarty.class.php");
