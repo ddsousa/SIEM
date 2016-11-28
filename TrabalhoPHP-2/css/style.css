@@ -79,11 +79,57 @@ form input[type=submit] {
 	margin: auto;
 }
 
+.developer {
+	border: 1px solid red;
+	display: inline-block;
+	text-align: center;
+	width: 49%;
+	margin: 3% auto;
+}
+
+.developer a {
+	color: black;
+	text-decoration: none;
+}
+
+.developer-photo {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+}
+
+.developers {
+	display: inline;
+}
+
 .error {
   background-color: #FFAAAA;
   padding: 10px;
   color: #333;
   font-weight: bold;
+}
+
+.login-info {
+	margin: auto;
+}
+
+.login-info td {
+	font-size: 1.2em;
+	padding: 0 1em;
+}
+
+.optimized-for {
+	margin: 1em;
+}
+
+.optimized-for span {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.optimized-for ul {
+	width: 10em;
+	margin: auto;
 }
 
 .page_numbers {
@@ -92,6 +138,11 @@ form input[type=submit] {
 	display: inline;
 	margin: 0.5em 0.1em;
 	padding: 0.5em
+}
+
+.page-info {
+	text-align: center;
+	width: 100%;
 }
 
 .product-data {
@@ -126,6 +177,7 @@ form input[type=submit] {
 	float: right;
 }
 
+<<<<<<< HEAD
 .details-prod {
 	margin: auto;
 	margin-top: 10%;
@@ -151,4 +203,9 @@ form input[type=submit] {
 	margin-left: 5%;
 	position: absolute;
 	width: 90%;
+=======
+.version {
+	font-size: 2em;
+	font-weight: bold;
+>>>>>>> 0d04837f54ae6c6bde279659c95db73ed2949e27
 }
