@@ -33,4 +33,13 @@
 		$stmt->execute();
 		return $stmt->fetchAll()[0]['count'];
 	}
+
+	function searchProductById($id) {
+		global $conn;
+		$stmt = $conn->prepare('SELECT *
+														FROM products
+														WHERE id = ?;');
+		$stmt->execute(array($id));
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
 ?>
