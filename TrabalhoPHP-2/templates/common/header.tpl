@@ -19,8 +19,10 @@
 				{/if}
 			</header>
 			{include file='common/navbar.tpl'}
-			{if $active_page eq 'Produtos'}
-				{include file='common/prod_type_menu.tpl'}
+			{if isset($active_page)}
+				{if $active_page eq 'Produtos'}
+					{include file='common/prod_type_menu.tpl'}
+				{/if}
 			{/if}
 			<div id="error_messages">
 				{if isset($ERROR_MESSAGES)}
