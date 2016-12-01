@@ -31,9 +31,6 @@
 	if(isset($_SESSION['username'])) {
 		$smarty->assign('USERNAME', $_SESSION['username']);
 	}
-	if(isset($_SESSION['active_page'])) {
-		$smarty->assign('active_page', $_SESSION['active_page']);
-	}
 	if(isset($_SESSION['type'])) {
 		$smarty->assign('type', $_SESSION['type']);
 	}

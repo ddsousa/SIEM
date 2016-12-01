@@ -1,9 +1,9 @@
 <?php
   include_once("../../config/init.php");
-  $_SESSION['active_page'] = 'Produtos';
   include_once($BASE_DIR."database/products.php");
 
   // Page
+  $products_page = true;
   if(isset($_GET['pg'])) {
     $pg = $_GET['pg'];
   } else {
@@ -31,6 +31,7 @@
   $smarty->assign('products', $products);
   $smarty->assign('n_prod', $n_prod);
   $smarty->assign('prod_types', $prod_types);
+  $smarty->assign('products_page', $products_page);
   $smarty->display('common/header.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('products/list.tpl');
