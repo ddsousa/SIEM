@@ -23,9 +23,16 @@
 				{include file='common/prod_type_menu.tpl'}
 			{/if}
 			<div id="error_messages">
-				{if isset($ERROR_MESAGES)}
+				{if isset($ERROR_MESSAGES)}
 				  {foreach $ERROR_MESSAGES as $error}
 				    <div class="error">{$error}</div>
+				  {/foreach}
+				{/if}
+			</div>
+			<div id="success_messages">
+				{if isset($SUCCESS_MESSAGES)}
+				  {foreach $SUCCESS_MESSAGES as $success}
+				    <div class="success">{$success}</div>
 				  {/foreach}
 				{/if}
 			</div>

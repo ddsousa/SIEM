@@ -1,5 +1,5 @@
 <section id="register">
-  <h2>Register</h2>
+  <h2>Registo</h2>
 
   <form action="{$BASE_URL}actions/users/register.php" method="post">
     <label>Nome:</label><input type="text" name="name" placeholder="Insira o seu nome" {if isset($FORM_VALUES.name)} value="{$FORM_VALUES.name}"{/if}><br>
