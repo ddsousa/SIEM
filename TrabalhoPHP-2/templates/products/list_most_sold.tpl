@@ -7,7 +7,7 @@
         <table class="tab-product-data">
           <tr>
             <td>{$product_ms.name}</td>
-            <td class="price">{$product_ms.price}</td>
+            <td class="price">{$product_ms.price}€/un</td>
           </tr>
         </table>
       </article>
