@@ -89,6 +89,10 @@ form input[type=submit] {
 	margin: auto;
 }
 
+.active {
+	background-color: #323F4F;
+}
+
 .details-prod {
 	margin: auto;
 	margin-top: 10%;

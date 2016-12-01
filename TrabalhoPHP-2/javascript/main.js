@@ -1,7 +1,8 @@
 $(document).ready(function() {
-	var selector = '.active li';
-	$(selector).on('click', function(){
-	    $(selector).removeClass('active');
-	    $(this).addClass('active');
+	$('.menu li').on('click', function(){
+	  alert($(this).text());
+	  $('#'+$(this).text()).addClass('active');
+	    /*$(selector).removeClass('active');
+	    $(this).addClass('active');*/
 	});
 });
