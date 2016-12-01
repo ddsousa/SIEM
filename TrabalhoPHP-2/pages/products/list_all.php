@@ -4,14 +4,14 @@
 
   $_SESSION['active_page'] = 'Produtos';
   // Page
-  if($_GET['pg']) {
+  if(isset($_GET['pg'])) {
     $pg = $_GET['pg'];
   } else {
     $pg = 1;
   }
 
   // Product Type
-  if($_GET['type']) {
+  if(isset($_GET['type'])) {
     $type       = $_GET['type'];
     $products   = getProductsByType($pg, $type);
     $n_prod     = getNumProductsByType($type);
