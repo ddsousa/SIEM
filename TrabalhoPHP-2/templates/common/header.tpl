@@ -12,7 +12,7 @@
   	<div id="wrapper">
 			<header>
 				<a href="{$BASE_URL}pages/other/home.php"><img id="logo" src="{$BASE_URL}media/img/logos/logo.png" alt="Logotype"></a>
-				{if $USERNAME}
+				{if isset($USERNAME)}
 					{include file='common/menu_logged_in.tpl'}
 				{else}
 					{include file='common/menu_logged_out.tpl'}
@@ -23,7 +23,9 @@
 				{include file='common/prod_type_menu.tpl'}
 			{/if}
 			<div id="error_messages">
-			  {foreach $ERROR_MESSAGES as $error}
-			    <div class="error">{$error}</div>
-			  {/foreach}
+				{if isset($ERROR_MESAGES)}
+				  {foreach $ERROR_MESSAGES as $error}
+				    <div class="error">{$error}</div>
+				  {/foreach}
+				{/if}
 			</div>
