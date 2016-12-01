@@ -6,7 +6,6 @@
 
   $smarty->assign('products_most_sold', $products_most_sold);
   $smarty->display('common/header.tpl');
-  $smarty->display('common/navbar.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('other/home.tpl');
   $smarty->display('common/footer.tpl');

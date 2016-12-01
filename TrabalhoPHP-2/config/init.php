@@ -35,4 +35,6 @@
 	{
 		$smarty->assign('USERNAME', $_SESSION['username']);
 	}
+	$smarty->assign('active_page', $_SESSION['active_page']);
+	$smarty->assign('type', $_SESSION['type']);
 ?>

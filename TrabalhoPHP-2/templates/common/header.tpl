@@ -18,6 +18,10 @@
 					{include file='common/menu_logged_out.tpl'}
 				{/if}
 			</header>
+			{include file='common/navbar.tpl'}
+			{if $active_page eq 'Produtos'}
+				{include file='common/prod_type_menu.tpl'}
+			{/if}
 			<div id="error_messages">
 			  {foreach $ERROR_MESSAGES as $error}
 			    <div class="error">{$error}</div>

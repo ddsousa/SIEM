@@ -4,5 +4,10 @@
   </div>
 {/for}
 <div class="page_numbers">
-  <a href="{$BASE_URL}pages/products/list_all.php?pg=-1">Todas</a>
+	{if isset($smarty.session.type)}
+		<a href="{$BASE_URL}pages/products/list_all.php?pg=-1&type={$smarty.session.type}">Todas</a>
+	{else}
+  	<a href="{$BASE_URL}pages/products/list_all.php?pg=-1">Todas</a>
+  {/if}
+	}
 </div>
