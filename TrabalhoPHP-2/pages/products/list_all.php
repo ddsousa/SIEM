@@ -1,8 +1,8 @@
 <?php
   include_once("../../config/init.php");
+  $_SESSION['active_page'] = 'Produtos';
   include_once($BASE_DIR."database/products.php");
 
-  $_SESSION['active_page'] = 'Produtos';
   // Page
   if(isset($_GET['pg'])) {
     $pg = $_GET['pg'];
@@ -13,6 +13,7 @@
   // Product Type
   if(isset($_GET['type'])) {
     $type       = $_GET['type'];
+    $_SESSION['type'] = $type;
     $products   = getProductsByType($pg, $type);
     $n_prod     = getNumProductsByType($type);
   } else {

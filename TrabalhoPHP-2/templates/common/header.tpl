@@ -20,7 +20,8 @@
 			</header>
 			{include file='common/navbar.tpl'}
 			{if isset($active_page)}
-				{if $active_page eq 'Produtos'}
+				{if $active_page eq "Produtos"}
+					<p>{$active_page}</p>
 					{include file='common/prod_type_menu.tpl'}
 				{/if}
 			{/if}

@@ -16,8 +16,6 @@
 	$smarty->template_dir = $BASE_DIR . 'templates/';
   $smarty->compile_dir = $BASE_DIR . 'templates_c/';
 
-	//$_SESSION['error_messages'][]   = "";
-	//$_SESSION['success_messages'][] = "";
 	if(isset($_SESSION['error_messages'])) {
 	  $smarty->assign('ERROR_MESSAGES', $_SESSION['error_messages']);
 		unset($_SESSION['error_messages']);

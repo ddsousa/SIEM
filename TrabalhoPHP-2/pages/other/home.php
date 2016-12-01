@@ -2,6 +2,7 @@
   include_once("../../config/init.php");
   include_once($BASE_DIR."database/products.php");
 
+	$_SESSION['active_page'] = 'Home';
   $products_most_sold = getMostSoldProducts();
 
   $smarty->assign('products_most_sold', $products_most_sold);
