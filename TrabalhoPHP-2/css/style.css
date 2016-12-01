@@ -129,6 +129,19 @@ form input[type=submit] {
 	display: inline;
 }
 
+.download-icons {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.download-icons img {
+	border: 1px solid red;
+	height: 10em;
+	padding: 0 7%;
+	margin: 0 auto;
+	display: inline-block;
+}
+
 .error {
   background-color: #FFAAAA;
   padding: 10px;
@@ -143,6 +156,33 @@ form input[type=submit] {
 .login-info td {
 	font-size: 1.2em;
 	padding: 0 1em;
+}
+
+.menu li a {
+	color: white;
+	margin-left: 0;
+	text-decoration: none;
+}
+
+.menu li {
+	border: 1px solid red;
+	display: inline;
+	padding: 0.5em 1.5em;
+	margin: 0;
+}
+.menu a.selected:link, .menu a.selected:active {  
+	background-color: #fff;
+}
+
+.menu ul {
+	border: 1px solid red;
+	list-style-type: none;
+	margin: 0;
+	padding: 0.5em 0;
+}
+
+.navbar {
+	background-color: #4991C8;
 }
 
 .optimized-for {

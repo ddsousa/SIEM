@@ -12,11 +12,11 @@
   $products = getAllProducts($pg);
   $n_prod = getNumProducts();
 
-  print_r($products_most_sold);
   $smarty->assign('products_most_sold', $products_most_sold);
   $smarty->assign('products', $products);
   $smarty->assign('n_prod', $n_prod);
   $smarty->display('common/header.tpl');
+  $smarty->display('common/navbar.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('products/list.tpl');
   $smarty->display('products/list_page_numbers.tpl');
