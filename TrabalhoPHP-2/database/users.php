@@ -8,16 +8,21 @@
   function createUser($permissions, $username, $password) {
     global $conn;
     $stmt = $conn->prepare("INSERT INTO users VALUES (default, default, ?, ?, ?)");
-    $stmt->execute(array($permissions, $username, sha1($password)));
+    $stmt->execute(array($permissions, $username, password_hash($password, PASSWORD_BCRYPT)));
   }
 
   function isLoginCorrect($username, $password) {
     global $conn;
     $stmt = $conn->prepare("SELECT *
                             FROM users
-                            WHERE username = ? AND password = ?");
-    $stmt->execute(array($username, sha1($password)));
-    return $stmt->fetch() == true;
+                            WHERE username = ?");
+    $stmt->execute(array($username));
+    $user = $stmt->fetch();
+    
+    if(!$user) 
+      return false;
+    
+    return password_verify($password, $user['password']);
   }
 
   function getClientId($username) {
