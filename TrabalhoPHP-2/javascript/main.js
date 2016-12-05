@@ -1,8 +1,5 @@
 $(document).ready(function() {
-	$('.menu li').on('click', function(){
-	  //alert($(this).text());
-	  $('#'+$(this).text()).addClass('active');
-	    /*$(selector).removeClass('active');
-	    $(this).addClass('active');*/
-	});
+
+	var current = window.location.href.substring(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('.'));
+	$('#nav_' + current).addClass('active');
 });
