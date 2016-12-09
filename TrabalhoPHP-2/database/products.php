@@ -75,11 +75,20 @@
 		return $stmt->fetchAll();
 	}
 
-	function getNumProducts() {
+	function getNumProducts($lower_lim, $upper_lim) {
 		global $conn;
+		$query_where_aux = "";
+		if($lower_lim && $upper_lim) {
+			$query_where_aux = "WHERE price >= ? AND price <= ? ";
+			$query_values_array = array($lower_lim, $upper_lim);
+		}
 		$stmt = $conn->prepare('SELECT COUNT(*)
-														FROM products;');
-		$stmt->execute();
+														FROM products '.$query_where_aux.';');
+		if($lower_lim && $upper_lim) {
+			$stmt->execute($query_values_array);
+		} else {
+			$stmt->execute();
+		}
 		return $stmt->fetchAll()[0]['count'];
 	}
 

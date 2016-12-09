@@ -25,14 +25,11 @@
     $_SESSION['type'] = $type;
     $products         = getProductsByType($pg, $type, $lower_lim, $upper_lim);
     $n_prod           = getNumProductsByType($type, $lower_lim, $upper_lim);
-    $smarty->assign('type', $type);
   } else {
     unset($_SESSION['type']);
-    if(isset($type)) {
-      $smarty->clear_assign('type');
-    }
+    $type       = "";
     $products   = getAllProducts($pg, $lower_lim, $upper_lim);
-    $n_prod     = getNumProducts();
+    $n_prod     = getNumProducts($lower_lim, $upper_lim);
   }
 
 
@@ -44,6 +41,7 @@
   $smarty->assign('n_prod', $n_prod);
   $smarty->assign('prod_types', $prod_types);
   $smarty->assign('products_page', $products_page);
+  $smarty->assign('type', $type); 
   $smarty->display('common/header.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('products/filters.tpl');
