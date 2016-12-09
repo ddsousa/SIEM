@@ -96,7 +96,10 @@ form input[type=submit] {
 }
 
 .active {
-	background-color: #323F4F;
+	background-color: #323F4F !important;
+}
+.active a {
+	color: white !important;
 }
 
 .details-prod {
@@ -215,6 +218,11 @@ form input[type=submit] {
 	display: inline;
 	margin: 0.5em 0.1em;
 	padding: 0.5em
+}
+
+.page_numbers a {
+	color: #323F4F;
+	text-decoration: none;
 }
 
 .page-info {
