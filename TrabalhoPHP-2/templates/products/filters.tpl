@@ -1,6 +1,8 @@
 <div class="price-filter">
 	{if isset($type)}
-		<form method='POST' action="{$BASE_URL}pages/products/list_all.php?type={$type}&">
+		{if $type != ""}
+			<form method='POST' action="{$BASE_URL}pages/products/list_all.php?type={$type}&">
+		{/if}
 	{else}
 		<form method='POST' action="{$BASE_URL}pages/products/list_all.php">
 	{/if}

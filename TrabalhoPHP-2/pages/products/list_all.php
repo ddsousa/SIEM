@@ -24,10 +24,13 @@
     $type             = $_GET['type'];
     $_SESSION['type'] = $type;
     $products         = getProductsByType($pg, $type, $lower_lim, $upper_lim);
-    $n_prod           = getNumProductsByType($type);
-  $smarty->assign('type', $type);
+    $n_prod           = getNumProductsByType($type, $lower_lim, $upper_lim);
+    $smarty->assign('type', $type);
   } else {
     unset($_SESSION['type']);
+    if(isset($type)) {
+      $smarty->clear_assign('type');
+    }
     $products   = getAllProducts($pg, $lower_lim, $upper_lim);
     $n_prod     = getNumProducts();
   }

@@ -83,14 +83,21 @@
 		return $stmt->fetchAll()[0]['count'];
 	}
 
-	function getNumProductsByType($type) {
+	function getNumProductsByType($type, $lower_lim, $upper_lim) {
 		global $conn;
 		if(!$type)
 			die('Type missing');
+		$query_values_array = array($type);
+		$query_where_aux = "";
+		if($lower_lim && $upper_lim) {
+			$query_where_aux = "AND price >= ? AND price <= ? ";
+			array_push($query_values_array, $lower_lim);
+			array_push($query_values_array, $upper_lim);
+		}
 		$stmt = $conn->prepare('SELECT COUNT(*)
 														FROM products
-														WHERE type = ?;');
-		$stmt->execute(array($type));
+														WHERE type = ? '.$query_where_aux.';');
+		$stmt->execute($query_values_array);
 		return $stmt->fetchAll()[0]['count'];
 	}
 
