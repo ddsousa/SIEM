@@ -12,7 +12,7 @@
 			$limit  = 8;
 			$offset = ($pg-1)*8;
 		} else {
-			$limit  = getNumProducts();
+			$limit  = getNumProducts($lower_lim, $upper_lim);
 			$offset = 0;
 		}
 		if(isset($query_values_array)) {
