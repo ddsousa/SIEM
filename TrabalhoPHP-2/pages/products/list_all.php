@@ -17,6 +17,9 @@
   if(isset($_POST['lower_lim']) && isset($_POST['upper_lim'])) {
     $lower_lim = $_POST['lower_lim'];
     $upper_lim = $_POST['upper_lim'];
+  } else if (isset($_GET['lower_lim']) && isset($_GET['upper_lim'])) {
+    $lower_lim = $_GET['lower_lim'];
+    $upper_lim = $_GET['upper_lim'];
   }
 
   // Product Type
@@ -41,7 +44,9 @@
   $smarty->assign('n_prod', $n_prod);
   $smarty->assign('prod_types', $prod_types);
   $smarty->assign('products_page', $products_page);
-  $smarty->assign('type', $type); 
+  $smarty->assign('type', $type);
+  $smarty->assign('lower_lim', $lower_lim);
+  $smarty->assign('upper_lim', $upper_lim);
   $smarty->display('common/header.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('products/filters.tpl');
