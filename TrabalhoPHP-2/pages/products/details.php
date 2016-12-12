@@ -9,7 +9,7 @@
   }
 
   $product = searchProductById($id_product);
-
+  
   $smarty->assign('product', $product);
 
   $smarty->display('common/header.tpl');

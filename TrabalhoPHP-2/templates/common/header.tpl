@@ -4,6 +4,7 @@
     <title>Oceano Hipermercados</title>
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
     <link rel="icon" href="{$BASE_URL}media/img/logos/icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="{$BASE_URL}javascript/main.js"></script>
     <meta charset="utf-8">

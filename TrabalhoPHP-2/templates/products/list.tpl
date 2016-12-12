@@ -6,7 +6,7 @@
         <br>
         <table class="tab-product-data">
           <tr>
-            <td>{$product.name}</td>
+            <td><a href="{$BASE_URL}pages/products/details.php?id={$product.id}">{$product.name}</a></td>
             <td class="price">{$product.price}€/un</td>
           </tr>
         </table>
