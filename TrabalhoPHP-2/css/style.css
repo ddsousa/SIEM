@@ -39,7 +39,7 @@ header .username {
   color: white;
 }
 
-header .register {
+header .mybtn {
 	background-color: #4991C8;
 	border: 2px solid #4991C8;
 	color: white;
@@ -49,6 +49,12 @@ header .register {
 	margin-left: 0.2em;
 	vertical-align: center;
 	height: 1.05em;
+}
+
+header .logged_in {
+	display: inline-block;
+	float: right;
+	margin: 0.5em;
 }
 
 label {
