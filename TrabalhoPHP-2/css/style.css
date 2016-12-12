@@ -75,6 +75,10 @@ form input[type=submit] {
 	border: 1px solid blue;
 }
 
+#error_messages a {
+  text-decoration: none;
+}
+
 #footer {
 	background: #323F4F;
 	bottom: 0;
@@ -88,6 +92,10 @@ form input[type=submit] {
 #logo {
 	margin: 10px;
 	width: 20%;
+}
+
+#success_messages a {
+  text-decoration: none;
 }
 
 #wrapper {

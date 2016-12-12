@@ -22,4 +22,8 @@ $(document).ready(function() {
 
 		$('#pg_' + page_num).addClass('active');
 	}
+
+	$('.close').click(function() {
+    $(this).parent().fadeOut();
+  });
 });
