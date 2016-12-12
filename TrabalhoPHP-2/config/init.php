@@ -24,6 +24,10 @@
 		$smarty->assign('SUCCESS_MESSAGES', $_SESSION['success_messages']);
 		unset($_SESSION['success_messages']);
 	}
+	if(isset($_SESSION['field_errors'])) {
+		$smarty->assign('FIELD_ERRORS', $_SESSION['field_errors']);
+		unset($_SESSION['field_errors']);
+	}
 	if(isset($_SESSION['form_values'])) {
 		$smarty->assign('FORM_VALUES', $_SESSION['form_values']);
 		unset($_SESSION['form_values']);
