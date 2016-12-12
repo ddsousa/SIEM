@@ -5,6 +5,18 @@
     $stmt->execute(array($name, $address, $phone, $email));
   }
 
+  function userExists($username) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute(array($username));
+
+    $user = $stmt->fetch();
+
+    if(!$user) return false;
+    else       return true;
+  }
+
   function createUser($permissions, $username, $password) {
     global $conn;
     $stmt = $conn->prepare("INSERT INTO users VALUES (default, default, ?, ?, ?)");
@@ -18,10 +30,10 @@
                             WHERE username = ?");
     $stmt->execute(array($username));
     $user = $stmt->fetch();
-    
-    if(!$user) 
+
+    if(!$user)
       return false;
-    
+
     return password_verify($password, $user['password']);
   }
 
