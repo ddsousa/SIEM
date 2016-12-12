@@ -1,6 +1,16 @@
 html, body {
+	font-family: 'Ubuntu', Arial;
 	margin:  0;
 	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: #4991C8;
 }
 
 header {
@@ -43,12 +53,13 @@ header .mybtn {
 	background-color: #4991C8;
 	border: 2px solid #4991C8;
 	color: white;
-	width: 5em;
-	text-align: center;
 	float: right;
+	font-size: 0.9em;
+	height: 1.2em;
 	margin-left: 0.2em;
 	vertical-align: center;
-	height: 1.05em;
+	text-align: center;
+	width: 5em;
 }
 
 header .logged_in {
@@ -70,6 +81,10 @@ form input[type=email] {
 
 form .small {
 	width: 13em !important;
+}
+
+form .ultra-small {
+	width: 3em !important;
 }
 
 form input[type=submit] {
@@ -100,6 +115,16 @@ form input[type=submit] {
 	width: 20%;
 }
 
+#product h4 {
+	margin: 0;
+	padding: 0;
+}
+
+#product p {
+	margin: 0.5em 0;
+	padding: 0;
+}
+
 #success_messages a {
   text-decoration: none;
 }
@@ -114,6 +139,12 @@ form input[type=submit] {
 }
 .active a {
 	color: white !important;
+}
+
+.btn-princ {
+	background-color: #4991C8;
+	border: 2px solid #4991C8;
+	margin-left: 0 !important;
 }
 
 .details-prod {
@@ -156,6 +187,18 @@ form input[type=submit] {
 	display: inline;
 }
 
+.details-prod-right {
+	border: 1px solid red;
+	position: relative;
+}
+
+.details-prod-right .order {
+	border: 1px solid red;
+	bottom: 0px;
+	position: absolute;
+	display: inline-block;
+}
+
 .download-icons {
 	width: 100%;
 	margin: 0 auto;
@@ -174,6 +217,12 @@ form input[type=submit] {
   padding: 10px;
   color: #333;
   font-weight: bold;
+}
+
+.img-produto {
+	border: 1px solid black;
+	height: 200px;
+	width: 200px;
 }
 
 .login-info {
