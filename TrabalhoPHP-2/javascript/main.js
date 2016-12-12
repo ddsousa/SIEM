@@ -14,7 +14,7 @@ $(document).ready(function() {
 		if(window.location.href.indexOf('pg=') > 0) {
 			if(window.location.href.indexOf('&') > 0)
 				var page_num = window.location.href.substring(window.location.href.lastIndexOf('pg=')+3, window.location.href.indexOf('&'));
-			else 
+			else
 				var page_num = window.location.href.substring(window.location.href.lastIndexOf('pg=')+3);
 		} else {
 			page_num = 1;
@@ -22,8 +22,76 @@ $(document).ready(function() {
 
 		$('#pg_' + page_num).addClass('active');
 	}
-
-	$('.close').click(function() {
-    $(this).parent().fadeOut();
-  });
 });
+
+$('.close').click(function() {
+    $(this).parent().fadeOut();
+});
+
+function hasNumber(address) {
+	return /\d/.test(address);
+}
+
+function validateForm() {
+	var flagSubmitOk  = true;
+	var form          = document.register_form;
+	var username      = form.username.value;
+	var password      = form.password.value;
+	var name          = form.name.value;
+	var name_space    = form.name.value.indexOf(" ");
+	var zipcode1      = form.zipcode1.value;
+	var zipcode2      = form.zipcode2.value;
+	var address       = form.address.value;
+	var email       = form.email.value;
+	var email_at      = form.email.value.indexOf("@");
+	var email_dot     = form.email.value.indexOf(".");
+	var phone         = form.phone.value;
+
+	$('.field_error').html('');
+
+	// validate username
+	if(username.length<4 || username.length>10) {
+		$('.field_error#username').html('O username deverá conter no mínimo 4 caracteres e no máximo 10 caracteres');
+		flagSubmitOk = false;
+	}
+
+	// validate password
+	if(password.length<5 || password.length>24) {
+		$('.field_error#password').html('A password deverá conter no mínimo 5 caracteres e no máximo 24 caracteres');
+		flagSubmitOk = false;
+	}
+
+	// valid name
+	if(name.length<10) {
+		$('.field_error#name').html('O campo de nome deve conter no mínimo 10 caracteres');
+		flagSubmitOk = false;
+	} else if(name_space == -1) {
+		$('.field_error#name').html('Por favor introduza o primeiro e o último nome');
+		flagSubmitOk = false;
+	}
+
+	// validate address
+	if(!hasNumber(address) || address.length<5) {
+		$('.field_error#address').html('A morada também deve conter o número da porta');
+		flagSubmitOk = false;
+	}
+
+	// validate zip code
+	if(zipcode1<1000 || zipcode1>9980 || zipcode2<1) {
+		$('.field_error#zipcode').html('Código postal incorrecto');
+		flagSubmitOk = false;
+	}
+
+	if(email_at<0 || email_dot<0) {
+		$('.field_error#email').html('E-mail inválido');
+		flagSubmitOk = false;
+	}
+
+	// validate phone
+	if(phone.toString().length<9 || isNaN(parseFloat(phone))) {
+		$('.field_error#phone').html('O número de telefone deve conter exatamente 9 dígitos');
+		flagSubmitOk = false;
+	}
+
+	return flagSubmitOk;
+}
