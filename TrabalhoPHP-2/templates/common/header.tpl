@@ -27,14 +27,14 @@
 			<div id="error_messages">
 				{if isset($ERROR_MESSAGES)}
 				  {foreach $ERROR_MESSAGES as $error}
-				    <div class="error">{$error}</div>
+				    <a class="close" href="#"><div class="error">{$error}</div></a>
 				  {/foreach}
 				{/if}
 			</div>
 			<div id="success_messages">
 				{if isset($SUCCESS_MESSAGES)}
 				  {foreach $SUCCESS_MESSAGES as $success}
-				    <div class="success">{$success}</div>
+				    <a class="close" href="#"><div class="success">{$success}</div></a>
 				  {/foreach}
 				{/if}
 			</div>
