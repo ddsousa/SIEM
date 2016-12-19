@@ -22,8 +22,35 @@ $(document).ready(function() {
 
 		$('#pg_' + page_num).addClass('active');
 	}
+
+	// Check username availability
+	$("form[name='register_form'] > input[name='username']").on('input', function() {
+		if(document.register_form.username.value.length >= 4) {
+			// execute with delay?
+			checkUsername();
+		} else {
+			$('.field_error#username').html('');
+		}
+	});
+
 });
 
+// Ajax check is username already exists
+function checkUsername() {
+	var username = document.register_form.username.value;
+
+  $.getJSON("../../api/users/userexists.php", {username: username}, function(data) {
+  	if(data == true) {
+			$('.field_error#username').html('Username não disponível');
+			$('.field_error#username').css({"font-family": "inital", "color": "red"});
+		} else {
+			$('.field_error#username').html('&#252;');
+			$('.field_error#username').css({"font-family": "wingdings", "color": "green"});
+		}
+  });
+}
+
+// Close error/success messages
 $('.close').click(function() {
     $(this).parent().fadeOut();
 });
