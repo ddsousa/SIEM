@@ -33,6 +33,11 @@ $(document).ready(function() {
 		}
 	});
 
+	// Close error/success messages
+	$('.close').click(function() {
+	    $(this).parent().fadeOut();
+	});
+
 });
 
 // Ajax check is username already exists
@@ -49,11 +54,6 @@ function checkUsername() {
 		}
   });
 }
-
-// Close error/success messages
-$('.close').click(function() {
-    $(this).parent().fadeOut();
-});
 
 function hasNumber(address) {
 	return /\d/.test(address);
