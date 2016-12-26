@@ -65,6 +65,16 @@
 	  return $stmt->fetchAll();
 	}
 
+	function getProductByID($id) {
+		global $conn;
+
+		$stmt = $conn->prepare('SELECT *
+														FROM products
+														WHERE id = ?;');
+		$stmt->execute(array($id));
+		return $stmt->fetch();
+	}
+
 	function getMostSoldProducts() {
 		global $conn;
 		$stmt = $conn->prepare('SELECT *

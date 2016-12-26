@@ -1,5 +1,6 @@
 html, body {
 	font-family: 'Ubuntu', Arial;
+	height: 100%;
 	margin:  0;
 	padding: 0;
 }
@@ -11,6 +12,15 @@ a {
 
 a:hover {
 	color: #4991C8;
+}
+
+footer {
+	background: #323F4F;
+	bottom: 0;
+	display: table;
+	height: 30px;
+	position: absolute;
+	width: 60em;
 }
 
 header {
@@ -56,8 +66,6 @@ header .logged_in, header .logged_out {
 	margin: 0.5em;
 }
 
-
-
 label {
 	display: inline-block;
 	width: 8em;
@@ -89,20 +97,11 @@ form input[type=submit] {
 
 #container {
 	border: 1px solid blue;
+	padding-bottom: 50px;
 }
 
 #error_messages a {
   text-decoration: none;
-}
-
-#footer {
-	background: #323F4F;
-	bottom: 0;
-	display: table;
-	height: 30px;
-	margin-left: 5%;
-	position: absolute;
-	width: 90%;
 }
 
 #logo {
@@ -127,6 +126,8 @@ form input[type=submit] {
 #wrapper {
 	width: 60em;
 	margin: auto;
+	min-height: 100%;
+	position: relative;
 }
 
 .active {
@@ -149,6 +150,12 @@ form input[type=submit] {
 	margin-left: 0.6em !important;
 	margin-top: 10px !important;
 	width: 4em !important;
+}
+
+.centered {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 .details-prod {
@@ -321,6 +328,16 @@ form input[type=submit] {
   font-weight: bold;
 }
 
+.tab-blue {
+	margin-top: 2em;
+	width: 100%;
+}
+
+.tab-blue td {
+		height: 1.5em;
+		vertical-align: middle;
+}
+
 .tab-product-data {
 	width: 100%;
 }
@@ -332,4 +349,9 @@ form input[type=submit] {
 .version {
 	font-size: 2em;
 	font-weight: bold;
+}
+
+.with-separator {
+	border-right: 1px solid white;
+	padding-right: 5px;
 }

@@ -39,3 +39,4 @@
 				  {/foreach}
 				{/if}
 			</div>
+			<div id="container">
