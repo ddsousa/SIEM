@@ -1,5 +1,5 @@
 <?php
-	function getAllProducts($pg, $lower_lim, $upper_lim) {
+	function getAllProducts($pg, $lower_lim, $upper_lim, $sort_by) {
 		global $conn;
 		$query = "SELECT *
 							FROM products
@@ -24,8 +24,16 @@
 			$query_values_array = array($limit, $offset);
 		}
 
-		$query .= 'ORDER BY name ASC
-		 					 LIMIT ? OFFSET ?;';
+		if($sort_by=='name') {
+			$query .= 'ORDER BY name ASC';
+		}
+		else if($sort_by=='price_asc') {
+			$query .= 'ORDER BY price ASC';
+		}
+		else if($sort_by=='price_desc') {
+			$query .= 'ORDER BY price DESC';
+		}
+		$query .= ' LIMIT ? OFFSET ?;';
 
 		$stmt = $conn->prepare($query);
 
@@ -33,7 +41,7 @@
 	  return $stmt->fetchAll();
 	}
 
-	function getProductsByType($pg, $type, $lower_lim, $upper_lim) {
+	function getProductsByType($pg, $type, $lower_lim, $upper_lim, $sort_by) {
 		global $conn;
 		$query = "SELECT *
 							FROM products
@@ -62,8 +70,16 @@
 		array_push($query_values_array, $limit);
 		array_push($query_values_array, $offset);
 
-		$query .= 'ORDER BY name ASC
-							 LIMIT ? OFFSET ? ;';
+		if($sort_by=='name') {
+			$query .= 'ORDER BY name ASC';
+		}
+		else if($sort_by=='price_asc') {
+			$query .= 'ORDER BY price ASC';
+		}
+		else if($sort_by=='price_desc') {
+			$query .= 'ORDER BY price DESC';
+		}
+		$query .= ' LIMIT ? OFFSET ?;';
 
 		$stmt = $conn->prepare($query);
 		$stmt->execute($query_values_array);

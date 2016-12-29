@@ -13,6 +13,12 @@
     $pg = 1;
   }
 
+  // sort
+  $sort_by = null;
+  if(isset($_GET['sort_by'])) {
+    $sort_by = $_GET['sort_by'];
+  }
+
   // Price filter
   if(isset($_POST['lower_lim']) && isset($_POST['upper_lim'])) {
     $lower_lim = $_POST['lower_lim'];
@@ -26,12 +32,12 @@
   if(isset($_GET['type'])) {
     $type             = $_GET['type'];
     $_SESSION['type'] = $type;
-    $products         = getProductsByType($pg, $type, $lower_lim, $upper_lim);
+    $products         = getProductsByType($pg, $type, $lower_lim, $upper_lim, $sort_by);
     $n_prod           = getNumProductsByType($type, $lower_lim, $upper_lim);
   } else {
     unset($_SESSION['type']);
     $type       = "";
-    $products   = getAllProducts($pg, $lower_lim, $upper_lim);
+    $products   = getAllProducts($pg, $lower_lim, $upper_lim, $sort_by);
     $n_prod     = getNumProducts($lower_lim, $upper_lim);
   }
 
