@@ -12,7 +12,8 @@
         <form method="POST" action="{$BASE_URL}actions/products/cart/add_product.php?prod_id={$product.id}">
           <input class="ultra-small" type="text" name="prod_quantity" value="1">
           Unid.
-          <input type="submit" value="+Adicionar ao carrinho" class="btn-princ">
+          <!--<input type="submit" value="Adicionar ao carrinho" class="btn-princ">-->
+          <button type="submit" name="btn-add-cart" class="btn-princ"><i class="fa fa-cart-plus"aria-hidden="true"></i> Adicionar ao carrinho</button>
         </form>
       </div>
     </div>

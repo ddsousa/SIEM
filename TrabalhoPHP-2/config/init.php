@@ -38,4 +38,7 @@
 	if(isset($_SESSION['type'])) {
 		$smarty->assign('type', $_SESSION['type']);
 	}
+
+	$config['date_time'] = '%Y/%m/%d %H:%M:%S';
+	$smarty->assign('config', $config);
 ?>

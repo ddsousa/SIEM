@@ -1,17 +1,18 @@
 <table class="tab-blue">
 	<tr>
-		<td>Número Encomenda</td>
-		<td>Estado</td>
-		<td>Data de Encomenda</td>
-		<td>Número artigos</td>
-		<td>Preço Total</td>
+		<th>Número Encomenda</th>
+		<th>Estado</th>
+		<th>Data de Encomenda</th>
+		<th>Número artigos</th>
+		<th>Preço Total</th>
 	</tr>
 	{foreach $client_orders as $order}
 		<tr>
 			<td>{$order['num']}</td>
 			<td>{$order['state']}</td>
-			<td>{$order['order_date']}</td>
-			<td>preco_total</td>
+			<td>{$order['order_date']|date_format:$config.date_time}</td>
+			<td>{$order['num_products']}</td>
+			<td>{$order['total_price']}</td>
 		</tr>
 	{/foreach}
 </table>
