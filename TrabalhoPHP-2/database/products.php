@@ -1,10 +1,12 @@
 <?php
 	function getAllProducts($pg, $lower_lim, $upper_lim) {
 		global $conn;
-		$query_where_aux          = "";
+		$query = "SELECT *
+							FROM products
+							WHERE 1=1";
 
 		if($lower_lim && $upper_lim) {
-			$query_where_aux = $query_where_aux . "WHERE price >= ? AND price <= ? ";
+			$query .= "AND price >= ? AND price <= ? ";
 			$query_values_array = array($lower_lim, $upper_lim);
 		}
 
@@ -22,25 +24,29 @@
 			$query_values_array = array($limit, $offset);
 		}
 
-		$stmt = $conn->prepare('SELECT *
-                          	FROM products '.$query_where_aux.
-                           'ORDER BY name ASC
-														LIMIT ? OFFSET ?;');
-														
+		$query .= 'ORDER BY name ASC
+		 					 LIMIT ? OFFSET ?;';
+
+		$stmt = $conn->prepare($query);
+
 		$stmt->execute($query_values_array);
 	  return $stmt->fetchAll();
 	}
-	
+
 	function getProductsByType($pg, $type, $lower_lim, $upper_lim) {
 		global $conn;
-		$query_where_aux          = "";
+		$query = "SELECT *
+							FROM products
+							WHERE 1=1";
 
 		if(!$type)
 			die('Type missing');
+
+		$query .= " AND type = ?";
 		$query_values_array = array($type);
 
 		if($lower_lim && $upper_lim) {
-			$query_where_aux = $query_where_aux . "AND price >= ? AND price <= ? ";
+			$query .= " AND price >= ? AND price <= ? ";
 			array_push($query_values_array, $lower_lim);
 			array_push($query_values_array, $upper_lim);
 		}
@@ -56,13 +62,12 @@
 		array_push($query_values_array, $limit);
 		array_push($query_values_array, $offset);
 
-		$stmt = $conn->prepare('SELECT *
-                          	FROM products
-                          	WHERE type = ? '.$query_where_aux.'
-														ORDER BY name ASC
-														LIMIT ? OFFSET ? ;');
-	  $stmt->execute($query_values_array);
-	  return $stmt->fetchAll();
+		$query .= 'ORDER BY name ASC
+							 LIMIT ? OFFSET ? ;';
+
+		$stmt = $conn->prepare($query);
+		$stmt->execute($query_values_array);
+		return $stmt->fetchAll();
 	}
 
 	function getProductByID($id) {

@@ -49,7 +49,7 @@
   $smarty->assign('upper_lim', $upper_lim);
   $smarty->display('common/header.tpl');
   $smarty->display('products/list_most_sold.tpl');
-  $smarty->display('products/filters.tpl');
+  $smarty->display('common/hr.tpl');
   $smarty->display('products/list.tpl');
   $smarty->display('products/list_page_numbers.tpl');
   $smarty->display('common/footer.tpl');
