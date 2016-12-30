@@ -31,9 +31,9 @@
 
 	<select id="filter-sort" class="dropdown" onchange="sortProductsBy(this, '{$type}'), '{$lower_lim}', '{$upper_lim}'">
 		<option disabled selected>Ordenar</option>
-		<option value="price_asc">Preço mais baixo</option>
-		<option value="price_desc">Preço mais alto</option>
-		<option value="name">Nome</option>
+		<option value="price_asc" {if isset($sort_by)}{if $sort_by eq 'price_asc'}selected{/if}{/if}>Preço mais baixo</option>
+		<option value="price_desc" {if isset($sort_by)}{if $sort_by eq 'price_desc'}selected{/if}{/if}>Preço mais alto</option>
+		<option value="name" {if isset($sort_by)}{if $sort_by eq 'name'}selected{/if}{/if}>Nome</option>
 		<option value=""></option>
 	</select>
 </div>
