@@ -3,7 +3,10 @@ $(document).ready(function() {
 	var current = window.location.href.substring(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('.'));
 	$('#nav_' + current).addClass('active');
 
-	if(current == 'list_all') {
+	if(current == 'list_all') { // if it is the product page
+		// activate seach input bar
+		$('#search').css('display', 'block');
+
 		// add subnavbar active class (only on products page)
 		if(window.location.href.indexOf('type=')>0) {
 			var type = window.location.href.substring(window.location.href.lastIndexOf('type=')+5);

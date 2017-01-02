@@ -144,6 +144,28 @@ table th {
 	padding: 0;
 }
 
+#search {
+	display: none;
+	float: right;
+}
+
+#search label {
+	position: absolute;
+	padding-left: 0.3em;
+	padding-top: 0.3em;
+}
+
+#search #search-input {
+	border-radius: 1em;
+	margin-right: 0.5em;
+	padding-left: 1.5em;
+	width: 15em;
+}
+
+#search input:focus {
+	outline: none;
+}
+
 #success_messages a {
   text-decoration: none;
 }
@@ -313,7 +335,7 @@ table th {
 	padding: 0.5em 0;
 }
 
-.navbar {
+.navbar, .sub-navbar{
 	background-color: #4991C8;
 }
 

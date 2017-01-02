@@ -41,6 +41,31 @@
 	  return $stmt->fetchAll();
 	}
 
+	function getProductsByName($pg, $name) {
+		global $conn;
+		if(!$name)
+			die('Name is missing');
+
+		$query_values_array = array('%'.$name.'%');
+
+		if($pg!=-1) {
+			$limit  = 8;
+			$offset = ($pg-1)*8;
+		} else {
+			$limit  = getNumProductsByName($name);
+			$offset = 0;
+		}
+		array_push($query_values_array, $limit);
+		array_push($query_values_array, $offset);
+
+		$stmt = $conn->prepare("SELECT *
+														FROM products
+														WHERE name ILIKE ?
+														LIMIT ? OFFSET ?;");
+		$stmt->execute($query_values_array);
+		return $stmt->fetchAll();
+	}
+
 	function getProductsByType($pg, $type, $lower_lim, $upper_lim, $sort_by) {
 		global $conn;
 		$query = "SELECT *
@@ -48,7 +73,7 @@
 							WHERE 1=1";
 
 		if(!$type)
-			die('Type missing');
+			die('Type is missing');
 
 		$query .= " AND type = ?";
 		$query_values_array = array($type);
@@ -126,7 +151,7 @@
 	function getNumProductsByType($type, $lower_lim, $upper_lim) {
 		global $conn;
 		if(!$type)
-			die('Type missing');
+			die('Type is missing');
 		$query_values_array = array($type);
 		$query_where_aux = "";
 		if($lower_lim && $upper_lim) {
@@ -138,6 +163,18 @@
 														FROM products
 														WHERE type = ? '.$query_where_aux.';');
 		$stmt->execute($query_values_array);
+		return $stmt->fetchAll()[0]['count'];
+	}
+
+	function getNumProductsByName($name) {
+		global $conn;
+		if(!$name)
+			die('Name is missing');
+
+		$stmt = $conn->prepare('SELECT COUNT(*)
+														FROM products
+														WHERE name ILIKE ?;');
+		$stmt->execute(array('%'.$name.'%'));
 		return $stmt->fetchAll()[0]['count'];
 	}
 

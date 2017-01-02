@@ -1,4 +1,4 @@
-<div class="navbar menu">
+<div class="sub-navbar menu">
 	<ul>
 		{if isset($prod_types)}
 			{foreach $prod_types as $prod_type}

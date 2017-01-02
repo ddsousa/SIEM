@@ -36,11 +36,18 @@
     $n_prod           = getNumProductsByType($type, $lower_lim, $upper_lim);
   } else {
     unset($_SESSION['type']);
-    $type       = "";
-    $products   = getAllProducts($pg, $lower_lim, $upper_lim, $sort_by);
-    $n_prod     = getNumProducts($lower_lim, $upper_lim);
+    $type             = "";
+    $products         = getAllProducts($pg, $lower_lim, $upper_lim, $sort_by);
+    $n_prod           = getNumProducts($lower_lim, $upper_lim);
   }
 
+  // name
+  if(isset($_POST['search'])) {
+    $name             = $_POST['search'];
+    $type             = "";
+    $products         = getProductsByName($pg, $name);
+    $n_prod           = getNumProductsByName($name);
+  }
 
   $products_most_sold = getMostSoldProducts(); // returns 4 products most sold
   $prod_types         = getProductsTypes();
