@@ -3,7 +3,10 @@ $(document).ready(function() {
 	var current = window.location.href.substring(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('.'));
 	$('#nav_' + current).addClass('active');
 
-	if(current == 'list_all') {
+	if(current == 'list_all') { // if it is the product page
+		// activate seach input bar
+		$('#search').css('display', 'block');
+
 		// add subnavbar active class (only on products page)
 		if(window.location.href.indexOf('type=')>0) {
 			var type = window.location.href.substring(window.location.href.lastIndexOf('type=')+5);
@@ -33,6 +36,11 @@ $(document).ready(function() {
 		}
 	});
 
+	// Close error/success messages
+	$('.close').click(function() {
+	    $(this).parent().fadeOut();
+	});
+
 });
 
 // Ajax check is username already exists
@@ -50,11 +58,6 @@ function checkUsername() {
 		}
   });
 }
-
-// Close error/success messages
-$('.close').click(function() {
-    $(this).parent().fadeOut();
-});
 
 function hasNumber(address) {
 	return /\d/.test(address);
@@ -122,4 +125,42 @@ function validateForm() {
 	}
 
 	return flagSubmitOk;
+}
+/* TODO - apagar isto
+function getGetValue(key) {
+	var result = null;
+	if(window.location.href.indexOf(key)>0) {
+		result = window.location.href.substring(window.location.href.indexOf(key+'=')+key.length+1);
+		if(result.indexOf('&')>0)
+			result  = result.substring(0, result.indexOf('&'));
+	}
+		return result;
+}
+
+function sortProductsBy(sel) {
+	var str_aux = "";
+	var type = getGetValue('type');
+	if(type)
+		str_aux += '&type='+type;
+	var lower_lim = getGetValue('lower_lim');
+	if(lower_lim)
+		str_aux += '&lower_lim='+lower_lim;
+	var upper_lim = getGetValue('upper_lim');
+	if(upper_lim)
+		str_aux += '&upper_lim='+upper_lim;
+
+	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
+}
+*/
+
+function sortProductsBy(sel, type, lower_lim, upper_lim) {
+	var str_aux = "";
+	if(type)
+		str_aux += "&type="+type;
+	if(lower_lim)
+		str_aux += "&lower_lim"+lower_lim;
+	if(upper_lim)
+		str_aux += "&upper_lim"+upper_lim;
+
+	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
 }

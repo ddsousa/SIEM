@@ -1,0 +1,16 @@
+<?php
+	include_once("../../../config/init.php");
+	
+	if(isset($_GET['prod_id']) && isset($_POST['quantity'])) {
+		$prod_id  = $_GET['prod_id'];
+		$quantity = $_POST['quantity'];
+
+		if(isset($_SESSION['cart'])) {
+			$_SESSION['cart'][$prod_id]['quantity'] = $quantity;
+		}
+		else {
+			$_SESSION['error_messages'][] = 'Ainda não tem este produto no carrinho';
+		}
+	}
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+?>

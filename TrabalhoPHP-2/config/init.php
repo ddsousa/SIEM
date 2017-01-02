@@ -6,7 +6,7 @@
 	session_start();
 
 	$BASE_DIR = dirname(__DIR__).'/';
-	include_once($BASE_DIR."config/base_url.php"); // TODO - mudar isto
+	include_once($BASE_DIR."config/base_url/base_url.php"); // TODO - mudar isto
 
 	include_once($BASE_DIR."database/init_db.php");
 	include_once($BASE_DIR."lib/smarty/Smarty.class.php");
@@ -38,4 +38,7 @@
 	if(isset($_SESSION['type'])) {
 		$smarty->assign('type', $_SESSION['type']);
 	}
+
+	$config['date_time'] = '%Y/%m/%d %H:%M:%S';
+	$smarty->assign('config', $config);
 ?>
