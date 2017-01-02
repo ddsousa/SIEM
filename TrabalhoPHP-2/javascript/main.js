@@ -44,8 +44,9 @@ function checkUsername() {
 			$('.field_error#username').html('Username não disponível');
 			$('.field_error#username').css({"font-family": "inital", "color": "red"});
 		} else {
-			$('.field_error#username').html('&#252;');
-			$('.field_error#username').css({"font-family": "wingdings", "color": "green"});
+			//$('.field_error#username').html('&#252;');
+			$('.field_error#username').css("color", "green");
+			$('.field_error#username').html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
 		}
   });
 }
