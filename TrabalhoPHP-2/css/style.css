@@ -152,12 +152,13 @@ table th {
 #search label {
 	position: absolute;
 	padding-left: 0.3em;
-	padding-top: 0.3em;
+	padding-top: 0.5em;
 }
 
 #search #search-input {
 	border-radius: 1em;
 	margin-right: 0.5em;
+	margin-top: 0.5em;
 	padding-left: 1.5em;
 	width: 15em;
 }
@@ -335,8 +336,21 @@ table th {
 	padding: 0.5em 0;
 }
 
-.navbar, .sub-navbar{
+.navbar {
+	float: left;
+}
+
+.navbar, .sub-navbar, .nav-container {
 	background-color: #4991C8;
+}
+
+.nav-container {
+	width: 100%;
+	overflow: hidden;
+}
+
+.sub-navbar{
+	clear: both;
 }
 
 .num-cart-items {
