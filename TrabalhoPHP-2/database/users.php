@@ -8,6 +8,9 @@
   function userExists($username) {
     global $conn;
 
+    if(!$username)
+      die('Username is missing');
+
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->execute(array($username));
 
@@ -19,15 +22,19 @@
 
   function createUser($permissions, $username, $password) {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO users VALUES (default, default, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users VALUES (default, default, ?, ?, ?);");
     $stmt->execute(array($permissions, $username, password_hash($password, PASSWORD_BCRYPT)));
   }
 
   function isLoginCorrect($username, $password) {
     global $conn;
+
+    if(!$username || !$password)
+      die('Username or Password is missing');
+
     $stmt = $conn->prepare("SELECT *
                             FROM users
-                            WHERE username = ?");
+                            WHERE username = ?;");
     $stmt->execute(array($username));
     $user = $stmt->fetch();
 
@@ -39,19 +46,40 @@
 
   function getClientId($username) {
     global $conn;
+
+    if(!$username)
+      die('Username is missing');
+
     $stmt = $conn->prepare("SELECT id_clients
                             FROM users
-                            WHERE username = ?");
+                            WHERE username = ?;");
     $stmt->execute(array($username));
     return $stmt->fetch();
   }
 
   function getClientData($id) {
     global $conn;
+
+    if(!$id)
+      die('ID is missing');
+
     $stmt = $conn->prepare("SELECT *
                             FROM clients
-                            WHERE id = ?");
+                            WHERE id = ?;");
     $stmt->execute(array($id));
     return $stmt->fetch();
+  }
+
+  function getPermissions($username) {
+    global $conn;
+
+    if(!$username)
+      die('Username is missing');
+
+    $stmt = $conn->prepare("SELECT account_type
+                            FROM users
+                            WHERE username = ?;");
+    $stmt->execute(array($username));
+    return $stmt->fetch()['account_type'];
   }
 ?>

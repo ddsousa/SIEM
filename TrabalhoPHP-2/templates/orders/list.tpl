@@ -6,7 +6,7 @@
 		<th>Número artigos</th>
 		<th>Preço Total</th>
 	</tr>
-	{foreach $client_orders as $order}
+	{foreach $orders as $order}
 		<tr>
 			<td>{$order['num']}</td>
 			<td>{$order['state']}</td>

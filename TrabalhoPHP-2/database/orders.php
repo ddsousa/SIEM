@@ -1,18 +1,25 @@
 <?php
 	include_once("clients.php");
 
+	function getAllOrders() {
+		global $conn;
+
+		$stmt = $conn->prepare('SELECT num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
+														FROM orders
+														JOIN orderdetails ON (orders.id=orderdetails.id_orders)
+														JOIN products ON orderdetails.id_products=products.id
+														GROUP BY orders.id;');
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
 	function getOrdersByClient($username) {
 		global $conn;
 
 		if(!$username)
 			return null;
 		$client_id = getClientIDByUsername($username);
-/*
-		$stmt = $conn->prepare('SELECT *
-		                        FROM orders
-		                        WHERE id_clients = ?
-		                        ORDER BY order_date DESC;');
-*/
+
 		$stmt = $conn->prepare('SELECT num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
 														FROM orders
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders AND id_clients = ?)
