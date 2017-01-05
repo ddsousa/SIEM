@@ -36,7 +36,7 @@
 		$smarty->assign('USERNAME', $_SESSION['username']);
 	}
 	if(isset($_SESSION['permissions'])) {
-		$smarty->assign('permissions', $_SESSION['permissions']);
+		$smarty->assign('PERMISSIONS', $_SESSION['permissions']);
 	}
 	if(isset($_SESSION['type'])) {
 		$smarty->assign('type', $_SESSION['type']);
