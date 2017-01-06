@@ -1,5 +1,6 @@
 <?php
 	include_once("../../config/init.php");
+	include_once($BASE_DIR."config/user_only.php");
 	include_once($BASE_DIR."database/orders.php");
 
 	if(isset($_SESSION['permissions'])) {
