@@ -440,6 +440,10 @@ table th {
 	background-color: #8CB2BD;
 }
 
+.tab-client-details td, .tab-client-details th {
+	padding: 0.25em 1em;
+}
+
 .tab-product-data {
 	width: 100%;
 }

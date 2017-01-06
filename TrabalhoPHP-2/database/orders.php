@@ -4,11 +4,12 @@
 	function getAllOrders() {
 		global $conn;
 
-		$stmt = $conn->prepare('SELECT num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
+		$stmt = $conn->prepare('SELECT clients.name AS client_name, clients.id AS client_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
 														FROM orders
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders)
 														JOIN products ON orderdetails.id_products=products.id
-														GROUP BY orders.id;');
+														JOIN clients ON clients.id=id_clients
+														GROUP BY orders.id, clients.name, clients.id;');
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
