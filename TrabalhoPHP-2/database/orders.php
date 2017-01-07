@@ -9,7 +9,8 @@
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders)
 														JOIN products ON orderdetails.id_products=products.id
 														JOIN clients ON clients.id=id_clients
-														GROUP BY orders.id, clients.name, clients.id;');
+														GROUP BY orders.id, clients.name, clients.id
+														ORDER BY order_date DESC;');
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
@@ -27,7 +28,8 @@
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders AND id_clients = ?)
 														JOIN products ON orderdetails.id_products=products.id
 														JOIN clients ON clients.id=id_clients
-														GROUP BY orders.id, clients.name, clients.id;');
+														GROUP BY orders.id, clients.name, clients.id
+														ORDER BY order_date DESC;');
 		$stmt->execute(array($client_id));
 		return $stmt->fetchAll();
 	}

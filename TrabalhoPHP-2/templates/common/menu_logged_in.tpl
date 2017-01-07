@@ -1,6 +1,8 @@
 <div class="logged_in">
-	<a class="mybtn logout" href="{$BASE_URL}actions/users/logout.php">Logout</a>
 	<span class="username">{$USERNAME}</span>
+	<form action="{$BASE_URL}actions/users/logout.php">
+		<input type="submit" value="Logout">
+	</form>
 	<br>
 	{if isset($smarty.session.cart)}
 		{if $smarty.session.cart|@count eq 1}
