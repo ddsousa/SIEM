@@ -8,6 +8,7 @@
 			unset($_SESSION['cart'][$prod_id]);
 	}
 
+	$_SESSION['success_messages'][] = 'Produto removado com sucesso';
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 ?>

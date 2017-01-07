@@ -4,7 +4,9 @@
 
 	if(!empty($_SESSION['cart'])) {
 		if(newOrder($_SESSION['cart'])) {
-			header("Location: ".$BASE_URL."actions/products/cart/clear_cart.php");
+			unset($_SESSION['cart']);
+			$_SESSION['success_messages'][] = 'Checkout realizado com sucesso';
+			header("Location: ".$BASE_URL."pages/products/list_all.php");
 			exit;
 		}
 	}

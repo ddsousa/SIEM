@@ -3,6 +3,7 @@
 
   session_destroy();
 
+	$_SESSION['success_messages'][] = 'Logout realizado com sucesso';
   header('Location: '.$BASE_URL);
 	exit;
 ?>

@@ -17,6 +17,7 @@
 		$_SESSION['cart'][$prod_id]['price'] = $product['price'];
 		$_SESSION['cart'][$prod_id]['name']  = $product['name'];
 	}
+	$_SESSION['success_messages'][] = 'Produto adicionado com sucesso';
 	header('Location: ' . $BASE_URL . 'pages/products/list_all.php');
 	exit;
 ?>

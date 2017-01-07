@@ -12,6 +12,7 @@
 			$_SESSION['error_messages'][] = 'Ainda não tem este produto no carrinho';
 		}
 	}
+	$_SESSION['success_messages'][] = 'Quantidade mudada para ' . $quantity;
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
 	exit;
 ?>
