@@ -179,6 +179,18 @@
 		return $stmt->fetchAll()[0]['count'];
 	}
 
+	function incrementNumSales($id, $quantity) {
+		global $conn;
+
+		if(!$id || !$quantity)
+			die("ID or quantity is missing");
+
+		$stmt = $conn->prepare('UPDATE products
+														SET n_sales = n_sales+?
+														WHERE id=?;');
+		$stmt->execute(array($quantity, $id));
+	}
+
 	function searchProductById($id) {
 		global $conn;
 		$stmt = $conn->prepare('SELECT *

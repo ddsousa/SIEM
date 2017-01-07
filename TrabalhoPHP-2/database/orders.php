@@ -1,5 +1,7 @@
 <?php
 	include_once("clients.php");
+	include_once("stock.php");
+	include_once("products.php");
 
 	function getAllOrders() {
 		global $conn;
@@ -71,13 +73,15 @@
 		$order_id = $result['id'];
 		foreach($cart as $key => $item_quantity) {
 			$prod_id  = $key;
-			echo "<br>".$prod_id;
-			$quantity = $item_quantity;
+			$quantity = $item_quantity['quantity'];
 
 			$stmt = $conn->prepare("INSERT INTO orderdetails
 															VALUES (default,
 																			?, ?, ?);");
 			$stmt->execute(array($order_id, intval($prod_id), intval($quantity)));
+
+			incrementNumSales($prod_id, $quantity);
+			changeStockAvailable($prod_id, $quantity);
 		}
 		return true;
 	}
