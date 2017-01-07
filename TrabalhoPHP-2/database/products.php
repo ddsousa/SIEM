@@ -3,7 +3,7 @@
 		global $conn;
 		$query = "SELECT *
 							FROM products
-							WHERE 1=1";
+							WHERE visibility=TRUE ";
 
 		if($lower_lim && $upper_lim) {
 			$query .= "AND price >= ? AND price <= ? ";
@@ -60,7 +60,7 @@
 
 		$stmt = $conn->prepare("SELECT *
 														FROM products
-														WHERE name ILIKE ?
+														WHERE name ILIKE ? AND visibility=TRUE
 														LIMIT ? OFFSET ?;");
 		$stmt->execute($query_values_array);
 		return $stmt->fetchAll();
@@ -70,7 +70,7 @@
 		global $conn;
 		$query = "SELECT *
 							FROM products
-							WHERE 1=1";
+							WHERE visibility=TRUE";
 
 		if(!$type)
 			die('Type is missing');
@@ -116,7 +116,7 @@
 
 		$stmt = $conn->prepare('SELECT *
 														FROM products
-														WHERE id = ?;');
+														WHERE visibility=TRUE AND id = ?;');
 		$stmt->execute(array($id));
 		return $stmt->fetch();
 	}
@@ -125,6 +125,7 @@
 		global $conn;
 		$stmt = $conn->prepare('SELECT *
 														FROM products
+														WHERE visibility=TRUE
 														ORDER BY n_sales DESC, name
 														LIMIT 4;');
 		$stmt->execute();
@@ -133,9 +134,9 @@
 
 	function getNumProducts($lower_lim, $upper_lim) {
 		global $conn;
-		$query_where_aux = "";
+		$query_where_aux = "WHERE visibility=TRUE";
 		if($lower_lim && $upper_lim) {
-			$query_where_aux = "WHERE price >= ? AND price <= ? ";
+			$query_where_aux = " AND price >= ? AND price <= ? ";
 			$query_values_array = array($lower_lim, $upper_lim);
 		}
 		$stmt = $conn->prepare('SELECT COUNT(*)
@@ -161,7 +162,7 @@
 		}
 		$stmt = $conn->prepare('SELECT COUNT(*)
 														FROM products
-														WHERE type = ? '.$query_where_aux.';');
+														WHERE visibility=TRUE AND type = ? '.$query_where_aux.';');
 		$stmt->execute($query_values_array);
 		return $stmt->fetchAll()[0]['count'];
 	}
@@ -173,7 +174,7 @@
 
 		$stmt = $conn->prepare('SELECT COUNT(*)
 														FROM products
-														WHERE name ILIKE ?;');
+														WHERE visibility=TRUE AND name ILIKE ?;');
 		$stmt->execute(array('%'.$name.'%'));
 		return $stmt->fetchAll()[0]['count'];
 	}
@@ -190,7 +191,8 @@
 	function getProductsTypes() {
 		global $conn;
 		$stmt = $conn->prepare('SELECT DISTINCT type
-														FROM products;');
+														FROM products
+														WHERE visibility=TRUE;');
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
@@ -200,7 +202,8 @@
 		if(!$id)
 			die('ID is missing');
 
-		$stmt = $conn->prepare('DELETE FROM products
+		$stmt = $conn->prepare('UPDATE products
+														SET visibility=FALSE
 														WHERE id = ?;');
 		$stmt->execute(array($id));
 	}
