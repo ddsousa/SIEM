@@ -10,7 +10,7 @@
 		if(!isset($_SESSION['cart']))
 			$_SESSION['cart'] = array();
 
-		if(!isset($_SESSION['cart'][$prod_id])) 
+		if(!isset($_SESSION['cart'][$prod_id]))
 			$_SESSION['cart'][$prod_id]['quantity'] = $quantity;
 		else
 			$_SESSION['cart'][$prod_id]['quantity'] += $quantity;
@@ -18,4 +18,5 @@
 		$_SESSION['cart'][$prod_id]['name']  = $product['name'];
 	}
 	header('Location: ' . $BASE_URL . 'pages/products/list_all.php');
+	exit;
 ?>

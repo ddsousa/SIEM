@@ -1,6 +1,6 @@
 <?php
 	include_once("../../../config/init.php");
-	
+
 	if(isset($_GET['prod_id']) && isset($_POST['quantity'])) {
 		$prod_id  = $_GET['prod_id'];
 		$quantity = $_POST['quantity'];
@@ -13,4 +13,5 @@
 		}
 	}
 	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
 ?>

@@ -1,5 +1,5 @@
 <h1>Dados do utilizador {$client['name']} <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h1>
-<table class="tab-client-details">
+<table class="tab-details">
   <tr>
     <th>Nome:</th>
     <td>{$client['name']}</td>

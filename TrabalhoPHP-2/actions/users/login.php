@@ -20,4 +20,5 @@
     $_SESSION['error_messages'][]		= 'Login falhou';
   }
   header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit;
 ?>

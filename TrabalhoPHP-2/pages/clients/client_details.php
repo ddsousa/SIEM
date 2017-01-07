@@ -3,8 +3,10 @@
   include_once($BASE_DIR."config/admin_only.php");
   include_once($BASE_DIR."database/clients.php");
 
-  if(!isset($_GET['id']))
+  if(!isset($_GET['id'])) {
     header('Location: ' . $_SERVER['HTTP_REFERER']);
+    exit;
+  }
 
   $client = getClientDetails($_GET['id']);
 

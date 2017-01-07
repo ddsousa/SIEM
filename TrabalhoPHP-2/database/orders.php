@@ -4,7 +4,7 @@
 	function getAllOrders() {
 		global $conn;
 
-		$stmt = $conn->prepare('SELECT clients.name AS client_name, clients.id AS client_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
+		$stmt = $conn->prepare('SELECT clients.name AS client_name, clients.id AS client_id, orders.id AS order_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
 														FROM orders
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders)
 														JOIN products ON orderdetails.id_products=products.id
@@ -18,16 +18,35 @@
 		global $conn;
 
 		if(!$username)
-			return null;
+			die('Username is missing');
+
 		$client_id = getClientIDByUsername($username);
 
-		$stmt = $conn->prepare('SELECT num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
+		$stmt = $conn->prepare('SELECT clients.name AS client_name, clients.id AS client_id, orders.id AS order_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
 														FROM orders
 														JOIN orderdetails ON (orders.id=orderdetails.id_orders AND id_clients = ?)
 														JOIN products ON orderdetails.id_products=products.id
-														GROUP BY orders.id;');
+														JOIN clients ON clients.id=id_clients
+														GROUP BY orders.id, clients.name, clients.id;');
 		$stmt->execute(array($client_id));
 		return $stmt->fetchAll();
+	}
+
+	function getOrderByID($id) {
+		global $conn;
+
+		if(!$id)
+			die('ID is missing');
+
+		$stmt = $conn->prepare('SELECT clients.name, num, state, order_date, count(orderdetails.id) AS num_products, sum(price) as total_price, orders.id AS order_id
+														FROM orders
+														JOIN clients ON clients.id=id_clients
+														JOIN orderdetails ON id_orders=orders.id
+														JOIN products ON products.id=id_products
+														WHERE orders.id=?
+														GROUP BY clients.name, orders.num, orders.state, orders.order_date, orders.id;');
+		$stmt->execute(array($id));
+		return $stmt->fetch();
 	}
 
 	function newOrder($cart) {
@@ -59,5 +78,17 @@
 			$stmt->execute(array($order_id, intval($prod_id), intval($quantity)));
 		}
 		return true;
+	}
+
+	function updateOrderState($id, $state) {
+		global $conn;
+
+		if(!$id || !$state)
+			die("ID or state is missing");
+
+		$stmt = $conn->prepare('UPDATE orders
+														SET state = ?
+														WHERE id = ?;');
+		$stmt->execute(array($state, $id));
 	}
 ?>
