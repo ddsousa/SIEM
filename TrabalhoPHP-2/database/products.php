@@ -195,4 +195,14 @@
 		return $stmt->fetchAll();
 	}
 
+	function deleteProduct($id) {
+		global $conn;
+		if(!$id)
+			die('ID is missing');
+
+		$stmt = $conn->prepare('DELETE FROM products
+														WHERE id = ?;');
+		$stmt->execute(array($id));
+	}
+
 ?>
