@@ -5,6 +5,18 @@
     $stmt->execute(array($name, $address, $phone, $email));
   }
 
+  function editUserDetails($id, $username, $password) {
+    global $conn;
+
+    if(!$id || !$username || !$password)
+      die('fields are missing');
+
+    $stmt = $conn->prepare('UPDATE users
+                            SET username=?, password=?
+                            WHERE id_clients=?;');
+    $stmt->execute(array($username, password_hash($password, PASSWORD_BCRYPT), $id));
+  }
+
   function userExists($username) {
     global $conn;
 

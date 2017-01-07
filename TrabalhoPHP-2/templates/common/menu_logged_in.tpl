@@ -1,5 +1,5 @@
 <div class="logged_in">
-	<span class="username">{$USERNAME}</span>
+	<span class="username"><a href="{$BASE_URL}pages/clients/client_details.php?id={$smarty.session.id}">{$USERNAME}</a></span>
 	<form action="{$BASE_URL}actions/users/logout.php">
 		<input type="submit" value="Logout">
 	</form>

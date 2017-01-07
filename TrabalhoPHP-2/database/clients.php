@@ -1,4 +1,16 @@
 <?php
+	function editClientDetails($id, $name, $address, $email, $phone) {
+		global $conn;
+
+		if(!$id || !$name || !$address || !$email || !$phone)
+			die('fiels are missing');
+
+		$stmt = $conn->prepare('UPDATE clients
+														SET name=?, address=?, phone=?, email=?
+														WHERE id=?;');
+		$stmt->execute(array($name, $address, $phone, $email, $id));
+	}
+
 	function getClientIDByUsername($username) {
 		global $conn;
 
@@ -12,6 +24,28 @@
 		$stmt->execute(array($username));
 		$result = $stmt->fetch();
 		return $result['id'];
+	}
+
+	function getClientByID($id) {
+		global $conn;
+
+		if(!$id)
+			die('ID is missing');
+
+		$stmt = $conn->prepare("SELECT clients.id AS id, name, address, email, phone, username
+														FROM clients
+														JOIN users ON clients.id=id_clients
+														WHERE clients.id=?;");
+		$stmt->execute(array($id));
+		$client = $stmt->fetch();
+		print_r($client);
+		$address 								= $client['address'];
+		parse_str($address);
+		$client['address_name'] = $addressname;
+		$client['zc1']     			= $zc1;
+		$client['zc2']					= $zc2;
+
+		return $client;
 	}
 
 	function getClientDetails($id) {

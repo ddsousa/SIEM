@@ -1,4 +1,4 @@
-<h1>Dados do utilizador {$client['name']} <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h1>
+<h1>Dados do utilizador {$client['name']} <a href="{$BASE_URL}pages/clients/edit_client_details.php?id={$client['id']}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h1>
 <table class="tab-details">
   <tr>
     <th>Nome:</th>
