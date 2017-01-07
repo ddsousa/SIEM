@@ -39,4 +39,14 @@
       $stmt->execute(array($order_detail['quantity'], $order_detail['id_products']));
     }
   }
+
+  function getAllStocks() {
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT products.id AS prod_id, code, name, qt_warehouse, qt_available
+                            FROM stocks
+                            JOIN products ON products.id=id_products;');
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
 ?>

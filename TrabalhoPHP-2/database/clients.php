@@ -39,4 +39,20 @@
 
     return $client_data;
 	}
+
+	function getAllClients() {
+		global $conn;
+
+		$stmt = $conn->prepare('SELECT *
+														FROM clients;');
+		$stmt->execute();
+		$result = $stmt->fetchAll();
+		foreach($result as $key => $client) {
+			$address 								= $client['address'];
+			parse_str($address);
+			$result[$key]['address_name'] = $addressname;
+			$result[$key]['zip-code']     = $zc1.'-'.$zc2;
+		}
+		return $result;
+	}
 ?>
