@@ -3,6 +3,7 @@
   include_once($BASE_DIR."database/products.php");
   include_once($BASE_DIR."database/stock.php");
 
+  $products_page = true;
   if($_GET['id']) {
     $id_product = $_GET['id'];
   } else {
@@ -14,9 +15,9 @@
 
   $smarty->assign('product', $product);
   $smarty->assign('prod_types', $prod_types);
+  $smarty->assign('products_page', $products_page);
 
   $smarty->display('common/header.tpl');
-  $smarty->display('common/prod_type_menu.tpl');
   if(isset($_SESSION['permissions'])) {
     if($_SESSION['permissions'] == 0)
       $smarty->display('products/details.tpl');
