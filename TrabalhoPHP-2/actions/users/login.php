@@ -10,8 +10,8 @@
     exit;
   }
 
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $username = strip_tags($_POST['username']);
+  $password = strip_tags($_POST['password']);
 
   if (isLoginCorrect($username, $password)) {
     $_SESSION['username']						= $username;

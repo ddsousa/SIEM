@@ -8,7 +8,7 @@
     exit;
   }
 
-  $id           = $_GET['id'];
+  $id           = strip_tags($_GET['id']);
   $qt_warehouse = strip_tags($_POST['qt-warehouse']);
   $qt_available = strip_tags($_POST['qt-available']);
 

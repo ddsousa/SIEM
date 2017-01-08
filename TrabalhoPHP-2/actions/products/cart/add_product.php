@@ -3,8 +3,8 @@
 	include_once($BASE_DIR."database/products.php");
 
 	if(isset($_GET['prod_id']) && isset($_POST['prod_quantity'])) {
-		$prod_id  = $_GET['prod_id'];
-		$quantity = $_POST['prod_quantity'];
+		$prod_id  = strip_tags($_GET['prod_id']);
+		$quantity = strip_tags($_POST['prod_quantity']);
 		$product  = getProductByID($prod_id);
 
 		if(!isset($_SESSION['cart']))
