@@ -1,4 +1,18 @@
 <?php
+	function addNewProduct($code, $name, $type, $description, $price) {
+		global $conn;
+
+		if(!$code || !$name || !$type || !$description || !$price)
+			die('Fields are missing');
+
+		$stmt = $conn->prepare('INSERT INTO products (id, code, name, type, description, price, n_sales, visibility)
+														VALUES (
+															default, ?, ?, ?, ?, ?, 0, TRUE
+														) RETURNING id;');
+		$stmt->execute(array($code, $name, $type, $description, $price));
+		return $stmt->fetch(0)['id'];
+	}
+
 	function getAllProducts($pg, $lower_lim, $upper_lim, $sort_by) {
 		global $conn;
 		$query = "SELECT *

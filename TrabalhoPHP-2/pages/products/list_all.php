@@ -62,6 +62,7 @@
   $smarty->assign('upper_lim', $upper_lim);
   $smarty->assign('sort_by', $sort_by);
   $smarty->display('common/header.tpl');
+  $smarty->display('products/add_product_btn.tpl');
   $smarty->display('products/list_most_sold.tpl');
   $smarty->display('common/hr.tpl');
   $smarty->display('products/list.tpl');

@@ -49,4 +49,17 @@
     $stmt->execute();
     return $stmt->fetchAll();
   }
+
+  function newStock($id) {
+    global $conn;
+
+    if(!$id)
+      die('ID is missing');
+
+    $stmt = $conn->prepare('INSERT INTO stocks
+                            VALUES (
+                              default, ?, 0, 0
+                            );');
+    $stmt->execute(array($id));
+  }
 ?>

@@ -137,3 +137,10 @@ function sortProductsBy(sel, type, lower_lim, upper_lim) {
 
 	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
 }
+
+function addCategory(sel) {
+	if(sel.value == "add-new")
+		$('#new_category').fadeIn(1000);
+	else
+		$('#new_category').fadeOut(1000);
+}
