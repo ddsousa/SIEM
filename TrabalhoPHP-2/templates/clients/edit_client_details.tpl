@@ -30,7 +30,7 @@
   <tr>
     <th>Telefone:</th>
     <td>
-      <input type="text" form="form-edit-client-details" value="{$client['phone']}" name="phone">
+      <input type="text" form="form-edit-client-details" value="{$client['phone']}" name="phone" maxlength=9>
     </td>
   </tr>
   {if $PERMISSIONS eq 0}

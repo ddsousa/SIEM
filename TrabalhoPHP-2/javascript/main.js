@@ -144,3 +144,10 @@ function addCategory(sel) {
 	else
 		$('#new_category').fadeOut(1000);
 }
+
+function addUser(base_url, sel) {
+	if(sel.value=="user")
+		window.location.assign(base_url+'pages/users/add_user.php');
+	else if(sel.value=="admin")
+		window.location.assign(base_url+'pages/users/add_admin.php');
+}

@@ -17,13 +17,11 @@
 				<button type="submit" name="btn-checkout" style="margin-right: 0;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho</button>
 			</form>
 		{else} <!-- admin -->
-		<form method="POST" action="{$BASE_URL}pages/users/add_user.php">
-			<select name="user-type" class="dropdown" style="margin-right: 0 !important;">
+			<select name="user-type" class="dropdown" onchange="addUser('{$BASE_URL}', this)" style="margin-right: 0 !important;">
 				<option value="" disabled selected><i class="fa fa-user-circle" aria-hidden="true"></i> Adicionar Utilizador</option>
 				<option value="user">Utilizador</option>
 				<option value="admin">Administrador</option>
 			</select>
-		</form>
 		{/if}
 	</div>
 </div>

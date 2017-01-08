@@ -38,6 +38,12 @@
     $stmt->execute(array($permissions, $username, password_hash($password, PASSWORD_BCRYPT)));
   }
 
+  function createAdmin($username, $password) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO users VALUES (default, NULL, 1, ?, ?);");
+    $stmt->execute(array($username, password_hash($password, PASSWORD_BCRYPT)));
+  }
+
   function isLoginCorrect($username, $password) {
     global $conn;
 
