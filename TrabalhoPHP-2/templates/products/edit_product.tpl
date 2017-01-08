@@ -1,5 +1,5 @@
 <section id="product">
-  <form method="POST" id="form-edit-product" action="{$BASE_URL}actions/products/edit_product.php" enctype="multipart/form-data"></form>
+  <form method="POST" id="form-edit-product" action="{$BASE_URL}actions/products/edit_product.php?id={$product.id}" enctype="multipart/form-data"></form>
   <form method="POST" id="form-edit-stock" action="{$BASE_URL}actions/stocks/edit_stock.php?id={$product.id}"></form>
   <div class="details-prod">
     <div class="details-prod-left">

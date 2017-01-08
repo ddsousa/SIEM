@@ -234,4 +234,15 @@
 		$stmt->execute(array($id));
 	}
 
+	function updateProduct($id, $code, $type, $name, $description, $price) {
+		global $conn;
+
+		if(!$id || !$code || !$type || !$name || !$description || !$price)
+			die('product details are missing');
+
+		$stmt = $conn->prepare('UPDATE products
+														SET code=?, name=?, type=?, description=?, price=?
+														WHERE id=?;');
+		$stmt->execute(array($code, $name, $type, $description, $price, $id));
+	}
 ?>

@@ -1,10 +1,10 @@
 <?php
   include_once("../../config/init.php");
+  include_once($BASE_DIR.'config/admin_only.php');
   include_once($BASE_DIR.'database/products.php');
-  include_once($BASE_DIR.'database/stock.php');
 
-  if(!$_POST['code'] || !$_POST['category'] || !$_POST['name'] || !$_POST['description'] || !$_POST['price']) {
-    $_SESSION['error_messages'][] = 'Não foi possível adicionar um novo produto';
+  if(!$_GET['id'] || !$_POST['code'] || !$_POST['category'] || !$_POST['name'] || !$_POST['description'] || !$_POST['price']) {
+    $_SESSION['error_messages'][] = 'Não foi possível editar o produto';
     header("Location: " . $_SERVER['HTTP_REFERER']);
     exit;
   }
@@ -53,35 +53,25 @@
     $type = $_POST['category'];
   }
 
+  $id          = $_GET['id'];
   $code        = strip_tags($_POST['code']);
   $name        = strip_tags($_POST['name']);
   $description = strip_tags($_POST['description']);
   $price       = strip_tags($_POST['price']);
 
-  $id_product = addNewProduct($code, $name, $type, $description, $price);
-  newStock($id_product);
-
   // Add image
-  $target_file = $target_dir . $id_product . ".jpg";
+  $target_file = $target_dir . $id . ".jpg";
 
   if($no_image == 0) {
     if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-      $_SESSION['success_messages'][] = "Upload da imagem com sucesso.";
-      header("Location: ".$BASE_URL."pages/products/list_all.php");
-      exit;
     }
     else {
       $_SESSION['error_messages'][] = "Ocorreu um erro: o produto foi criado mas não foi possível fazer o upload da imagem.";
-      header("Location: ".$BASE_URL."pages/products/list_all.php");
-      exit;
     }
   }
-  else {
-    // Let's copy the default image
-    copy($BASE_DIR."/media/img/products/default.jpg", $target_file);
 
-    $_SESSION['success_messages'][] = "Produto adicionado com sucesso.";
-    header("Location: ".$BASE_URL."pages/products/list_all.php");
-    exit;
-  }
+  updateProduct($id, $code, $type, $name, $description, $price);
+  $_SESSION['success_messages'][] = 'Produto atualizado com sucesso';
+  header("Location: " . $_SERVER['HTTP_REFERER']);
+  exit;
 ?>
