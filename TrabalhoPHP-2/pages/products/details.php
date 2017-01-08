@@ -27,5 +27,7 @@
       $smarty->display('products/edit_product.tpl');
     }
   }
+  else
+    $smarty->display('products/details.tpl');
   $smarty->display('common/footer.tpl');
 ?>

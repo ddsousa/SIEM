@@ -5,15 +5,25 @@
 	</form>
 	<br>
 	<div style="margin-top: 0.5em; padding-right: 0">
-		{if isset($smarty.session.cart)}
-			{if $smarty.session.cart|@count eq 1}
-				<span class="num-cart-items">1 artigo no carrinho</span>
-			{else}
-				<span class="num-cart-items">{$smarty.session.cart|@count} artigos no carrinho</span>
+		{if $PERMISSIONS eq 0} <!-- user -->
+			{if isset($smarty.session.cart)}
+				{if $smarty.session.cart|@count eq 1}
+					<span class="num-cart-items">1 artigo no carrinho</span>
+				{else}
+					<span class="num-cart-items">{$smarty.session.cart|@count} artigos no carrinho</span>
+				{/if}
 			{/if}
-		{/if}
-		<form action="{$BASE_URL}pages/products/display_cart.php">
-			<button type="submit" name="btn-checkout" style="float: right;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho</button>
+			<form action="{$BASE_URL}pages/products/display_cart.php">
+				<button type="submit" name="btn-checkout" style="margin-right: 0;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Carrinho</button>
+			</form>
+		{else} <!-- admin -->
+		<form method="POST" action="{$BASE_URL}pages/users/add_user.php">
+			<select name="user-type" class="dropdown" style="margin-right: 0 !important;">
+				<option value="" disabled selected><i class="fa fa-user-circle" aria-hidden="true"></i> Adicionar Utilizador</option>
+				<option value="user">Utilizador</option>
+				<option value="admin">Administrador</option>
+			</select>
 		</form>
+		{/if}
 	</div>
 </div>
