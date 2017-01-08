@@ -7,6 +7,6 @@
 
   $smarty->assign('stocks', $stocks);
   $smarty->display('common/header.tpl');
-  $smarty->display('products/list_stocks.tpl');
+  $smarty->display('stocks/list_stocks.tpl');
   $smarty->display('common/footer.tpl');
 ?>

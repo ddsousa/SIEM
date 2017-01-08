@@ -15,13 +15,6 @@
           <button type="submit" name="btn-add-cart" class="btn-princ"><i class="fa fa-cart-plus"aria-hidden="true"></i> Adicionar ao carrinho</button>
         </form>
       </div>
-      {if isset($PERMISSIONS)}
-        {if $PERMISSIONS eq 1}
-          <form method="POST" action="{$BASE_URL}actions/products/delete_product.php?id={$product.id}">
-            <input type="submit" value="Remover Produto">
-          </form>
-        {/if}
-      {/if}
     </div>
   </div>
 </section>

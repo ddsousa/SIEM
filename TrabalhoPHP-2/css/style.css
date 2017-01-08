@@ -255,6 +255,19 @@ table th {
 	display: inline-block;
 }
 
+.details-btn {
+	margin-top: 1em;
+}
+
+.details-btn form {
+	display: inline-block;
+}
+
+.details-btn #center {
+	margin-left: 3.5em !important;
+	margin-right: 3.5em;
+}
+
 .download-icons {
 	width: 100%;
 	margin: 0 auto;
@@ -446,6 +459,10 @@ table th {
 
 .tab-details th {
 	padding-left: 0 !important;
+}
+
+.tab-details input[type="text"], .tab-details textarea, .tab-details hr {
+	width: 100%;
 }
 
 .tab-product-data {

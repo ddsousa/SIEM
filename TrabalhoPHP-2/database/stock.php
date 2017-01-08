@@ -50,6 +50,19 @@
     return $stmt->fetchAll();
   }
 
+  function getStockByID($id) {
+    global $conn;
+
+    if(!$id)
+      die('ID is missing');
+
+    $stmt = $conn->prepare('SELECT *
+                            FROM stocks
+                            WHERE id_products=?;');
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+  }
+
   function newStock($id) {
     global $conn;
 
@@ -61,5 +74,17 @@
                               default, ?, 0, 0
                             );');
     $stmt->execute(array($id));
+  }
+
+  function setStocks($id, $qt_available, $qt_warehouse) {
+    global $conn;
+
+    if(!$id || !$qt_available || !$qt_warehouse)
+      die('ID or a stock is missing');
+
+    $stmt = $conn->prepare('UPDATE stocks
+                            SET qt_available=?, qt_warehouse=?
+                            WHERE id_products=?;');
+    $stmt->execute(array($qt_available, $qt_warehouse, $id));
   }
 ?>
