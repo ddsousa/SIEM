@@ -9,7 +9,7 @@ create table products (
 	description varchar,
 	price decimal(10,2) not null,
 	n_sales integer,
-	visibility, boolean not null
+	visibility boolean not null
 );
 
 create table clients (
