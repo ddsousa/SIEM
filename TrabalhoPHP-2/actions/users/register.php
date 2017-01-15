@@ -14,7 +14,7 @@
   $address2  = strip_tags($_POST['address']);
   $zipcode1  = strip_tags($_POST['zipcode1']);
   $zipcode2  = strip_tags($_POST['zipcode2']);
-  $address   = "'".urlencode($address2).'&zc1='.urlencode($zipcode1)."&zc2=".urlencode($zipcode2)."'";
+  $address   = "addressname=".urlencode($address2).'&zc1='.urlencode($zipcode1)."&zc2=".urlencode($zipcode2);
   $email     = strip_tags($_POST['email']);
   $phone     = strip_tags($_POST['phone']);
   $username  = strip_tags($_POST['username']);
@@ -34,5 +34,7 @@
     header("Location: $BASE_URL" . 'pages/users/register.php');
     exit;
   }
+  $_SESSION['success_messages'][] = 'Registo efetuado com sucesso';
   header("Location: $BASE_URL");
+  exit;
 ?>

@@ -126,32 +126,6 @@ function validateForm() {
 
 	return flagSubmitOk;
 }
-/* TODO - apagar isto
-function getGetValue(key) {
-	var result = null;
-	if(window.location.href.indexOf(key)>0) {
-		result = window.location.href.substring(window.location.href.indexOf(key+'=')+key.length+1);
-		if(result.indexOf('&')>0)
-			result  = result.substring(0, result.indexOf('&'));
-	}
-		return result;
-}
-
-function sortProductsBy(sel) {
-	var str_aux = "";
-	var type = getGetValue('type');
-	if(type)
-		str_aux += '&type='+type;
-	var lower_lim = getGetValue('lower_lim');
-	if(lower_lim)
-		str_aux += '&lower_lim='+lower_lim;
-	var upper_lim = getGetValue('upper_lim');
-	if(upper_lim)
-		str_aux += '&upper_lim='+upper_lim;
-
-	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
-}
-*/
 
 function sortProductsBy(sel, type, lower_lim, upper_lim) {
 	var str_aux = "";
@@ -163,4 +137,18 @@ function sortProductsBy(sel, type, lower_lim, upper_lim) {
 		str_aux += "&upper_lim"+upper_lim;
 
 	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
+}
+
+function addCategory(sel) {
+	if(sel.value == "add-new")
+		$('#new_category').fadeIn(1000);
+	else
+		$('#new_category').fadeOut(1000);
+}
+
+function addUser(base_url, sel) {
+	if(sel.value=="user")
+		window.location.assign(base_url+'pages/users/add_user.php');
+	else if(sel.value=="admin")
+		window.location.assign(base_url+'pages/users/add_admin.php');
 }

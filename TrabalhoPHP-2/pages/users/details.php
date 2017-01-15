@@ -1,5 +1,6 @@
 <?php
   include_once("../../config/init.php");
+  include_once($BASE_DIR."config/admin_only.php");
   include_once($BASE_DIR."database/users.php");
 
   $id_client = getClientId($_SESSION['USERNAME']);
