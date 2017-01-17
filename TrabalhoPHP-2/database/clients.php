@@ -38,7 +38,7 @@
 														WHERE clients.id=?;");
 		$stmt->execute(array($id));
 		$client = $stmt->fetch();
-		print_r($client);
+		//print_r($client);
 		$address 								= $client['address'];
 		parse_str($address);
 		$client['address_name'] = $addressname;

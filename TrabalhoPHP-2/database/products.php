@@ -102,7 +102,7 @@
 			$limit  = 8;
 			$offset = ($pg-1)*8;
 		} else {
-			$limit  = getNumProductsByType($type);
+			$limit  = getNumProductsByType($type, false, false);
 			$offset = 0;
 		}
 

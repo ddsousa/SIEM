@@ -37,10 +37,12 @@
     <th>Preço Total:</th>
     <td>{$order['total_price']}€</td>
   </tr>
+  {if $PERMISSIONS eq 1}
   <tr>
     <th></th>
     <td>
       <button type="submit" class="btn-princ" form="form-edit-state">Editar</button>
     </td>
   </tr>
+  {/if}
 </table>
