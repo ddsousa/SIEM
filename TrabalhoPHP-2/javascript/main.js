@@ -50,11 +50,11 @@ function checkUsername() {
   $.getJSON("../../api/users/userexists.php", {username: username}, function(data) {
   	if(data == true) {
 			$('.field_error#username').html('Username não disponível');
-			$('.field_error#username').css({"font-family": "inital", "color": "red"});
+			$('.field_error#username').css({"font-family": "Ubuntu", "color": "red"});
 		} else {
 			//$('.field_error#username').html('&#252;');
 			$('.field_error#username').css("color", "green");
-			$('.field_error#username').html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
+			$('.field_error#username').html('<i class="fa fa-check" aria-hidden="true"></i>');
 		}
   });
 }
@@ -137,6 +137,11 @@ function sortProductsBy(sel, type, lower_lim, upper_lim) {
 		str_aux += "&upper_lim"+upper_lim;
 
 	window.location.assign('list_all.php?sort_by='+sel.value+str_aux);
+}
+
+function sortOrdersBy(sel) {
+
+	window.location.assign('list_all_orders.php?sort_by='+sel.value);
 }
 
 function addCategory(sel) {

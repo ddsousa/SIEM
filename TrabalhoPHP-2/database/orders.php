@@ -3,16 +3,35 @@
 	include_once("stock.php");
 	include_once("products.php");
 
-	function getAllOrders() {
+	function getAllOrders($sort_by) {
 		global $conn;
 
-		$stmt = $conn->prepare('SELECT clients.name AS client_name, clients.id AS client_id, orders.id AS order_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
-														FROM orders
-														JOIN orderdetails ON (orders.id=orderdetails.id_orders)
-														JOIN products ON orderdetails.id_products=products.id
-														JOIN clients ON clients.id=id_clients
-														GROUP BY orders.id, clients.name, clients.id
-														ORDER BY order_date DESC;');
+		if($sort_by==null)	$sort_by='date_desc';
+
+		$query = 'SELECT clients.name AS client_name, clients.id AS client_id, orders.id AS order_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
+							FROM orders
+							JOIN orderdetails ON (orders.id=orderdetails.id_orders)
+							JOIN products ON orderdetails.id_products=products.id
+							JOIN clients ON clients.id=id_clients
+							GROUP BY orders.id, clients.name, clients.id ';
+
+		if($sort_by=='name') {
+			$query .= 'ORDER BY client_name ASC';
+		}
+		else if($sort_by=='date_asc') {
+			$query .= 'ORDER BY order_date ASC';
+		}
+		else if($sort_by=='date_desc') {
+			$query .= 'ORDER BY order_date DESC';
+		}
+		else if($sort_by=='price_asc') {
+			$query .= 'ORDER BY total_price ASC';
+		}
+		else if($sort_by=='price_desc') {
+			$query .= 'ORDER BY total_price DESC';
+		}
+
+		$stmt = $conn->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}

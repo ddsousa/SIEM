@@ -9,7 +9,7 @@
 			{if isset($PERMISSIONS)}
 				{if $PERMISSIONS eq 1}
 					<li id="nav_list_all_clients"><a href="{$BASE_URL}pages/clients/list_all_clients.php">Clientes</a></li>
-					<li id="nav_list_all_stocks"><a href="{$BASE_URL}pages/products/list_all_stocks.php">Stocks</a></li>
+					<li id="nav_list_all_stocks"><a href="{$BASE_URL}pages/stocks/list_all_stocks.php">Stocks</a></li>
 				{/if}
 			{/if}
 		{/if}

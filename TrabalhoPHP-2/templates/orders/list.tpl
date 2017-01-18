@@ -1,3 +1,4 @@
+{include file='orders/filters.tpl'}
 <table class="tab-blue">
 	<tr>
 		{if $PERMISSIONS}
