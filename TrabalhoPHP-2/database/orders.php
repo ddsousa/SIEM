@@ -3,9 +3,11 @@
 	include_once("stock.php");
 	include_once("products.php");
 
-	function getAllOrders($sort_by) {
+	function getAllOrders($pg, $sort_by) {
 		global $conn;
+		$query_values_array = array();
 
+		if($pg==null)				$pg=1;
 		if($sort_by==null)	$sort_by='date_desc';
 
 		$query = 'SELECT clients.name AS client_name, clients.id AS client_id, orders.id AS order_id, num, state, order_date, COUNT(orderdetails.id) AS num_products, SUM(quantity*price) AS total_price
@@ -31,9 +33,28 @@
 			$query .= 'ORDER BY total_price DESC';
 		}
 
+		$query .= ' LIMIT ? OFFSET ?;';
+
+		$limit  = 8;
+		$offset = ($pg-1)*8;
+
+		array_push($query_values_array, $limit);
+		array_push($query_values_array, $offset);
+
 		$stmt = $conn->prepare($query);
-		$stmt->execute();
+		$stmt->execute($query_values_array);
 		return $stmt->fetchAll();
+	}
+
+	function getNumOrders() {
+		global $conn;
+
+		$query_where_aux = "WHERE visibility=TRUE";
+
+		$stmt = $conn->prepare('SELECT COUNT(*)
+														FROM orders ;');
+		$stmt->execute();
+		return $stmt->fetchAll()[0]['count'];
 	}
 
 	function getOrdersByClient($username) {

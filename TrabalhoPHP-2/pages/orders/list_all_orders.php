@@ -9,12 +9,19 @@
     $sort_by = $_GET['sort_by'];
   }
 
+	// Page
+	if(isset($_GET['pg'])) {
+		$pg = $_GET['pg'];
+	} else {
+		$pg = 1;
+	}
+
 	if(isset($_SESSION['permissions'])) {
 		if($_SESSION['permissions'] == 0) {
 			$orders = getOrdersByClient($_SESSION['username']);
 		}
 		else if($_SESSION['permissions'] == 1) {
-			$orders = getAllOrders($sort_by);
+			$orders = getAllOrders($pg, $sort_by);
 		}
 	}
 	else {
@@ -22,9 +29,13 @@
 		exit;
 	}
 
+	$n_orders = getNumOrders();
+
 	$smarty->assign('sort_by', $sort_by);
 	$smarty->assign('orders', $orders);
+	$smarty->assign('n_orders', $n_orders);
 	$smarty->display('common/header.tpl');
 	$smarty->display('orders/list.tpl');
+	$smarty->display('orders/list_page_numbers.tpl');
 	$smarty->display('common/footer.tpl');
 ?>
