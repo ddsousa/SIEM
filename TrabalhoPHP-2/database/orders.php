@@ -35,8 +35,8 @@
 
 		$query .= ' LIMIT ? OFFSET ?;';
 
-		$limit  = 8;
-		$offset = ($pg-1)*8;
+		$limit  = 12;
+		$offset = ($pg-1)*12;
 
 		array_push($query_values_array, $limit);
 		array_push($query_values_array, $offset);
