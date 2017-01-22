@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var current = window.location.href.substring(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('.'));
 	$('#nav_' + current).addClass('active');
 
-	if(current == 'list_all') { // if it is the product page
+	if(current == 'list_all' || current == 'list_all_orders') { // if it is the product page
 		// activate seach input bar
 		$('#search').css('display', 'block');
 

@@ -384,7 +384,12 @@ table th {
 	margin: auto;
 }
 
-.page_number {
+.page-numbers {
+	position: absolute;
+	bottom: 50px;
+}
+
+.page-number {
 	background-color: #4991C8;
 	bottom: 40px;
 	color: white;
@@ -393,14 +398,9 @@ table th {
 	padding: 0.5em
 }
 
-.page_number a {
+.page-number a {
 	color: #323F4F;
 	text-decoration: none;
-}
-
-.page-numbers {
-	position: absolute;
-	bottom: 56px;
 }
 
 .page-info {
