@@ -158,6 +158,7 @@ table th {
 	position: absolute;
 	padding-left: 0.3em;
 	padding-top: 0.5em;
+	font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #search #search-input {

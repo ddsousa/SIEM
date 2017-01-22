@@ -24,6 +24,7 @@
     else {
       $stock = getStockByID($product['id']);
       $smarty->assign('stock', $stock);
+      $smarty->assign('time', filemtime('../../media/img/products/'.$product['id'].'.jpg'));
       $smarty->display('products/edit_product.tpl');
     }
   }

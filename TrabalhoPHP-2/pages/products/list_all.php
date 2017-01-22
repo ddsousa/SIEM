@@ -45,8 +45,14 @@
   if(isset($_POST['search'])) {
     $name             = $_POST['search'];
     $type             = "";
-    $products         = getProductsByName($pg, $name);
-    $n_prod           = getNumProductsByName($name);
+
+    if($name == NULL) {
+      $products = NULL;
+      $n_prod = 0;
+    } else {
+      $products         = getProductsByName($pg, $name);
+      $n_prod           = getNumProductsByName($name);
+    }
   }
 
   $products_most_sold = getMostSoldProducts(); // returns 4 products most sold

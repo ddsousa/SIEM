@@ -3,10 +3,12 @@ $(document).ready(function() {
 	var current = window.location.href.substring(window.location.href.lastIndexOf('/')+1, window.location.href.lastIndexOf('.'));
 	$('#nav_' + current).addClass('active');
 
-	if(current == 'list_all' || current == 'list_all_orders') { // if it is the product page
+	if(current == 'list_all') {
 		// activate seach input bar
 		$('#search').css('display', 'block');
+	}
 
+	if(current == 'list_all' || current == 'list_all_orders') { // if it is the product page
 		// add subnavbar active class (only on products page)
 		if(window.location.href.indexOf('type=')>0) {
 			var type = window.location.href.substring(window.location.href.lastIndexOf('type=')+5);
@@ -50,11 +52,11 @@ function checkUsername() {
   $.getJSON("../../api/users/userexists.php", {username: username}, function(data) {
   	if(data == true) {
 			$('.field_error#username').html('Username não disponível');
-			$('.field_error#username').css({"font-family": "Ubuntu", "color": "red"});
+			$('.field_error#username').css("color", "red");
 		} else {
 			//$('.field_error#username').html('&#252;');
 			$('.field_error#username').css("color", "green");
-			$('.field_error#username').html('<i class="fa fa-check" aria-hidden="true"></i>');
+			$('.field_error#username').html('<i class="fa fa-check" aria-hidden="true"></i> Disponível');
 		}
   });
 }

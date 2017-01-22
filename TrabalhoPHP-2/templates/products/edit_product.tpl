@@ -3,7 +3,7 @@
   <form method="POST" id="form-edit-stock" action="{$BASE_URL}actions/stocks/edit_stock.php?id={$product.id}"></form>
   <div class="details-prod">
     <div class="details-prod-left">
-      <img class="img-produto" src="{$BASE_URL}media/img/products/{$product.id}.jpg" alt="{$product.name}">
+      <img class="img-produto" src="{$BASE_URL}media/img/products/{$product.id}.jpg?={$time}" alt="{$product.name}">
     </div>
     <div class="details-prod-right">
       <h4 style="margin-bottom: 1.5em;">{$product.name}</h4>
