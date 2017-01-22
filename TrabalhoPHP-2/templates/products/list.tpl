@@ -6,7 +6,7 @@
   <section id="products">
       {foreach $products as $product}
         <article class="product-data">
-          <img class="product-img" src="{$BASE_URL}media/img/products/{$product.id}.jpg" alt="imagem de {$product.name}">
+          <a href="{$BASE_URL}pages/products/details.php?id={$product.id}"><img class="product-img" src="{$BASE_URL}media/img/products/{$product.id}.jpg" alt="imagem de {$product.name}"></a>
           <br>
           <table class="tab-product-data">
             <tr>
