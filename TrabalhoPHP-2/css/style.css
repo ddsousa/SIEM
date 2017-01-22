@@ -135,6 +135,10 @@ table th {
 	width: 20%;
 }
 
+#products {
+	margin-bottom: 35px;
+}
+
 #product h4 {
 	margin: 0;
 	padding: 0;
