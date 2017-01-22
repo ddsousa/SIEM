@@ -2,6 +2,7 @@
 	include_once("../../config/init.php");
 	include_once($BASE_DIR."config/user_only.php");
 	include_once($BASE_DIR."database/orders.php");
+	include_once($BASE_DIR."database/users.php");
 
 	// sort
   $sort_by = null;
@@ -21,7 +22,21 @@
 			$orders = getOrdersByClient($_SESSION['username']);
 		}
 		else if($_SESSION['permissions'] == 1) {
-			$orders = getAllOrders($pg, $sort_by);
+
+			if(isset($_GET['user'])) {
+				$user_id = $_GET['user'];
+
+				$data = getUsername($user_id);
+
+				if($data['username'] == null) {
+					header("Location: ".$BASE_URL."pages/clients/list_all_clients.php");
+				}
+
+				$orders = getOrdersByClient($data['username']);
+
+			} else {
+				$orders = getAllOrders($pg, $sort_by);
+			}
 		}
 	}
 	else {

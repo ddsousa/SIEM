@@ -10,6 +10,7 @@
 
   $client = getClientDetails($_GET['id']);
 
+  $smarty->assign('id', $_GET['id']);
   $smarty->assign('client', $client);
   $smarty->display('common/header.tpl');
   $smarty->display('clients/client_details.tpl');

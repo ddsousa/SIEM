@@ -1,3 +1,6 @@
+{if !$PERMISSIONS}
+	<h2>As suas encomendas</h2>
+{/if}
 {include file='orders/filters.tpl'}
 <table class="tab-blue">
 	<tr>

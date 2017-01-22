@@ -75,6 +75,19 @@
     return $stmt->fetch();
   }
 
+  function getUsername($id) {
+    global $conn;
+
+    if(!$id)
+      die('Id is missing');
+
+    $stmt = $conn->prepare("SELECT username
+                            FROM users
+                            WHERE id = ?;");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+  }
+
   function getClientData($id) {
     global $conn;
 
