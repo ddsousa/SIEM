@@ -1,5 +1,11 @@
 <div class="logged_in">
-	<span class="username"><a href="{$BASE_URL}pages/clients/client_details.php?id={$smarty.session.id}">{$USERNAME}</a></span>
+	<span class="username">
+		{if $PERMISSIONS eq 0}
+			<a href="{$BASE_URL}pages/clients/client_details.php?id={$smarty.session.id}">{$USERNAME}</a>
+		{else}
+			<a href="{$BASE_URL}">{$USERNAME}</a>
+		{/if}
+	</span>
 	<form action="{$BASE_URL}actions/users/logout.php">
 		<input type="submit" value="Logout" style="float: right;">
 	</form>
