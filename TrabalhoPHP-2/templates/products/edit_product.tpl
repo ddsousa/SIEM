@@ -75,7 +75,7 @@
         <input type="submit" value="Editar Produto" class="btn-princ" form="form-edit-product">
         <input type="submit" value="Editar Stock" class="btn-princ" form="form-edit-stock" id="center">
         <form method="POST" action="{$BASE_URL}actions/products/delete_product.php?id={$product.id}">
-          <input type="submit" value="Remover Produto">
+          <input type="submit" value="Remover Produto" class="btn-princ">
         </form>
       </div>
     </div>

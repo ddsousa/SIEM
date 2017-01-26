@@ -15,7 +15,7 @@
 				<td>{$product.name}<br>{$product.price}€/un</td>
 				<td><form method="POST" action="{$BASE_URL}actions/products/cart/edit_quantity.php?prod_id={$id}"><input type="text" value="{$product.quantity}" name="quantity" class="input-text-small"><input type="submit" value="Editar" style="margin-left: 0.5em"></form></td>
 				<td>{math equation="x*y" x=$product.quantity y=$product.price} €</td>
-				<td><form method="POST" action="{$BASE_URL}actions/products/cart/remove_product.php?prod_id={$id}"><input type="submit" value="Remover"></form></td>
+				<td><form method="POST" action="{$BASE_URL}actions/products/cart/remove_product.php?prod_id={$id}"><input type="submit" value="Remover" class="btn-princ"></form></td>
 			</tr>
 			<tr>
 				<td colspan="4"><hr></td>
