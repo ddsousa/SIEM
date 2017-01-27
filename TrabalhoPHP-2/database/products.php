@@ -150,7 +150,7 @@
 		global $conn;
 		$query_where_aux = "WHERE visibility=TRUE";
 		if($lower_lim && $upper_lim) {
-			$query_where_aux = " AND price >= ? AND price <= ? ";
+			$query_where_aux .= " AND price >= ? AND price <= ? ";
 			$query_values_array = array($lower_lim, $upper_lim);
 		}
 		$stmt = $conn->prepare('SELECT COUNT(*)

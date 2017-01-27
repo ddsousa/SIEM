@@ -11,7 +11,17 @@ $(document).ready(function() {
 	if(current == 'list_all' || current == 'list_all_orders') { // if it is the product page
 		// add subnavbar active class (only on products page)
 		if(window.location.href.indexOf('type=')>0) {
-			var type = window.location.href.substring(window.location.href.lastIndexOf('type=')+5);
+
+			type_idx = window.location.href.lastIndexOf('type=');
+
+			and_idx = window.location.href.indexOf('&', type_idx);
+
+			if(and_idx > 0) {
+				var type = window.location.href.substring(type_idx+5, and_idx);
+			} else {
+				var type = window.location.href.substring(type_idx+5);
+			}
+			
 			$('#subnav_' + type).addClass('active');
 		}
 
